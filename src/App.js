@@ -1,0 +1,33 @@
+import './App.css';
+import Home from './pages/home';
+import Schedules from './pages/schedules';
+import Offers from './pages/offers';
+import Account from './pages/account';
+import Navbar from './partials/navbar';
+import Footer from './partials/footer';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <Navbar/>
+
+        <Routes>
+          <Route path='/Account' element={<Account />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/Schedules' element={<Schedules />} />
+          <Route path='/Offers' element={<Offers />} />
+        </Routes>
+        
+        <Footer/>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
+
+
+
