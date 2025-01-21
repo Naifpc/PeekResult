@@ -1,151 +1,178 @@
 import React from "react";
+import { trainer as Trainer } from "../partials/cards";
 
 function home() {
   return (
-    <div class="container p-5 ">
-      <div class="input-group rounded  ">
+    <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
+      <div class="input-group">
         <input
           type="search"
-          class="form-control rounded bg-body-secondary text-dark search-bar"
-          placeholder="البحث"
+          class="form-control bg-body-secondary border-0 shadow-sm rounded-0 rounded-end"
+          placeholder="اسم المدرب"
           aria-label="Search"
           aria-describedby="search-addon"
         />
-        <span class="input-group-text border-0" id="search-addon">
-          <i class="bi bi-search "></i>
+        <span class="input-group-text rounded-0 rounded-start border-0 " id="search-addon">
+          <i class="bi bi-search text-primary"></i>
         </span>
       </div>
 
-      <div class="m-5"></div>
+      <div class="m-4"></div>
 
-      <div class="d-flex  gap-4">
-        
-        <p class="align-content-center pb-2 fs-4 border-start ps-4">المجالات</p>
-        
-        <div class="d-flex overflow-x-auto nowrap justify-content-center gap-4  pb-4">
+      <div class="d-flex  gap-2">
+        <p class="align-content-center pb-2 fs-6 border-start ps-2">المجالات</p>
 
-        <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off"/>
-        <label class="btn btn-secondary filter" for="btn-check">Single toggle</label>
+        <div class="d-flex overflow-x-auto nowrap  gap-2  pb-4">
+          <input
+            type="radio"
+            class="btn-check"
+            id="btn-check"
+            name="filters"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary  rounded-pill filter"
+            for="btn-check"
+          >
+            الكل
+          </label>
 
-        <input type="checkbox" class="btn-check" id="btn-check1" autocomplete="off"/>
-        <label class="btn btn-secondary filter" for="btn-check1">Single toggle</label>
+          <input
+            type="radio"
+            class="btn-check"
+            id="btn-check2"
+            name="filters"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary  rounded-pill filter"
+            for="btn-check2"
+          >
+            كمال اجسام
+          </label>
 
-        <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off"/>
-        <label class="btn btn-secondary filter" for="btn-check2">Single toggle</label>
+          <input
+            type="radio"
+            class="btn-check"
+            id="btn-check3"
+            name="filters"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary  rounded-pill filter"
+            for="btn-check3"
+          >
+            كروس فيت
+          </label>
 
-        <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off"/>
-        <label class="btn btn-secondary filter" for="btn-check3">Single toggle</label>
+          <input
+            type="radio"
+            class="btn-check"
+            id="btn-check4"
+            name="filters"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary  rounded-pill filter"
+            for="btn-check4"
+          >
+            باور ليفتنق
+          </label>
 
-        <input type="checkbox" class="btn-check" id="btn-check4" autocomplete="off"/>
-        <label class="btn btn-secondary filter" for="btn-check4">Single toggle</label>
+          <input
+            type="radio"
+            class="btn-check"
+            id="btn-check5"
+            name="filters"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary  rounded-pill filter"
+            for="btn-check5"
+          >
+            تغذية
+          </label>
 
-        <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off"/>
-        <label class="btn btn-secondary filter" for="btn-check">Single toggle</label>
+          <input
+            type="radio"
+            class="btn-check"
+            id="btn-check6"
+            name="filters"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary  rounded-pill filter"
+            for="btn-check6"
+          >
+            رفع اثقال
+          </label>
 
-        <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off"/>
-        <label class="btn btn-secondary filter" for="btn-check">Single toggle</label>
-        
-        <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off"/>
-        <label class="btn btn-secondary filter" for="btn-check">Single toggle</label>
+          <input
+            type="radio"
+            class="btn-check"
+            id="btn-check7"
+            name="filters"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary  rounded-pill filter"
+            for="btn-check7"
+          >
+            الجري
+          </label>
 
-        
-        <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off"/>
-        <label class="btn btn-secondary filter" for="btn-check">Single toggle</label>
+          <input
+            type="radio"
+            class="btn-check"
+            id="btn-check8"
+            name="filters"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary  rounded-pill filter"
+            for="btn-check8"
+          >
+            كالسثنكس
+          </label>
 
-        
+          <input
+            type="radio"
+            class="btn-check"
+            id="btn-check9"
+            name="filters"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary  rounded-pill filter"
+            for="btn-check9"
+          >
+            تغذية
+          </label>
 
-      
-
-      </div>
-
-      </div>
-
-      <div class="m-5"></div>
-
-      <div class="container">
-        <div class="row  ">
-          
-          <div class="col-md-4 mb-3  ">
-            <div class="card card-custom shadow  border-0">
-              <div class="card-custom-img"></div>
-
-              <div class="card-body text-end">
-                <h4 class="card-title">ابو نايف</h4>
-
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">الاسم: محمد نايف فلمبان</li>
-                  <li class="list-group-item">الخبرة: 5 سنين</li>
-                  <li class="list-group-item">المجال: زقمبي</li>
-                </ul>
-              </div>
-              <div class="card-footer d-flex ">
-                <a href="#" class="btn btn-outline-primary">
-                  اشترك
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card card-custom shadow  border-0">
-              <div class="card-custom-img"></div>
-
-              <div class="card-body text-end">
-                <h4 class="card-title">ابو نايف</h4>
-
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">الاسم: محمد نايف فلمبان</li>
-                  <li class="list-group-item">الخبرة: 5 سنين</li>
-                  <li class="list-group-item">المجال: زقمبي</li>
-                </ul>
-              </div>
-              <div class="card-footer d-flex ">
-                <a href="#" class="btn btn-outline-primary">
-                  اشترك
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card card-custom shadow  border-0">
-              <div class="card-custom-img"></div>
-
-              <div class="card-body text-end ">
-                <h4 class="card-title">ابو نايف</h4>
-
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">الاسم: محمد نايف فلمبان</li>
-                  <li class="list-group-item">الخبرة: 5 سنين</li>
-                  <li class="list-group-item">المجال: زقمبي</li>
-                </ul>
-              </div>
-              <div class="card-footer d-flex ">
-                <a href="#" class="btn btn-outline-primary">
-                  اشترك
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card card-custom shadow  border-0">
-              <div class="card-custom-img"></div>
-
-              <div class="card-body text-end">
-                <h4 class="card-title">ابو نايف</h4>
-
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">الاسم: محمد نايف فلمبان</li>
-                  <li class="list-group-item">الخبرة: 5 سنين</li>
-                  <li class="list-group-item">المجال: زقمبي</li>
-                </ul>
-              </div>
-              <div class="card-footer d-flex ">
-                <a href="#" class="btn btn-outline-primary">
-                  اشترك
-                </a>
-              </div>
-            </div>
-          </div>
+          <input
+            type="radio"
+            class="btn-check"
+            id="btn-check10"
+            name="filters"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary  rounded-pill filter"
+            for="btn-check10"
+          >
+            تغذية
+          </label>
         </div>
+      </div>
+
+      <div class="m-4"></div>
+
+      <div className="row">
+        <Trainer />
+        <Trainer />
+        <Trainer />
+        <Trainer />
+        <Trainer />
       </div>
     </div>
   );

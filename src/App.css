@@ -39,17 +39,23 @@
 
 .card-custom {
   overflow: hidden;
-  min-height: 450px;
+
 
 
 }
-.card{
-  margin: 0;
+
+
+
+
+.card-subtitle{
+  font-size: 9pt;
 }
+
+
 
 .card-custom-img {
-  height: 300px;
-  min-height: 300px;
+  height: auto;
+  min-height: 150px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
@@ -61,7 +67,7 @@
 .card-custom-img::after {
   position: absolute;
   content: '';
-  top: 260px;
+  top: 130px;
   left: 0;
   width: 0;
   height: 0;
@@ -69,14 +75,17 @@
   border-top-width: 40px;
   border-right-width: 0;
   border-bottom-width: 0;
-  border-left-width: 545px;
-  border-left-width: calc(575px - 5vw);
+  border-left-width: 170px;
+  border-left-width: calc( 40vh - 5vw);
   border-top-color: transparent;
   border-right-color: transparent;
   border-bottom-color: transparent;
-  border-left-color: var(--bs-body-bg);
+  border-left-color: var(--bs-secondary-bg);
 
 }
+
+
+
 
 .card-custom-avatar img {
   border-radius: 50%;
@@ -95,25 +104,6 @@
 }
 
 
-footer::before {
-
-  content: '';
-  top: 161px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-top-width: 40px;
-  border-right-width: 0;
-  border-bottom-width: 0;
-  border-left-width: 1920px;
-  border-left-width: calc(1400px - 5vw);
-  border-top-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  border-left-color: var(--bs-secondary-bg) ;
-
-}
 
 
 .nav-link {
@@ -143,4 +133,19 @@ footer::before {
 .accordion-button::after{
   margin-left: 0 !important;
   margin-right: auto;
+}
+
+.filter{
+
+  font-size: 9pt !important;
+
+}
+
+.navbar-toggler :hover{
+  color: var(--bs-primary);
+}
+
+.offer-image{
+  width: 256px;
+
 }

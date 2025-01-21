@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 function navbar() {
   return (
     <div class="bg-body bg-opacity-75 sticky-top ">
-      <nav class="container navbar navbar-expand-lg  ">
-        <div class="container-fluid ps-5 ">
+      <nav class="container navbar navbar-expand-lg p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5   ">
+
           <button
-            class="navbar-toggler"
+            class="navbar-toggler border-0 fs-1 p-0"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
@@ -18,7 +18,7 @@ function navbar() {
             <i class="bi bi-list  "></i>
           </button>
           <div
-            class="offcanvas offcanvas-start"
+            class="offcanvas offcanvas-end"
             tabindex="-1"
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
@@ -29,15 +29,15 @@ function navbar() {
               </h5>
               <button
                 type=""
-                class="navbar-toggler"
+                class="navbar-toggler border-0"
                 data-bs-dismiss="offcanvas"
                 aria-label="Close"
               >
                 <i class="bi bi-arrow-right"></i>
               </button>
             </div>
-            <div class="offcanvas-body justify-content-start">
-              <ul class="navbar-nav  ">
+            <div class="offcanvas-body ">
+              <ul class="navbar-nav  justify-content-start px-0 ">
                 <li class="nav-item">
                   <Link class="nav-link active" to="/">
                     الرئيسية
@@ -65,10 +65,10 @@ function navbar() {
             <img
               src={`${process.env.PUBLIC_URL}/PR-Logo-Light.png`}
               alt="PEEK RESULT"
-              width="115"
+              width="90"
             />{" "}
           </a>
-        </div>
+
       </nav>
     </div>
   );
