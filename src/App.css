@@ -149,3 +149,13 @@
   width: 256px;
 
 }
+
+.nav-tabs{
+  border-width: 0 !important;
+  .nav-link.active{
+    background-color: var(--bs-secondary-bg) !important;
+    border-width: 0 !important;
+    border-bottom: 1px solid var(--bs-secondary-bg) !important;
+
+  }
+}

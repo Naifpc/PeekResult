@@ -3,7 +3,7 @@ import { CalendarDaysExample } from "../partials/calender.js";
 
 function schedules() {
   return (
-    <div class="container p-5 ">
+    <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
       <div class="accordion shadow accordion-flush  " id="accordionFlushExample">
         <div class="accordion-item ">
           <h2 class="accordion-header ">
