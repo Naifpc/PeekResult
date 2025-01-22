@@ -1,11 +1,20 @@
-import React from 'react'
-import { CCalendar } from '@coreui/react-pro'
+import React, { useState } from 'react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
-export const CalendarDaysExample = () => {
-  return (
-    <div className="d-flex justify-content-center">
-      <CCalendar className="border rounded" locale="en-US" startDate="2024/02/13" />
-    </div>
-  )
+export default function CalendarGfg() {
+    const [value, onChange] = useState(new Date());
+
+    return (
+        <div className='container-fluid'>
+
+            <Calendar 
+                
+                onChange={onChange}
+                value={value}
+                className="w-100 bg-body-secondary border-0 rounded"
+            />
+        </div>
+    );
 }
 

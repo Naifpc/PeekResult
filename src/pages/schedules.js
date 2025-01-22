@@ -1,10 +1,10 @@
 import React from "react";
-import { CalendarDaysExample } from "../partials/calender.js";
+import Calender from "../partials/calender.js";
 
 function schedules() {
   return (
     <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
-      <div class="accordion shadow accordion-flush  " id="accordionFlushExample">
+      <div class="accordion shadow   " id="accordionFlushExample">
         <div class="accordion-item ">
           <h2 class="accordion-header ">
             <button
@@ -16,8 +16,8 @@ function schedules() {
               aria-controls="flush-collapseOne"
             >
               <div className="text-end">
-                <h3>جدول التمارين</h3>
-                <h5 className="text-secondary">اطلع على جدول تمارينك اليوم </h5>
+                <h4>جدول التمارين</h4>
+                <h6 className="text-secondary">اطلع على جدول تمارينك اليوم </h6>
               </div>
             </button>
           </h2>
@@ -36,7 +36,7 @@ function schedules() {
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button
-              class="accordion-button collapsed"
+              class="accordion-button collapsed "
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#flush-collapseTwo"
@@ -44,8 +44,8 @@ function schedules() {
               aria-controls="flush-collapseTwo"
             >
              <div className="text-end">
-                <h3>جدول الاكل</h3>
-                <h5 className="text-secondary">اطلع على جدول الاكل اليوم </h5>
+                <h4>جدول الاكل</h4>
+                <h6 className="text-secondary">اطلع على جدول الاكل اليوم </h6>
               </div>
             </button>
           </h2>
@@ -73,8 +73,8 @@ function schedules() {
               aria-controls="flush-collapseThree"
             >
                <div className="text-end">
-                <h3>التقويم </h3>
-                <h5 className="text-secondary">اطلع على جدول تمارينك الشهري </h5>
+                <h4>الخطة </h4>
+                <h6 className="text-secondary">اطلع على خطة هذا الشهر   </h6>
               </div>
             </button>
           </h2>
@@ -84,7 +84,7 @@ function schedules() {
             data-bs-parent="#accordionFlushExample"
           >
             <div class="accordion-body">
-              <CalendarDaysExample/>
+              <Calender/>
             </div>
           </div>
         </div>

@@ -191,3 +191,28 @@
   
 }
 
+/* CalendarStyles.css */
+.react-calendar {
+  background: var(--bs-body-bg);
+  font-size: 16px;
+  padding: 20px;
+}
+
+.react-calendar__tile {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin: 5px;
+}
+
+.react-calendar__tile--active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.react-calendar__month-view__days__day--weekend{
+  color: var(--bs-primary)!important;
+}
+.react-calendar__tile--active{
+  background-color: var(--bs-primary) !important;
+}

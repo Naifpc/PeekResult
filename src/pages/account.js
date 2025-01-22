@@ -5,6 +5,7 @@ function account() {
   return (
     <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
 
+       
       <div className="row">
         <div className="col-6">
 
@@ -28,9 +29,9 @@ function account() {
       </div>
 
       <div class="">
-        <h2 className="my-4 text-center">
-          <i class="bi bi-rulers"></i> القياسات
-        </h2>
+        <h4 className="my-4">
+           القياسات 
+        </h4>
 
         <ul class="nav nav-tabs " id="myTab" role="tablist">
           <li class=" nav-item " role="presentation">
