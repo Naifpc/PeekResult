@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function navbar() {
   return (
-    <div class="bg-body bg-opacity-75 sticky-top ">
-      <nav class="container navbar navbar-expand-lg p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5   ">
-
+    <div>
+      <div class=" container-fluid position-fixed bg-body bg-opacity-75 sticky-top">
+        <nav class="container navbar navbar-expand-lg   px-1 px-sm-2 px-md-3 px-lg-4 px-xl-5   ">
           <button
             class="navbar-toggler border-0 fs-1 p-0"
             type="button"
@@ -68,8 +68,9 @@ function navbar() {
               width="90"
             />{" "}
           </a>
-
-      </nav>
+        </nav>
+      </div>
+      <div className=" header-image"></div>
     </div>
   );
 }

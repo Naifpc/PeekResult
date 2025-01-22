@@ -135,33 +135,6 @@ function home() {
             كالسثنكس
           </label>
 
-          <input
-            type="radio"
-            class="btn-check"
-            id="btn-check9"
-            name="filters"
-            autocomplete="off"
-          />
-          <label
-            class="btn btn-outline-secondary  rounded-pill filter"
-            for="btn-check9"
-          >
-            تغذية
-          </label>
-
-          <input
-            type="radio"
-            class="btn-check"
-            id="btn-check10"
-            name="filters"
-            autocomplete="off"
-          />
-          <label
-            class="btn btn-outline-secondary  rounded-pill filter"
-            for="btn-check10"
-          >
-            تغذية
-          </label>
         </div>
       </div>
 

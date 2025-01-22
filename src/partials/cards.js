@@ -13,7 +13,7 @@ function trainer() {
               {" "}
               <i class="bi bi-clock-history"></i> 5 سنوات
             </h6>
-            <span class="badge text-bg-secondary">تضخيم</span>
+            <span class="badge text-bg-secondary">كمال اجسام</span>
           </div>
         </div>
       </div>
