@@ -38,22 +38,22 @@ function navbar() {
             </div>
             <div class="offcanvas-body ">
               <ul class="navbar-nav  justify-content-start px-0 ">
-                <li class="nav-item">
-                  <Link class="nav-link active" to="/">
+                <li class="nav-item" data-bs-dismiss="offcanvas">
+                  <Link class="nav-link active" to="/"  >
                     الرئيسية
                   </Link>
                 </li>
-                <li class="nav-item">
-                  <Link class="nav-link active" to="/Schedules">
+                <li class="nav-item " data-bs-dismiss="offcanvas">
+                  <Link class="nav-link active" to="/Schedules" >
                     جداول
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" data-bs-dismiss="offcanvas">
                   <Link class="nav-link active" to="/Offers">
                     العروض
                   </Link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" data-bs-dismiss="offcanvas">
                   <Link class="nav-link active " to="/Account">
                     الحساب
                   </Link>
@@ -61,7 +61,7 @@ function navbar() {
               </ul>
             </div>
           </div>
-          <a class="navbar-brand" href="/">
+          <a class="navbar-brand" href="/" >
             <img
               src={`${process.env.PUBLIC_URL}/PR-Logo-Light.png`}
               alt="PEEK RESULT"
