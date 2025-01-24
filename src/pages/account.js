@@ -7,24 +7,28 @@ function account() {
 
        
       <div className="row">
-        <div className="col-6">
+        <div className="col-6 ">
 
-        <div className="p-4 bg-body-secondary rounded text-center shadow ">
-          <h1 className="text-primary">
+        <a>
+        <div className=" p-4 bg-body-secondary rounded text-center shadow ">
+          <h1 className="">
             <i class="bi bi-person-fill "></i>
           </h1>
           <h5 className="text-nowrap">الملف الشخصي</h5>
         </div>
+        </a>
 
         </div>
 
         <div className="col-6">
+        <a>
         <div className="p-4 bg-body-secondary rounded text-center shadow ">
-          <h1 className="text-primary">
+          <h1 className="">
             <i class="bi bi-person-vcard-fill"></i>
           </h1>
           <h5>الاشتراكات </h5>
         </div>
+        </a>
         </div>
       </div>
 

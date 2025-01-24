@@ -4,17 +4,21 @@ import { trainer as Trainer } from "../partials/cards";
 function home() {
   return (
     <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
-      <div class="input-group">
+   
+      <div class="input-group shadow">
+        <span
+          class="input-group-text rounded-0 rounded-end bg-body-secondary border-0 "
+          id="search-addon"
+        >
+          <i class="bi bi-search "></i>
+        </span>
         <input
           type="search"
-          class="form-control bg-body-secondary border-0 shadow-sm rounded-0 rounded-end"
+          class="form-control bg-body-secondary border-0  rounded-0 rounded-start"
           placeholder="اسم المدرب"
           aria-label="Search"
           aria-describedby="search-addon"
         />
-        <span class="input-group-text rounded-0 rounded-start border-0 " id="search-addon">
-          <i class="bi bi-search text-primary"></i>
-        </span>
       </div>
 
       <div class="m-4"></div>
@@ -134,7 +138,6 @@ function home() {
           >
             كالسثنكس
           </label>
-
         </div>
       </div>
 

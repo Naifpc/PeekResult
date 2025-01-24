@@ -2,6 +2,7 @@ import './App.css';
 import Home from './pages/home';
 import Schedules from './pages/schedules';
 import Offers from './pages/offers';
+import Login from './pages/login';
 import Account from './pages/account';
 import Navbar from './partials/navbar';
 import Footer from './partials/footer';
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/Schedules' element={<Schedules />} />
           <Route path='/Offers' element={<Offers />} />
+          <Route path='/Login' element={<Login />} />
         </Routes>
         
         <Footer/>
