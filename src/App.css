@@ -223,3 +223,8 @@
 .nav-link{
   color: var(--bs-body-text) !important;
 }
+
+.status-bar{
+  background-color: var(--bs-primary);
+}
+

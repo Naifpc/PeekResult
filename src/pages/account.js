@@ -3,39 +3,64 @@ import { CalendarDaysExample } from "../partials/calender.js";
 
 function account() {
   return (
-    <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
-
-       
+    <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
+      <h4 className="mb-4">الحساب</h4>
       <div className="row">
         <div className="col-6 ">
-
-        <a>
-        <div className=" p-4 bg-body-secondary rounded text-center shadow ">
-          <h1 className="">
-            <i class="bi bi-person-fill "></i>
-          </h1>
-          <h5 className="text-nowrap">الملف الشخصي</h5>
-        </div>
-        </a>
-
+          <a>
+            <div className=" p-4 bg-body-secondary rounded text-center shadow ">
+              <h1 className="">
+                <i class="bi bi-person-fill "></i>
+              </h1>
+              <h5 className="text-nowrap">الملف الشخصي</h5>
+            </div>
+          </a>
         </div>
 
         <div className="col-6">
-        <a>
-        <div className="p-4 bg-body-secondary rounded text-center shadow ">
-          <h1 className="">
-            <i class="bi bi-person-vcard-fill"></i>
-          </h1>
-          <h5>الاشتراكات </h5>
-        </div>
-        </a>
+          <a>
+            <div className="p-4 bg-body-secondary rounded text-center shadow ">
+              <h1 className="">
+                <i class="bi bi-person-vcard-fill"></i>
+              </h1>
+              <h5>الاشتراكات </h5>
+            </div>
+          </a>
         </div>
       </div>
 
       <div class="">
-        <h4 className="my-4">
-           القياسات 
-        </h4>
+        <h4 className="my-4">القياسات</h4>
+
+        <div className="container d-flex gap-1 justify-content-evenly rounded-pill my-4 text-white">
+          <div className="w-100 text-center p-1 status-bar rounded-end-pill ">
+            <h6>الوزن</h6>
+
+            <h2 className="fw-bold ">76</h2>
+
+            <h6 className="bg-white px-2 pb-1 text-primary rounded-pill mx-5  ">
+              كجم
+            </h6>
+          </div>
+          <div className="w-100 p-1 text-center p-1 status-bar  ">
+            <h6>الطول</h6>
+
+            <h2 className="fw-bold ">177</h2>
+
+            <h6 className="bg-white px-2 pb-1 text-primary rounded-pill mx-5  ">
+              سم
+            </h6>
+          </div>
+          <div className="w-100 text-center p-1 status-bar rounded-start-pill">
+            <h6> الدهون</h6>
+
+            <h2 className="fw-bold ">16</h2>
+
+            <h6 className="bg-white px-2 pb-1 text-primary rounded-pill mx-5  ">
+              %
+            </h6>
+          </div>
+        </div>
 
         <ul class="nav nav-tabs " id="myTab" role="tablist">
           <li class=" nav-item " role="presentation">
@@ -49,7 +74,7 @@ function account() {
               aria-controls="home"
               aria-selected="true"
             >
-              Home
+              الوزن
             </button>
           </li>
           <li class="nav-item" role="presentation">
@@ -63,7 +88,7 @@ function account() {
               aria-controls="profile"
               aria-selected="false"
             >
-              Profile
+              القياسات
             </button>
           </li>
           <li class="nav-item" role="presentation">
@@ -77,12 +102,28 @@ function account() {
               aria-controls="contact"
               aria-selected="false"
             >
-              Contact
+              inbody
             </button>
           </li>
         </ul>
 
-        <div class="tab-content p-5 rounded bg-body-secondary shadow" id="myTabContent">
+        <div
+          class="tab-content p-5 rounded bg-body-secondary shadow"
+          id="myTabContent"
+        >
+
+<div class="col-12">
+                <label for="validationCustom04" class="form-label">
+                  وحدات القياس
+                </label>
+                <select class="form-select" id="validationCustom04" required>
+                  <option selected value="">
+                    كجم/سم
+                  </option>
+                  <option>باوند/انش</option>
+                </select>
+                <div class="invalid-feedback">Please select a valid state.</div>
+              </div>
           <div
             class="tab-pane fade show active"
             id="home"
@@ -90,39 +131,15 @@ function account() {
             aria-labelledby="home-tab"
           >
             <form class="row g-3 needs-validation" novalidate>
-              <div class="col-md-4">
-                <label for="validationCustom01" class="form-label">
-                  First name
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="validationCustom01"
-                  value="Mark"
-                  required
-                />
-                <div class="valid-feedback">Looks good!</div>
-              </div>
-              <div class="col-md-4">
-                <label for="validationCustom02" class="form-label">
-                  Last name
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="validationCustom02"
-                  value="Otto"
-                  required
-                />
-                <div class="valid-feedback">Looks good!</div>
-              </div>
-              <div class="col-md-4">
+  
+
+              <div class="col-md-6">
                 <label for="validationCustomUsername" class="form-label">
-                  Username
+                  الوزن
                 </label>
-                <div class="input-group has-validation">
-                  <span class="input-group-text" id="inputGroupPrepend">
-                    @
+                <div class="input-group has-validation flex-row-reverse">
+                  <span class="input-group-text " id="inputGroupPrepend">
+                    كجم
                   </span>
                   <input
                     type="text"
@@ -134,62 +151,30 @@ function account() {
                   <div class="invalid-feedback">Please choose a username.</div>
                 </div>
               </div>
+
               <div class="col-md-6">
-                <label for="validationCustom03" class="form-label">
-                  City
+                <label for="validationCustomUsername" class="form-label">
+                  الطول
                 </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="validationCustom03"
-                  required
-                />
-                <div class="invalid-feedback">Please provide a valid city.</div>
-              </div>
-              <div class="col-md-3">
-                <label for="validationCustom04" class="form-label">
-                  State
-                </label>
-                <select class="form-select" id="validationCustom04" required>
-                  <option selected disabled value="">
-                    Choose...
-                  </option>
-                  <option>...</option>
-                </select>
-                <div class="invalid-feedback">Please select a valid state.</div>
-              </div>
-              <div class="col-md-3">
-                <label for="validationCustom05" class="form-label">
-                  Zip
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="validationCustom05"
-                  required
-                />
-                <div class="invalid-feedback">Please provide a valid zip.</div>
-              </div>
-              <div class="col-12">
-                <div class="form-check">
+                <div class="input-group has-validation flex-row-reverse ">
+                  <span class="input-group-text   " id="inputGroupPrepend">
+                    سم
+                  </span>
                   <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="invalidCheck"
+                    type="text"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
                     required
                   />
-                  <label class="form-check-label" for="invalidCheck">
-                    Agree to terms and conditions
-                  </label>
-                  <div class="invalid-feedback">
-                    You must agree before submitting.
-                  </div>
+                  <div class="invalid-feedback">Please choose a username.</div>
                 </div>
               </div>
+
+              <div class="col-12"></div>
               <div class="col-12">
-                <button class="btn btn-primary" type="submit">
-                  Submit form
+                <button class="btn btn-secondary" type="submit">
+                  حفظ
                 </button>
               </div>
             </form>
@@ -200,7 +185,70 @@ function account() {
             role="tabpanel"
             aria-labelledby="profile-tab"
           >
-            <p>This is the Profile tab content.</p>
+            <form class="row g-3 needs-validation" novalidate>
+              
+
+              <div class="col-md-4">
+                <label for="validationCustomUsername" class="form-label">
+                  العمر
+                </label>
+                <div class="input-group has-validation flex-row-reverse">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validationCustomUsername" class="form-label">
+                  الرقبة
+                </label>
+                <div class="input-group has-validation flex-row-reverse ">
+                  <span class="input-group-text   " id="inputGroupPrepend">
+                    سم
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="validationCustomUsername" class="form-label">
+                  الخصر
+                </label>
+                <div class="input-group has-validation flex-row-reverse ">
+                  <span class="input-group-text   " id="inputGroupPrepend">
+                    سم
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-12"></div>
+              <div class="col-12">
+                <button class="btn btn-secondary" type="submit">
+                  حفظ
+                </button>
+              </div>
+            </form>
           </div>
           <div
             class="tab-pane fade"
@@ -208,14 +256,63 @@ function account() {
             role="tabpanel"
             aria-labelledby="contact-tab"
           >
-            <p>Contact tab content goes here.</p>
+            <form class="row g-3 needs-validation" novalidate>
+              
+
+              <div class="col-md-6">
+                <label for="validationCustomUsername" class="form-label">
+                  وزن العضلات
+                </label>
+                <div class="input-group has-validation flex-row-reverse ">
+                  <span class="input-group-text   " id="inputGroupPrepend">
+                    كجم
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="validationCustomUsername" class="form-label">
+                  وزن الدهون
+                </label>
+                <div class="input-group has-validation flex-row-reverse ">
+                  <span class="input-group-text   " id="inputGroupPrepend">
+                    كجم
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-12"></div>
+              <div class="col-12">
+                <button class="btn btn-secondary" type="submit">
+                  حفظ
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
       <div className="container-fluid py-5">
-        <button class="btn btn-outline-danger w-100" > <i class="bi bi-box-arrow-right"></i> تسجل خروج</button>
+        <button class="btn btn-outline-danger w-100">
+          {" "}
+          <i class="bi bi-box-arrow-right"></i> تسجل خروج
+        </button>
       </div>
-      
     </div>
   );
 }
