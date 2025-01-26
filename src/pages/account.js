@@ -4,6 +4,40 @@ import { CalendarDaysExample } from "../partials/calender.js";
 function account() {
   return (
     <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
+      <h4 className="my-4">القياسات</h4>
+      <div className="container my-4">
+        <div className="row  gap-3 ">
+          <div className="col-12  p-3 bg-body-secondary rounded shadow">
+          <h6> نسبة الدهون</h6>
+
+            
+            <h2>14<sub className="fs-6">/100</sub></h2>
+
+            <div
+              class="progress bg-body"
+              role="progressbar"
+              aria-label="Basic example"
+              aria-valuenow="0"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div className="progress-bar" style={{ width: "14%" }}></div>
+            </div>
+          </div>
+          <div className="col bg-body-secondary text-center p-1 rounded shadow ">
+            <h6>الطول</h6>
+            <h2>160</h2>
+            <span class="badge rounded-pill text-bg-secondary">سم</span>
+
+          </div>
+          <div className="col bg-body-secondary text-center p-1  rounded shadow ">
+            <h6>الوزن</h6>
+            <h2>77</h2>
+            <span class="badge rounded-pill text-bg-secondary">كجم</span>
+
+          </div>
+        </div>
+      </div>
       <h4 className="mb-4">الحساب</h4>
       <div className="row">
         <div className="col-6 ">
@@ -30,37 +64,7 @@ function account() {
       </div>
 
       <div class="">
-        <h4 className="my-4">القياسات</h4>
-
-        <div className="container d-flex gap-1 justify-content-evenly rounded-pill my-4 text-white">
-          <div className="w-100 text-center p-1 status-bar rounded-end-pill ">
-            <h6>الوزن</h6>
-
-            <h2 className="fw-bold ">76</h2>
-
-            <h6 className="bg-white px-2 pb-1 text-primary rounded-pill mx-5  ">
-              كجم
-            </h6>
-          </div>
-          <div className="w-100 p-1 text-center p-1 status-bar  ">
-            <h6>الطول</h6>
-
-            <h2 className="fw-bold ">177</h2>
-
-            <h6 className="bg-white px-2 pb-1 text-primary rounded-pill mx-5  ">
-              سم
-            </h6>
-          </div>
-          <div className="w-100 text-center p-1 status-bar rounded-start-pill">
-            <h6> الدهون</h6>
-
-            <h2 className="fw-bold ">16</h2>
-
-            <h6 className="bg-white px-2 pb-1 text-primary rounded-pill mx-5  ">
-              %
-            </h6>
-          </div>
-        </div>
+        <h4 className="my-4">تحديث القياسات</h4>
 
         <ul class="nav nav-tabs " id="myTab" role="tablist">
           <li class=" nav-item " role="presentation">
@@ -111,19 +115,18 @@ function account() {
           class="tab-content p-5 rounded bg-body-secondary shadow"
           id="myTabContent"
         >
-
-<div class="col-12">
-                <label for="validationCustom04" class="form-label">
-                  وحدات القياس
-                </label>
-                <select class="form-select" id="validationCustom04" required>
-                  <option selected value="">
-                    كجم/سم
-                  </option>
-                  <option>باوند/انش</option>
-                </select>
-                <div class="invalid-feedback">Please select a valid state.</div>
-              </div>
+          <div class="col-12">
+            <label for="validationCustom04" class="form-label">
+              وحدات القياس
+            </label>
+            <select class="form-select" id="validationCustom04" required>
+              <option selected value="">
+                كجم/سم
+              </option>
+              <option>باوند/انش</option>
+            </select>
+            <div class="invalid-feedback">Please select a valid state.</div>
+          </div>
           <div
             class="tab-pane fade show active"
             id="home"
@@ -131,8 +134,6 @@ function account() {
             aria-labelledby="home-tab"
           >
             <form class="row g-3 needs-validation" novalidate>
-  
-
               <div class="col-md-6">
                 <label for="validationCustomUsername" class="form-label">
                   الوزن
@@ -186,8 +187,6 @@ function account() {
             aria-labelledby="profile-tab"
           >
             <form class="row g-3 needs-validation" novalidate>
-              
-
               <div class="col-md-4">
                 <label for="validationCustomUsername" class="form-label">
                   العمر
@@ -257,8 +256,6 @@ function account() {
             aria-labelledby="contact-tab"
           >
             <form class="row g-3 needs-validation" novalidate>
-              
-
               <div class="col-md-6">
                 <label for="validationCustomUsername" class="form-label">
                   وزن العضلات
