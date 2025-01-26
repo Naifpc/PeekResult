@@ -39,29 +39,33 @@ function account() {
         </div>
       </div>
       <h4 className="mb-4">الحساب</h4>
-      <div className="row">
-        <div className="col-6 ">
+      <div className="container my-4">
+      <div className="row gap-3">
+        <div className="col bg-body-secondary rounded text-center shadow">
           <a>
-            <div className=" p-4 bg-body-secondary rounded text-center shadow ">
+            <div className=" p-4  ">
               <h1 className="">
                 <i class="bi bi-person-fill "></i>
               </h1>
-              <h5 className="text-nowrap">الملف الشخصي</h5>
+              <h6 className="">الملف الشخصي</h6>
             </div>
           </a>
         </div>
 
-        <div className="col-6">
+        <div className="col bg-body-secondary rounded text-center shadow">
           <a>
-            <div className="p-4 bg-body-secondary rounded text-center shadow ">
+            <div className="p-4  ">
               <h1 className="">
                 <i class="bi bi-person-vcard-fill"></i>
               </h1>
-              <h5>الاشتراكات </h5>
+              <h6>الاشتراكات </h6>
             </div>
           </a>
         </div>
       </div>
+
+      </div>
+      
 
       <div class="">
         <h4 className="my-4">تحديث القياسات</h4>
