@@ -1,6 +1,6 @@
 import React from "react";
 
-function account() {
+function accountData() {
   return (
     <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
       <h4 className="mb-4">الحساب الشخصي</h4>
@@ -76,4 +76,4 @@ function account() {
   );
 }
 
-export default account;
+export default accountData;

@@ -298,14 +298,14 @@ function account() {
         </div>
 
         <div className="col bg-body-secondary rounded text-center shadow">
-          <a>
+        <Link className="nav-link" to="/mySubscription">
             <div className="p-4  ">
               <h1 className="">
                 <i class="bi bi-person-vcard-fill"></i>
               </h1>
               <h6>الاشتراكات </h6>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
 

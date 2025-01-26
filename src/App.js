@@ -7,6 +7,7 @@ import Account from './pages/account';
 import Navbar from './partials/navbar';
 import Footer from './partials/footer';
 import AccountData from './pages/accountData';
+import MySubscription from './pages/mySubscription';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/Offers' element={<Offers />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/accountData' element={<AccountData />} />
+          <Route path='/mySubscription' element={<MySubscription />} />
         </Routes>
         
         <Footer/>
