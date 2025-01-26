@@ -1,10 +1,10 @@
 import React from "react";
-import { CalendarDaysExample } from "../partials/calender.js";
+import { Link } from "react-router-dom";
 
 function account() {
   return (
     <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
-      <h4 className="my-4">القياسات</h4>
+      <h4 className="mb-4">القياسات</h4>
       <div className="container my-4">
         <div className="row  gap-3 ">
           <div className="col-12  p-3 bg-body-secondary rounded shadow">
@@ -38,33 +38,7 @@ function account() {
           </div>
         </div>
       </div>
-      <h4 className="mb-4">الحساب</h4>
-      <div className="container my-4">
-      <div className="row gap-3">
-        <div className="col bg-body-secondary rounded text-center shadow">
-          <a>
-            <div className=" p-4  ">
-              <h1 className="">
-                <i class="bi bi-person-fill "></i>
-              </h1>
-              <h6 className="">الملف الشخصي</h6>
-            </div>
-          </a>
-        </div>
-
-        <div className="col bg-body-secondary rounded text-center shadow">
-          <a>
-            <div className="p-4  ">
-              <h1 className="">
-                <i class="bi bi-person-vcard-fill"></i>
-              </h1>
-              <h6>الاشتراكات </h6>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      </div>
+      
       
 
       <div class="">
@@ -307,6 +281,34 @@ function account() {
             </form>
           </div>
         </div>
+      </div>
+      
+      <h4 className="my-4">الحساب</h4>
+      <div className="container my-4">
+      <div className="row gap-3">
+        <div className="col bg-body-secondary rounded text-center shadow">
+          <Link className="nav-link" to="/accountData">
+            <div className=" p-4  ">
+              <h1 className="">
+                <i class="bi bi-person-fill "></i>
+              </h1>
+              <h6 className="">الملف الشخصي</h6>
+            </div>
+          </Link>
+        </div>
+
+        <div className="col bg-body-secondary rounded text-center shadow">
+          <a>
+            <div className="p-4  ">
+              <h1 className="">
+                <i class="bi bi-person-vcard-fill"></i>
+              </h1>
+              <h6>الاشتراكات </h6>
+            </div>
+          </a>
+        </div>
+      </div>
+
       </div>
       <div className="container-fluid py-5">
         <button class="btn btn-outline-danger w-100">

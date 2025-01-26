@@ -3,7 +3,7 @@ import { trainer as Trainer } from "../partials/cards";
 
 function home() {
   return (
-    <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
+    <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
    
       <div class="input-group shadow">
         <span
@@ -143,12 +143,14 @@ function home() {
 
       <div class="m-4"></div>
 
+      <div className="container">
       <div className="row">
         <Trainer />
         <Trainer />
         <Trainer />
         <Trainer />
         <Trainer />
+      </div>
       </div>
     </div>
   );
