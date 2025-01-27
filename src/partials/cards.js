@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function trainer() {
   return (
     <div className="col-xxl-2 col-xl-3 col-md-3 col-lg-3 col-sm-4 col-6   mb-4">
-    <Link to="/aboutTrainer">
+    <Link to="/aboutTrainer" className="link-underline link-underline-opacity-0">
       <div class=" card  shadow bg-body-secondary border-0  card-custom">
         <div class="card-custom-img"></div>
 
