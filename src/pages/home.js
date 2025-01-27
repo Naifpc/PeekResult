@@ -1,6 +1,7 @@
 import React from "react";
 import { trainer as Trainer } from "../partials/cards";
 
+
 function home() {
   return (
     <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">

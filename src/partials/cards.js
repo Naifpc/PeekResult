@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function trainer() {
   return (
     <div className="col-xxl-2 col-xl-3 col-md-3 col-lg-3 col-sm-4 col-6   mb-4">
+    <Link to="/aboutTrainer">
       <div class=" card  shadow bg-body-secondary border-0  card-custom">
         <div class="card-custom-img"></div>
 
@@ -17,6 +19,8 @@ function trainer() {
           </div>
         </div>
       </div>
+    
+    </Link>
     </div>
   );
 }

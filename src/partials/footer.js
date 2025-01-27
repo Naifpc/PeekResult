@@ -59,7 +59,7 @@ function footer() {
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
             <a class="navbar-brand" href="/" >
             <img
-              src={`${process.env.PUBLIC_URL}/PR-Logo-Light.png`}
+              src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
               alt="PEEK RESULT"
               width="150"
             />
@@ -70,8 +70,8 @@ function footer() {
           </div>
         </div>
       </section>
-      <section>
-        <div className="d-flex align-content-center justify-content-center bg-body-tertiary py-3 ">
+      <section className="footer-bar  mt-3">
+        <div className="d-flex align-content-center justify-content-center bg-body-tertiary p-0 ">
             <p>
             رقم السجل التجاري: 2055157957
             </p>

@@ -5,7 +5,7 @@ function navbar() {
   return (
 
       <div class="sticky-top bg-body bg-opacity-75 ">
-        <nav class="container  navbar navbar-expand-lg   px-1 px-sm-2 px-md-3 px-lg-4 px-xl-5   ">
+        <nav class="container  navbar navbar-expand-lg   px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5   ">
           <button
             class="navbar-toggler border-0 fs-1 p-0"
             type="button"
@@ -63,7 +63,7 @@ function navbar() {
           </div>
           <a class="navbar-brand" href="/" >
             <img
-              src={`${process.env.PUBLIC_URL}/PR-Logo-Light.png`}
+              src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
               alt="PEEK RESULT"
               width="90"
             />{" "}

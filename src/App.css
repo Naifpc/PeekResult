@@ -132,18 +132,18 @@ a:hover,
 }
 
 .header-image {
-  background-image: url("https://img.goodfon.com/original/1920x1143/d/66/muscular-man-back.jpg");
+  background-image: url(https://img.freepik.com/premium-photo/african-athlete-gym-muscular-man-showing-muscles-gym-workout-strong-bodybuilding-male_116317-13544.jpg?w=360);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 250px;
+  height: 720px;
   overflow: hidden;
 }
 
 .header-image::after {
   position: absolute;
   content: "";
-  top: 151px; /* Position it at the bottom */
+  top: 684px; /* Position it at the bottom */
   left: 0;
   width: 0;
   height: 0;
@@ -158,6 +158,27 @@ a:hover,
   border-left-color: var(--bs-body-bg);
   transform: translateY(100%) rotate(-0deg); /* Adjust rotation as needed */
 }
+
+.footer-bar::before {
+
+  position: relative;
+  bottom: -2px;
+  content: "";
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-top-width: 50px; /* Height of the triangle */
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 100vw; /* full Width of the view port */
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: var(--bs-tertiary-bg);
+  transform: translateY(100%) rotate(-0deg); /* Adjust rotation as needed */
+}
+
 
 /* CalendarStyles.css */
 .react-calendar {
