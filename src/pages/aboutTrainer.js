@@ -4,7 +4,15 @@ import { Link } from "react-router-dom";
 function aboutTrainer() {
   return (
     <>
-      <div className="header-image rounded"></div>
+    <div className="container-fluid bg-body-secondary  ">
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-4">
+          <div className="header-image "></div>
+        </div>
+      </div>
+    </div>
+    
+      
       <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
         <div className="container">
           <div className="row ">

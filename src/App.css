@@ -136,14 +136,14 @@ a:hover,
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 720px;
+  height: 520px;
   overflow: hidden;
 }
 
 .header-image::after {
   position: absolute;
   content: "";
-  top: 684px; /* Position it at the bottom */
+  top: 484px; /* Position it at the bottom */
   left: 0;
   width: 0;
   height: 0;
@@ -162,7 +162,7 @@ a:hover,
 .footer-bar::before {
 
   position: relative;
-  bottom: -2px;
+  bottom: -3px;
   content: "";
   left: 0;
   width: 0;
