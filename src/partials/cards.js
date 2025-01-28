@@ -27,7 +27,7 @@ function trainer() {
 
 function offer() {
   return (
-    <div className="container p-0 shadow-lg d-flex  bg-body-secondary mb-3 rounded-start">
+    <div className="container offer-card p-0 shadow-lg d-flex  bg-body-secondary mb-3 rounded-start">
       <div className="bg-secondary rounded-end align-content-center fs-5 p-2">
         1
       </div>

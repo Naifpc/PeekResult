@@ -39,6 +39,18 @@ function navbar() {
             <div class="offcanvas-body ">
               <ul class="navbar-nav  justify-content-start px-0 ">
                 <li class="nav-item" data-bs-dismiss="offcanvas">
+                  <Link class="nav-link active btn btn-primary bg-primary rounded-0 text-white fw-bold " to="/"  >
+
+                  <div className="skew-fix">
+                  <i class="bi bi-person m-1"></i>
+                    دخول/تسجيل  
+                  </div>
+                  
+
+                  
+                  </Link>
+                </li>
+                <li class="nav-item" data-bs-dismiss="offcanvas">
                   <Link class="nav-link active" to="/"  >
                     الرئيسية
                   </Link>
@@ -61,13 +73,13 @@ function navbar() {
               </ul>
             </div>
           </div>
-          <a class="navbar-brand" href="/" >
+          <Link class="" to="/" >
             <img
               src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
               alt="PEEK RESULT"
               width="90"
-            />{" "}
-          </a>
+            />
+          </Link>
         </nav>
       </div>
 

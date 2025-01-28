@@ -4,7 +4,7 @@ import {offer as Offer} from "../partials/cards";
 function offers() {
   return (
     <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5 my-5 ">
-   
+      <h4 className="mb-4">العروض</h4>
       <Offer/>
       <Offer/>
       <Offer/>

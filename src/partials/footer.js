@@ -57,7 +57,7 @@ function footer() {
              
             </div>
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <a class="navbar-brand" href="/" >
+            <a class="" href="/" >
             <img
               src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
               alt="PEEK RESULT"

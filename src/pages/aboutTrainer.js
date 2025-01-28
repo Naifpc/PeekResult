@@ -28,10 +28,26 @@ function aboutTrainer() {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row ">
+
             <div className="col">
+              <h6>
               <span class="badge text-bg-secondary">كمال اجسام</span>
+              </h6>
+              
             </div>
+            
+          </div>
+
+          <div className="row">
+
+          <div className="col">
+              <h6>
+                <span class="text-secondary text-nowrap"> الخبرة/ 5 سنوات</span>
+              </h6>
+              
+          </div>
+
           </div>
           <div className="row my-4">
             <div className="col ">
@@ -49,11 +65,11 @@ function aboutTrainer() {
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-4">
-              <div class="card peek-sub   text-center mb-4 border-primary">
-                <div class="card-header  border-primary bg-primary">
+              <div class="card peek-sub   text-center mb-4 border-primary sub-card">
+                <div class="card-header rounded-0  border-primary bg-primary">
                   <h4 class="my-0 font-weight-normal">باقة الPeek</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body sub-card-body">
                   <h1 class="card-title pricing-card-title">
                     300sr <small class="text-muted">/ شهر</small>
                   </h1>
@@ -83,11 +99,11 @@ function aboutTrainer() {
               </div>
             </div>
             <div className="col-12 col-md-4">
-              <div class="card text-center mb-4 ">
+              <div class="card text-center mb-4  sub-card">
                 <div class="card-header ">
                   <h4 class="my-0 font-weight-normal">باقة التدريب</h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body sub-card-body">
                   <h1 class="card-title pricing-card-title">
                     150sr <small class="text-muted">/ شهر</small>
                   </h1>
@@ -116,11 +132,11 @@ function aboutTrainer() {
               </div>
             </div>
             <div className="col-12  col-md-4">
-              <div class="card  text-center mb-4 ">
+              <div class="card  text-center mb-4 sub-card">
                 <div class="card-header">
                   <h4 class="my-0 font-weight-normal"> باقة الدايت</h4>
-                </div>
-                <div class="card-body">
+                </div> 
+                <div class="card-body sub-card-body">
                   <h1 class="card-title pricing-card-title">
                     60sr <small class="text-muted">/ شهر</small>
                   </h1>

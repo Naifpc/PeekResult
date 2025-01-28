@@ -310,11 +310,19 @@ function account() {
       </div>
 
       </div>
-      <div className="container-fluid py-5">
-        <button class="btn btn-outline-danger w-100">
+      <div className="container-fluid my-4">
+
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-4">
+
+          <button class="btn btn-outline-danger w-100">
           {" "}
           <i class="bi bi-box-arrow-right"></i> تسجل خروج
         </button>
+
+          </div>
+        </div>
+        
       </div>
     </div>
   );
