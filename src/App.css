@@ -99,16 +99,7 @@ a:hover,
   color: var(--bs-primary) !important;
 }
 
-.sub-card{
-  transform: skew(-20deg) ;
 
-  border-radius: 0 !important;
-}
-
-.sub-card-body {
-  
-  transform: skew(20deg);
-}
 
 
 .sub-card:hover{
@@ -245,7 +236,7 @@ a:hover,
 
 }
 
-.btn-primary, .btn-outline-primary {
+.btn-primary, .btn-outline-primary,.btn {
 
   border-radius: 0 !important;
   transform: skew(-20deg);

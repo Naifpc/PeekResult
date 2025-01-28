@@ -312,7 +312,7 @@ function account() {
       </div>
       <div className="container-fluid my-4">
 
-        <div className="row justify-content-center">
+        <div className="row ">
           <div className="col-12 col-md-4">
 
           <button class="btn btn-outline-danger w-100">

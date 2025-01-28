@@ -38,7 +38,7 @@ function footer() {
               <h6 class="text-uppercase fw-bold">الشركة</h6>
 
               <p>
-                <a href="#!" class="text-white">
+                <a href="#!" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-primary link-underline-opacity-0 link-underline-opacity-75-hover">
                   سياسة الاستخدام
                 </a>
               </p>
@@ -49,7 +49,7 @@ function footer() {
               <h6 class="text-uppercase fw-bold">روابط مهمة</h6>
 
               <p>
-                <a href="#!" class="text-white">
+                <a href="#!" class="text-white link-offset-2 link-offset-3-hover link-underline link-underline-primary link-underline-opacity-0 link-underline-opacity-75-hover">
                   من نحن
                 </a>
               </p>
