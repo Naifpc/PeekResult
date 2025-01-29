@@ -115,8 +115,8 @@ a:hover,
   font-size: 9pt !important;
 }
 
-.navbar-toggler :hover {
-  color: var(--bs-primary);
+.navbar-toggler :hover ,.btn-close :hover {
+  color: var(--bs-primary) !important;
 }
 
 .navbar-toggler:focus,
@@ -236,7 +236,7 @@ a:hover,
 
 }
 
-.btn-primary, .btn-outline-primary,.btn {
+.btn-primary, .btn-outline-primary,.btn-secondary {
 
   border-radius: 0 !important;
   transform: skew(-20deg);

@@ -9,6 +9,7 @@ import Footer from './partials/footer';
 import AccountData from './pages/accountData';
 import MySubscription from './pages/mySubscription';
 import AboutTrainer from './pages/aboutTrainer';
+import LoginModal from "./partials/modals.js"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         </Routes>
         
         <Footer/>
+        <LoginModal/>
       </div>
     </Router>
   );
