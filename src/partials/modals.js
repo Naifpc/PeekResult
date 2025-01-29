@@ -61,22 +61,27 @@ function login() {
                   id="exampleInputPassword1"
                 />
               </div>
+              <div className="mt-4 px-5 d-flex justify-content-center">
+              <button type="button" class="btn btn-secondary w-75   ">
+              تسجيل الدخول
+            </button>
 
-              <p className="fs-6">ليس لديك حساب؟  
-                 <Link className="link-offset-2  link-offset-3-hover
-                                link-underline link-underline-opacity-0 
-                                link-underline-opacity-75-hover"
-                 > تسجيل حساب  </Link></p>
+              </div>
+              
+
+              
               </div>
               
              
              
             
           </div>
-          <div class="modal-footer px-4 ">
-            <button type="button" class="btn btn-secondary w-100">
-              تسجيل الدخول
-            </button>
+          <div class="modal-footer justify-content-center  ">
+          <p className="fs-6 ">ليس لديك حساب؟  
+                 <Link className="link-offset-2  link-offset-3-hover
+                                link-underline link-underline-opacity-0 
+                                link-underline-opacity-75-hover"
+                 > تسجيل حساب  </Link></p>
             
           </div>
           </form>
