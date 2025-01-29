@@ -42,7 +42,7 @@ function navbar() {
                 <button
                   type="button"
                   data-bs-toggle="modal" data-bs-target="#loginModal"
-                  class="nav-link active btn btn-primary bg-primary rounded-0 text-white fw-bold "
+                  class="nav-link active w-100 btn btn-primary bg-primary rounded-0 text-white fw-bold "
                   to="/"
                 >
                   <div>
