@@ -3,26 +3,22 @@ import Home from "./pages/home";
 import Schedules from "./pages/schedules";
 import Offers from "./pages/offers";
 import Account from "./pages/account";
-import Navbar from "./partials/navbar";
+import { BrowserNavbar,MobileBotNavbar,MobiletopNavbar} from "./partials/navbar";
 import Footer from "./partials/footer";
 import AccountData from "./pages/accountData";
 import MySubscription from "./pages/mySubscription";
 import AboutTrainer from "./pages/aboutTrainer";
 import { login as Login, register as Register } from "./partials/modals.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile,
-} from "react-device-detect";
+import { BrowserView,MobileView,isBrowser,isMobile,} from "react-device-detect";
+
 
 function App() {
   return (
     <Router>
       <>
         <BrowserView>
-          <Navbar />
+          <BrowserNavbar />
 
           <Routes>
             <Route path="/Account" element={<Account />} />
@@ -38,6 +34,7 @@ function App() {
         </BrowserView>
 
         <MobileView>
+          <MobiletopNavbar/>
           <Routes>
             <Route path="/Account" element={<Account />} />
             <Route path="/" element={<Home />} />
@@ -47,6 +44,7 @@ function App() {
             <Route path="/mySubscription" element={<MySubscription />} />
             <Route path="/aboutTrainer" element={<AboutTrainer />} />
           </Routes>
+          <MobileBotNavbar />
         </MobileView>
 
         <Login />
