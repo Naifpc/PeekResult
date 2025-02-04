@@ -123,52 +123,52 @@ function MobileBotNavbar() {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center"
-                  : "nav-link text-center d-flex flex-column align-items-center"
+                  ? "nav-link active text-center d-flex flex-column align-items-center p-0"
+                  : "nav-link text-center d-flex flex-column align-items-center p-0"
               }
               to="/"
             >
               <i class="bi bi-person-badge fs-2"></i>
-              <h2 class="nav-link">Trainers</h2>
+              <h2 class="nav-link p-0">Trainers</h2>
             </NavLink>
           </li>
           <li class="nav-item">
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center"
-                  : "nav-link text-center d-flex flex-column align-items-center"
+                  ? "nav-link active text-center d-flex flex-column align-items-center p-0"
+                  : "nav-link text-center d-flex flex-column align-items-center p-0"
               }
               to="/Schedules"
             >
               <i class="bi bi-calendar3 fs-2"></i>
-              <h2 class="nav-link">Schedules</h2>
+              <h2 class="nav-link p-0">Schedules</h2>
             </NavLink>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ">
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center"
-                  : "nav-link text-center d-flex flex-column align-items-center"
+                  ? "nav-link active text-center d-flex flex-column align-items-center p-0"
+                  : "nav-link text-center d-flex flex-column align-items-center p-0"
               }
               to="/Offers"
             >
               <i class="bi bi-patch-check fs-2"></i>
-              <h2 class="nav-link">Offers</h2>
+              <h2 class="nav-link p-0">Offers</h2>
             </NavLink>
           </li>
           <li class="nav-item">
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center"
-                  : "nav-link text-center d-flex flex-column align-items-center"
+                  ? "nav-link active text-center d-flex flex-column align-items-center p-0"
+                  : "nav-link text-center d-flex flex-column align-items-center p-0"
               }
               to="/Account"
             >
               <i class="bi bi-person fs-2"></i>
-              <h2 class="nav-link">Account</h2>
+              <h2 class="nav-link p-0">Account</h2>
             </NavLink>
           </li>
         </ul>
