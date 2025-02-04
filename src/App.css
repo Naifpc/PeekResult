@@ -2,6 +2,8 @@
   text-align: center;
 }
 
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -92,12 +94,17 @@
 .nav-link {
   text-decoration: none;
 }
+.nav-link.active{
+  color: var(--bs-primary) !important;
+}
+
 .nav-link:hover,
 a:hover,
 .card-custom:hover,
 .offer-card:hover {
   color: var(--bs-primary) !important;
 }
+
 
 
 
@@ -214,9 +221,7 @@ a:hover,
   background-color: var(--bs-primary) !important;
 }
 
-.nav-link {
-  color: var(--bs-body-text) !important;
-}
+
 
 .status-bar {
   background-color: var(--bs-primary);

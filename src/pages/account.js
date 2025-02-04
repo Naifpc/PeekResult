@@ -47,7 +47,7 @@ function account() {
         <ul class="nav nav-tabs " id="myTab" role="tablist">
           <li class=" nav-item " role="presentation">
             <button
-              class="nav-link active"
+              class="nav-link text-body active"
               id="home-tab"
               data-bs-toggle="tab"
               data-bs-target="#home"
@@ -61,7 +61,7 @@ function account() {
           </li>
           <li class="nav-item" role="presentation">
             <button
-              class="nav-link"
+              class="nav-link text-body"
               id="profile-tab"
               data-bs-toggle="tab"
               data-bs-target="#profile"
@@ -73,9 +73,9 @@ function account() {
               القياسات
             </button>
           </li>
-          <li class="nav-item" role="presentation">
+          <li class="nav-item " role="presentation">
             <button
-              class="nav-link"
+              class="nav-link text-body"
               id="contact-tab"
               data-bs-toggle="tab"
               data-bs-target="#contact"

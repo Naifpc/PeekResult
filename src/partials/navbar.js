@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+import { NavLink, Outlet, Link } from "react-router-dom";
 
 function BrowserNavbar() {
   return (
@@ -41,8 +40,9 @@ function BrowserNavbar() {
               <li class="nav-item" data-bs-dismiss="offcanvas">
                 <button
                   type="button"
-                  data-bs-toggle="modal" data-bs-target="#loginModal"
-                  class="nav-link active w-100 btn btn-primary bg-primary rounded-0 text-white fw-bold "
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                  class="nav-link  w-100 btn btn-primary bg-primary rounded-0 text-white fw-bold "
                   to="/"
                 >
                   <div>
@@ -52,27 +52,148 @@ function BrowserNavbar() {
                 </button>
               </li>
               <li class="nav-item" data-bs-dismiss="offcanvas">
-                <Link class="nav-link active" to="/">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link active text-center d-flex flex-column align-items-center"
+                      : "nav-link text-center d-flex flex-column align-items-center"
+                  }
+                  to="/"
+                >
                   الرئيسية
-                </Link>
+                </NavLink>
               </li>
               <li class="nav-item " data-bs-dismiss="offcanvas">
-                <Link class="nav-link active" to="/Schedules">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link active text-center d-flex flex-column align-items-center"
+                      : "nav-link text-center d-flex flex-column align-items-center"
+                  }
+                  to="/Schedules"
+                >
                   جداول
-                </Link>
+                </NavLink>
               </li>
               <li class="nav-item" data-bs-dismiss="offcanvas">
-                <Link class="nav-link active" to="/Offers">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link active text-center d-flex flex-column align-items-center"
+                      : "nav-link text-center d-flex flex-column align-items-center"
+                  }
+                  to="/Offers"
+                >
                   العروض
-                </Link>
+                </NavLink>
               </li>
               <li class="nav-item" data-bs-dismiss="offcanvas">
-                <Link class="nav-link active " to="/Account">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "nav-link active text-center d-flex flex-column align-items-center"
+                      : "nav-link text-center d-flex flex-column align-items-center"
+                  }
+                  to="/Account"
+                >
                   الحساب
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
+        </div>
+        <NavLink class="" to="/">
+          <img
+            src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
+            alt="PEEK RESULT"
+            width="90"
+          />
+        </NavLink>
+      </nav>
+    </div>
+  );
+}
+
+function MobileBotNavbar() {
+  return (
+    <nav class="navbar py-0 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 fixed-bottom bg-body ">
+      <div class="container-fluid p-0">
+        <ul class="navbar-nav d-flex flex-row justify-content-evenly p-0 w-100">
+          <li class="nav-item">
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "nav-link active text-center d-flex flex-column align-items-center"
+                  : "nav-link text-center d-flex flex-column align-items-center"
+              }
+              to="/"
+            >
+              <i class="bi bi-person-badge fs-2"></i>
+              <h2 class="nav-link">Trainers</h2>
+            </NavLink>
+          </li>
+          <li class="nav-item">
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "nav-link active text-center d-flex flex-column align-items-center"
+                  : "nav-link text-center d-flex flex-column align-items-center"
+              }
+              to="/Schedules"
+            >
+              <i class="bi bi-calendar3 fs-2"></i>
+              <h2 class="nav-link">Schedules</h2>
+            </NavLink>
+          </li>
+          <li class="nav-item">
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "nav-link active text-center d-flex flex-column align-items-center"
+                  : "nav-link text-center d-flex flex-column align-items-center"
+              }
+              to="/Offers"
+            >
+              <i class="bi bi-patch-check fs-2"></i>
+              <h2 class="nav-link">Offers</h2>
+            </NavLink>
+          </li>
+          <li class="nav-item">
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "nav-link active text-center d-flex flex-column align-items-center"
+                  : "nav-link text-center d-flex flex-column align-items-center"
+              }
+              to="/Account"
+            >
+              <i class="bi bi-person fs-2"></i>
+              <h2 class="nav-link">Account</h2>
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+function MobiletopNavbar() {
+  return (
+    <div class=" bg-body  ">
+      <nav class="container d-flex justify-content-between navbar navbar-expand-lg px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5">
+        <div>
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+            class="nav-link  w-100 btn btn-primary bg-primary rounded-0 text-white  p-1 me-1 "
+            to="/"
+          >
+            <div>
+              <i class="bi bi-person m-1"></i>
+              دخول/تسجيل
+            </div>
+          </button>
         </div>
         <Link class="" to="/">
           <img
@@ -81,83 +202,9 @@ function BrowserNavbar() {
             width="90"
           />
         </Link>
-
-        
       </nav>
-      
     </div>
-
-    
   );
 }
 
-function MobileBotNavbar() {
-  return (
-    
-
-    <div class="fixed-bottom bg-body  ">
-      <nav class="container d-flex justify-content-evenly navbar navbar-expand-lg px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5">
-
-        <Link className="nav-link active" to="/">
-        <i class="bi bi-person-badge fs-1"></i>
-        </Link>
-
-        <Link className="nav-link active"  to="/Schedules">
-          <i class="bi bi-calendar3 fs-1"></i>
-        </Link>
-
-        <Link className="nav-link active" to="/Offers">
-        <i class="bi bi-patch-check fs-1"></i>
-        </Link>
-
-        <Link className="nav-link active" to="/Account">
-        <i class="bi bi-person fs-1"></i>
-        </Link>
-
-      </nav>
-      
-    </div>
-
-    
-  );
-}
-
-function MobiletopNavbar() {
-  return (
-    
-
-    <div class=" bg-body  ">
-      <nav class="container d-flex justify-content-between navbar navbar-expand-lg px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5">
-      
-      <div>
-       <button
-                  type="button"
-                  data-bs-toggle="modal" data-bs-target="#loginModal"
-                  class="nav-link active w-100 btn btn-primary bg-primary rounded-0 text-white  p-1 me-1 "
-                  to="/"
-                >
-                  <div>
-                    <i class="bi bi-person m-1"></i>
-                    دخول/تسجيل
-                  </div>
-                </button>
-       </div>
-      <Link class="" to="/">
-          <img
-            src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
-            alt="PEEK RESULT"
-            width="90"
-          />
-        </Link>
-
-       
-
-      </nav>
-      
-    </div>
-
-    
-  );
-}
-
-export { BrowserNavbar, MobileBotNavbar,MobiletopNavbar };
+export { BrowserNavbar, MobileBotNavbar, MobiletopNavbar };
