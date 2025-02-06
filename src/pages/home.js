@@ -4,7 +4,10 @@ import { trainer as Trainer } from "../partials/cards";
 
 function home() {
   return (
-    <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
+    
+    <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5  ">
+
+<h4 className="mb-4">المدربين</h4>
    
       <div class="input-group shadow">
         <span

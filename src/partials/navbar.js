@@ -129,7 +129,7 @@ function MobileBotNavbar() {
               to="/"
             >
               <i class="bi bi-person-badge fs-2"></i>
-              <h2 class="nav-link p-0">Trainers</h2>
+              <h2 class="nav-link p-0">المدربين</h2>
             </NavLink>
           </li>
           <li class="nav-item">
@@ -142,7 +142,7 @@ function MobileBotNavbar() {
               to="/Schedules"
             >
               <i class="bi bi-calendar3 fs-2"></i>
-              <h2 class="nav-link p-0">Schedules</h2>
+              <h2 class="nav-link p-0">الجداول</h2>
             </NavLink>
           </li>
           <li class="nav-item ">
@@ -155,7 +155,7 @@ function MobileBotNavbar() {
               to="/Offers"
             >
               <i class="bi bi-patch-check fs-2"></i>
-              <h2 class="nav-link p-0">Offers</h2>
+              <h2 class="nav-link p-0">العروض</h2>
             </NavLink>
           </li>
           <li class="nav-item">
@@ -168,7 +168,7 @@ function MobileBotNavbar() {
               to="/Account"
             >
               <i class="bi bi-person fs-2"></i>
-              <h2 class="nav-link p-0">Account</h2>
+              <h2 class="nav-link p-0">الحساب</h2>
             </NavLink>
           </li>
         </ul>

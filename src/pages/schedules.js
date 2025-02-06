@@ -4,6 +4,7 @@ import Calender from "../partials/calender.js";
 function schedules() {
   return (
     <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
+      <h4 className="mb-4">الجداول</h4>
       <div class="accordion shadow   " id="accordionFlushExample">
         <div class="accordion-item ">
           <h2 class="accordion-header ">

@@ -97,28 +97,281 @@ function login() {
 
 function register() {
   return (
-    <div
-      class="modal fade"
-      id="registerModal"
-      tabindex="-1"
-      aria-labelledby="registerModal"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-          <div class="modal-header border-0">
+
+
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+
+      <div class="modal-header border-0">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div className="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
+        
+        <div className="text-center">
+
+        <img
+        className=" mb-3"
+          src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
+          alt="PEEK RESULT"
+          width="150"
+        />
+        <h3
+        className=" mb-3"
+         >انشاء حساب</h3>
+
+        </div>
+        
+        <ul class="nav nav-tabs " id="myTab" role="tablist">
+          <li class=" nav-item " role="presentation">
             <button
+              class="nav-link text-body active"
+              id="home-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#home"
               type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+              role="tab"
+              aria-controls="home"
+              aria-selected="true"
+            >
+              متدرب
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link text-body"
+              id="profile-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#profile"
+              type="button"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+            >
+              مدرب
+            </button>
+          </li>
+        </ul>
+
+        <div
+          class="tab-content p-5 rounded bg-body-secondary shadow"
+          id="myTabContent"
+        >
+          <div class="col-12">
+            <div class="invalid-feedback">Please select a valid state.</div>
           </div>
-          <div class="modal-body  ">...</div>
-          <div class="modal-footer border-0"></div>
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <form class="row g-3 needs-validation" novalidate>
+            <div class="col-12">
+                <label for="validationCustomUsername" class="form-label">
+                  نوع الحساب
+                </label>
+                <div class="input-group has-validation flex-row-reverse">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    value="متدرب"
+                    disabled
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="validationCustomUsername" class="form-label">
+                  الاسم
+                </label>
+                <div class="input-group has-validation flex-row-reverse">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="validationCustomUsername" class="form-label">
+                  الايميل
+                </label>
+                <div class="input-group has-validation flex-row-reverse ">
+                  <input
+                    type="text"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    placeholder="example@email.com"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="validationCustomUsername" class="form-label">
+                  كلمة السر
+                </label>
+                <div class="input-group has-validation flex-row-reverse ">
+                  <input
+                    type="password"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    placeholder="********"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="validationCustomUsername" class="form-label">
+                  اعادة كلمة السر
+                </label>
+                <div class="input-group has-validation flex-row-reverse ">
+                  <input
+                    type="password"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    placeholder="********"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-12"></div>
+              <div class="col-12">
+                <button class="btn btn-secondary w-100" type="submit">
+                  التالي
+                </button>
+              </div>
+            </form>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <form class="row g-3 needs-validation" novalidate>
+
+            <div class="col-12">
+                <label for="validationCustomUsername" class="form-label">
+                  نوع الحساب
+                </label>
+                <div class="input-group has-validation flex-row-reverse">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    value="مدرب"
+                    disabled
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="validationCustomUsername" class="form-label">
+                  الاسم
+                </label>
+                <div class="input-group has-validation flex-row-reverse">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="validationCustomUsername" class="form-label">
+                  الايميل
+                </label>
+                <div class="input-group has-validation flex-row-reverse ">
+                  <input
+                    type="text"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    placeholder="example@email.com"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="validationCustomUsername" class="form-label">
+                  كلمة السر
+                </label>
+                <div class="input-group has-validation flex-row-reverse ">
+                  <input
+                    type="password"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    placeholder="********"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="validationCustomUsername" class="form-label">
+                  اعادة كلمة السر
+                </label>
+                <div class="input-group has-validation flex-row-reverse ">
+                  <input
+                    type="password"
+                    class="form-control "
+                    id="validationCustomUsername"
+                    aria-describedby="inputGroupPrepend"
+                    placeholder="********"
+                    required
+                  />
+                  <div class="invalid-feedback">Please choose a username.</div>
+                </div>
+              </div>
+
+              <div class="col-12"></div>
+              <div class="col-12">
+                <button class="btn btn-secondary w-100" type="submit">
+                التالي
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
+      </div>
+      <div class="modal-footer border-0">
+
+      </div>
     </div>
+  </div>
+</div>
+
   );
 }
 

@@ -1,22 +1,15 @@
 import React from "react";
-import {offer as Offer} from "../partials/cards";
+import { offer as Offer } from "../partials/cards";
 
 function offers() {
   return (
-    <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5 my-5 ">
+    <div class="container p-1 p-sm-2 p-md-3 p-lg-4 p-xl-5  " >
       <h4 className="mb-4">العروض</h4>
-      <Offer/>
-      <Offer/>
-      <Offer/>
-      <Offer/>
-
-      
-     
-
-      
+      <Offer />
+      <Offer />
+      <Offer />
+      <Offer />
     </div>
-
-  
   );
 }
 
