@@ -5,6 +5,7 @@
   "dependencies": {
     "@coreui/coreui-pro": "^5.9.0",
     "@coreui/react-pro": "^5.11.0",
+    "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "cra-template": "1.2.0",
