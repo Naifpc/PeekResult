@@ -71,7 +71,10 @@ function login() {
                 </div>
                 <div className="mt-4 px-5 d-flex justify-content-center">
                   <button type="button" class="btn btn-secondary w-75   ">
+                    <div>
                     تسجيل الدخول
+
+                    </div>
                   </button>
                 </div>
               </div>
@@ -202,7 +205,7 @@ function register() {
                         <div className="form-floating mb-3 col-12">
                           <Field
                             type="text"
-                            className="form-control"
+                            className="form-control bg-transparent"
                             id="floatingUsername"
                             name="username"
                             placeholder="الاسم"
@@ -220,7 +223,7 @@ function register() {
                         <div className="form-floating mb-3 col-12">
                           <Field
                             type="email"
-                            className="form-control"
+                            className="form-control bg-transparent"
                             id="floatingEmail"
                             name="email"
                             placeholder="الايميل"
@@ -236,7 +239,7 @@ function register() {
                         <div className="form-floating mb-3 col-12">
                           <Field
                             type="password"
-                            className="form-control"
+                            className="form-control bg-transparent"
                             id="floatingPassword"
                             name="password"
                             placeholder="كلمة السر"
@@ -254,7 +257,9 @@ function register() {
                             className="btn w-75 btn-primary mx-auto"
                             type="submit"
                           >
+                            <div>
                             تسجيل
+                            </div>
                           </button>
                         </div>
                       </div>
@@ -283,7 +288,7 @@ function register() {
                       <div className="row g-3 ">
                         <div className="col-12 form-floating">
                           <Field
-                            className="form-control"
+                            className="form-control bg-transparent"
                             name="username"
                             placeholder=" "
                           />
@@ -298,7 +303,7 @@ function register() {
                         <div className="col-12 form-floating">
                           <Field
                             type="email"
-                            className="form-control"
+                            className="form-control bg-transparent"
                             name="email"
                             placeholder=" "
                           />
@@ -313,7 +318,7 @@ function register() {
                         <div className="col-12 form-floating">
                           <Field
                             type="password"
-                            className="form-control"
+                            className="form-control bg-transparent"
                             name="password"
                             placeholder=" "
                           />
@@ -327,7 +332,7 @@ function register() {
 
                         <div className="col-12 form-floating">
                           <Field
-                            className="form-control"
+                            className="form-control bg-transparent"
                             name="experience"
                             placeholder=" "
                           />
@@ -342,11 +347,10 @@ function register() {
                         <div className="col-12 form-floating">
                           <Field
                             as="select"
-                            className="form-select"
+                            className="form-select bg-transparent"
                             name="field"
-                            placeholder=" "
                           >
-                            <option value=" "> </option>
+                            <option value="">اختر مجالك </option>
                             <option value="كمال اجسام">كمال اجسام</option>
                             <option value="كروس فيت">كروس فيت</option>
                             <option value="باور ليفتنق">باور ليفتنق</option>
@@ -355,7 +359,7 @@ function register() {
                             <option value="الجري">الجري</option>
                             <option value="كالسثنكس">كالسثنكس</option>
                           </Field>
-                          <label className="form-label">المجال </label>
+                          <label className="bg-transparent" >المجال </label>
                           <ErrorMessage
                             name="field"
                             component="span"
@@ -366,7 +370,7 @@ function register() {
                         <div className="col-12 form-floating">
                           <Field
                             as="textarea"
-                            className="form-control"
+                            className="form-control bg-transparent"
                             name="description"
                             placeholder=" "
                             style={{ height: "100px" }}
@@ -384,7 +388,10 @@ function register() {
                             className="btn w-75 btn-primary mx-auto"
                             type="submit"
                           >
+                            <div>
                             تسجيل
+                            </div>
+                            
                           </button>
                         </div>
                       </div>
