@@ -1,29 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function trainer() {
-  return (
-    <div className="col-xxl-2 col-xl-3 col-md-3 col-lg-3 col-sm-4 col-6   mb-4">
-    <Link to="/aboutTrainer" className="link-underline link-underline-opacity-0">
-      <div class=" card  shadow bg-body-secondary border-0  card-custom">
-        <div class="card-custom-img"></div>
+function trainer({ name, experience, field, image }) {
+  // Construct the image URL
+  const imageUrl = `url(http://localhost:9000${image})`;
 
-        <div class="card-body text-end ">
-          <h3 class="card-title">محمد نايف</h3>
-          <div className="d-flex mt-2  justify-content-between text-secondary ">
-            <h6 class="card-subtitle align-content-center">
-              {" "}
-              <i class="bi bi-clock-history"></i> 5 سنوات
-            </h6>
-            <span class="badge text-bg-secondary">كمال اجسام</span>
+  console.log(imageUrl);
+
+  return (
+    <div className="col-xxl-2 col-xl-3 col-md-3 col-lg-3 col-sm-4 col-6 mb-4">
+      <Link to="/aboutTrainer" className="link-underline link-underline-opacity-0">
+        <div className="card shadow bg-body-secondary border-0 card-custom">
+          <div
+            className="card-custom-img"
+            style={{ backgroundImage: imageUrl }}
+          ></div>
+
+          <div className="card-body text-end">
+            <h3 className="card-title">{name}</h3>
+            <div className="d-flex mt-2 justify-content-between text-secondary">
+              <h6 className="card-subtitle align-content-center">
+                <i className="bi bi-clock-history"></i> {experience} سنوات
+              </h6>
+              <span className="badge text-bg-secondary">{field}</span>
+            </div>
           </div>
         </div>
-      </div>
-    
-    </Link>
+      </Link> 
     </div>
   );
 }
+
 
 function offer() {
   return (

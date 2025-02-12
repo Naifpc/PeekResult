@@ -1,10 +1,20 @@
 import React from "react";
 import { trainer as Trainer } from "../partials/cards";
+import axios from "axios";
+import { useEffect,useState } from "react";
 
 
-function home() {
+function Home() {
+  const [listOfTrainers, setListOfTrainers] = useState([]);
+
+  useEffect(()=>{
+    axios.get('http://localhost:9000/trainer').then((response) => {
+      setListOfTrainers(response.data);
+
+    });
+  }, []);
   return (
-    
+
     <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5  ">
 
 <h4 className="mb-4">المدربين</h4>
@@ -149,15 +159,15 @@ function home() {
 
       <div className="container">
       <div className="row">
-        <Trainer />
-        <Trainer />
-        <Trainer />
-        <Trainer />
-        <Trainer />
+        {listOfTrainers.map((value,key) => {return (
+
+          <Trainer experience={value.experience} name={value.username} field={value.field} image={value.imagePath}/>    
+        )
+        })}
       </div>
       </div>
     </div>
   );
 }
 
-export default home;
+export default Home;

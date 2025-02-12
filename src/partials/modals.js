@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
 
 function login() {
   return (
@@ -96,282 +99,305 @@ function login() {
 }
 
 function register() {
+  const validationSchema = Yup.object().shape({
+    username: Yup.string().required().min(3).max(24),
+    email: Yup.string().required().email(),
+    password: Yup.string().required(),
+    experience: Yup.number().required().min(0).max(99),
+    field: Yup.string().required(),
+    description: Yup.string().required(),
+  });
+
+  const onSubmitTrainee = (data) => {
+    axios.post("http://localhost:9000/trainee", data).then((response) => {
+      console.log("post done");
+    });
+  };
+
+  const onSubmitTrainer = (data) => {
+    axios.post("http://localhost:9000/trainer", data).then((response) => {
+      console.log("post done");
+    });
+  };
+
   return (
-
-
-
-<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content">
-
-      <div class="modal-header border-0">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <div className="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
-        
-        <div className="text-center">
-
-        <img
-        className=" mb-3"
-          src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
-          alt="PEEK RESULT"
-          width="150"
-        />
-        <h3
-        className=" mb-3"
-         >انشاء حساب</h3>
-
-        </div>
-        
-        <ul class="nav nav-tabs " id="myTab" role="tablist">
-          <li class=" nav-item " role="presentation">
+    <div
+      class="modal fade"
+      id="registerModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
             <button
-              class="nav-link text-body active"
-              id="home-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#home"
               type="button"
-              role="tab"
-              aria-controls="home"
-              aria-selected="true"
-            >
-              متدرب
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link text-body"
-              id="profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#profile"
-              type="button"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
-            >
-              مدرب
-            </button>
-          </li>
-        </ul>
-
-        <div
-          class="tab-content p-5 rounded bg-body-secondary shadow"
-          id="myTabContent"
-        >
-          <div class="col-12">
-            <div class="invalid-feedback">Please select a valid state.</div>
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
-          <div
-            class="tab-pane fade show active"
-            id="home"
-            role="tabpanel"
-            aria-labelledby="home-tab"
-          >
-            <form class="row g-3 needs-validation" novalidate>
-            <div class="col-12">
-                <label for="validationCustomUsername" class="form-label">
-                  نوع الحساب
-                </label>
-                <div class="input-group has-validation flex-row-reverse">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    value="متدرب"
-                    disabled
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
-                </div>
-              </div>
-              <div class="col-12">
-                <label for="validationCustomUsername" class="form-label">
-                  الاسم
-                </label>
-                <div class="input-group has-validation flex-row-reverse">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
-                </div>
+          <div class="modal-body">
+            <div className="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
+              <div className="text-center">
+                <img
+                  className=" mb-3"
+                  src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
+                  alt="PEEK RESULT"
+                  width="150"
+                />
+                <h3 className=" mb-3">انشاء حساب</h3>
               </div>
 
-              <div class="col-12">
-                <label for="validationCustomUsername" class="form-label">
-                  الايميل
-                </label>
-                <div class="input-group has-validation flex-row-reverse ">
-                  <input
-                    type="text"
-                    class="form-control "
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    placeholder="example@email.com"
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
+              <ul class="nav nav-tabs " id="myTab" role="tablist">
+                <li class=" nav-item " role="presentation">
+                  <button
+                    class="nav-link text-body active"
+                    id="home-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#home"
+                    type="button"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="true"
+                  >
+                    متدرب
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link text-body"
+                    id="profile-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#profile"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
+                    مدرب
+                  </button>
+                </li>
+              </ul>
+
+              <div
+                class="tab-content p-5 rounded bg-body-secondary shadow"
+                id="myTabContent"
+              >
+                <div
+                  class="tab-pane fade show active"
+                  id="home"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                >
+                  <Formik
+                    initialValues={{ username: "", email: "", password: "" }}
+                    validationSchema={validationSchema}
+                    onSubmit={onSubmitTrainee}
+                  >
+                    <Form>
+                      <div className="row g-3">
+                        <div className="form-floating mb-3 col-12">
+                          <Field
+                            type="text"
+                            className="form-control"
+                            id="floatingUsername"
+                            name="username"
+                            placeholder="الاسم"
+                          />
+                          <label htmlFor="floatingUsername text-start">
+                            الاسم
+                          </label>
+                          <ErrorMessage
+                            name="username"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="form-floating mb-3 col-12">
+                          <Field
+                            type="email"
+                            className="form-control"
+                            id="floatingEmail"
+                            name="email"
+                            placeholder="الايميل"
+                          />
+                          <label htmlFor="floatingEmail">الايميل</label>
+                          <ErrorMessage
+                            name="email"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="form-floating mb-3 col-12">
+                          <Field
+                            type="password"
+                            className="form-control"
+                            id="floatingPassword"
+                            name="password"
+                            placeholder="كلمة السر"
+                          />
+                          <label htmlFor="floatingPassword">كلمة السر</label>
+                          <ErrorMessage
+                            name="password"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="col-12 d-flex justify-content-center mt-5">
+                          <button
+                            className="btn w-75 btn-primary mx-auto"
+                            type="submit"
+                          >
+                            تسجيل
+                          </button>
+                        </div>
+                      </div>
+                    </Form>
+                  </Formik>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="profile"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                >
+                  <Formik
+                    initialValues={{
+                      username: "",
+                      email: "",
+                      password: "",
+                      experience: "",
+                      description: "",
+                      field: "",
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={onSubmitTrainer}
+                  >
+                    <Form>
+                      <div className="row g-3 ">
+                        <div className="col-12 form-floating">
+                          <Field
+                            className="form-control"
+                            name="username"
+                            placeholder=" "
+                          />
+                          <label className="form-label">الاسم</label>
+                          <ErrorMessage
+                            name="username"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="col-12 form-floating">
+                          <Field
+                            type="email"
+                            className="form-control"
+                            name="email"
+                            placeholder=" "
+                          />
+                          <label className="form-label">الايميل</label>
+                          <ErrorMessage
+                            name="email"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="col-12 form-floating">
+                          <Field
+                            type="password"
+                            className="form-control"
+                            name="password"
+                            placeholder=" "
+                          />
+                          <label className="form-label">كلمة السر</label>
+                          <ErrorMessage
+                            name="password"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="col-12 form-floating">
+                          <Field
+                            className="form-control"
+                            name="experience"
+                            placeholder=" "
+                          />
+                          <label className="form-label">سنوات الخبرة</label>
+                          <ErrorMessage
+                            name="experience"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="col-12 form-floating">
+                          <Field
+                            as="select"
+                            className="form-select"
+                            name="field"
+                            placeholder=" "
+                          >
+                            <option value=" "> </option>
+                            <option value="كمال اجسام">كمال اجسام</option>
+                            <option value="كروس فيت">كروس فيت</option>
+                            <option value="باور ليفتنق">باور ليفتنق</option>
+                            <option value="تغذية">تغذية</option>
+                            <option value="رفع اثقال">رفع اثقال</option>
+                            <option value="الجري">الجري</option>
+                            <option value="كالسثنكس">كالسثنكس</option>
+                          </Field>
+                          <label className="form-label">المجال </label>
+                          <ErrorMessage
+                            name="field"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="col-12 form-floating">
+                          <Field
+                            as="textarea"
+                            className="form-control"
+                            name="description"
+                            placeholder=" "
+                            style={{ height: "100px" }}
+                          />
+                          <label className="form-label">اخبرنا عنك </label>
+                          <ErrorMessage
+                            name="description"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
+
+                        <div className="col-12 d-flex justify-content-center mt-5">
+                          <button
+                            className="btn w-75 btn-primary mx-auto"
+                            type="submit"
+                          >
+                            تسجيل
+                          </button>
+                        </div>
+                      </div>
+                    </Form>
+                  </Formik>
                 </div>
               </div>
-
-              <div class="col-12">
-                <label for="validationCustomUsername" class="form-label">
-                  كلمة السر
-                </label>
-                <div class="input-group has-validation flex-row-reverse ">
-                  <input
-                    type="password"
-                    class="form-control "
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    placeholder="********"
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <label for="validationCustomUsername" class="form-label">
-                  اعادة كلمة السر
-                </label>
-                <div class="input-group has-validation flex-row-reverse ">
-                  <input
-                    type="password"
-                    class="form-control "
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    placeholder="********"
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
-                </div>
-              </div>
-
-              <div class="col-12"></div>
-              <div class="col-12">
-                <button class="btn btn-secondary w-100" type="submit">
-                  التالي
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
-          <div
-            class="tab-pane fade"
-            id="profile"
-            role="tabpanel"
-            aria-labelledby="profile-tab"
-          >
-            <form class="row g-3 needs-validation" novalidate>
-
-            <div class="col-12">
-                <label for="validationCustomUsername" class="form-label">
-                  نوع الحساب
-                </label>
-                <div class="input-group has-validation flex-row-reverse">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    value="مدرب"
-                    disabled
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
-                </div>
-              </div>
-              <div class="col-12">
-                <label for="validationCustomUsername" class="form-label">
-                  الاسم
-                </label>
-                <div class="input-group has-validation flex-row-reverse">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <label for="validationCustomUsername" class="form-label">
-                  الايميل
-                </label>
-                <div class="input-group has-validation flex-row-reverse ">
-                  <input
-                    type="text"
-                    class="form-control "
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    placeholder="example@email.com"
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <label for="validationCustomUsername" class="form-label">
-                  كلمة السر
-                </label>
-                <div class="input-group has-validation flex-row-reverse ">
-                  <input
-                    type="password"
-                    class="form-control "
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    placeholder="********"
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <label for="validationCustomUsername" class="form-label">
-                  اعادة كلمة السر
-                </label>
-                <div class="input-group has-validation flex-row-reverse ">
-                  <input
-                    type="password"
-                    class="form-control "
-                    id="validationCustomUsername"
-                    aria-describedby="inputGroupPrepend"
-                    placeholder="********"
-                    required
-                  />
-                  <div class="invalid-feedback">Please choose a username.</div>
-                </div>
-              </div>
-
-              <div class="col-12"></div>
-              <div class="col-12">
-                <button class="btn btn-secondary w-100" type="submit">
-                التالي
-                </button>
-              </div>
-            </form>
-          </div>
+          <div class="modal-footer border-0"></div>
         </div>
-      </div>
-      </div>
-      <div class="modal-footer border-0">
-
       </div>
     </div>
-  </div>
-</div>
-
   );
 }
 

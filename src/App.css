@@ -54,7 +54,7 @@
   background-size: cover;
   background-position: top;
   border-color: inherit;
-  background-image: url(https://img.freepik.com/premium-photo/african-athlete-gym-muscular-man-showing-muscles-gym-workout-strong-bodybuilding-male_116317-13544.jpg?w=360);
+  
 }
 
 /* First border-left-width setting is a fallback */
@@ -262,4 +262,14 @@
 .btn-primary *, .btn-outline-primary * {
 
   transform: skew(20deg) ;
+}
+
+.form-floating > label{
+  right: 0 !important; 
+  left: auto !important;
+}
+
+.form-control {
+  border:0 !important ;
+  box-shadow: var(--bs-box-shadow) !important;
 }

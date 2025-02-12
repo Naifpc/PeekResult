@@ -1,5 +1,7 @@
 import React from "react";
+import { useEffect } from "react";
 import "./App.css";
+import axios from "axios"; 
 import Home from "./pages/home";
 import Schedules from "./pages/schedules";
 import Offers from "./pages/offers";
@@ -22,28 +24,8 @@ import {
   isMobile,
 } from "react-device-detect";
 
-
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { apiResponce: "" };
-  }
-
-  
-  callAPI() {
-    fetch("http://localhost:9000")
-      .then((res) => res.text())
-      .then((res) => this.setState({ apiResponce: res }));
-  }
-
-  componentWillUnmount() {
-    this.callAPI();
-  }
-
-  
-  render() {
-    return (
+  function App() {
+    return(
       <Router>
         <>
           <BrowserView>
@@ -80,8 +62,8 @@ class App extends React.Component {
           <Register />
         </>
       </Router>
-    );
-  }
+
+    )
 }
 
 export default App;
