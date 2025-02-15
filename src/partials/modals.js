@@ -4,6 +4,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function login() {
   return (
     <div
@@ -71,10 +74,7 @@ function login() {
                 </div>
                 <div className="mt-4 px-5 d-flex justify-content-center">
                   <button type="button" class="btn btn-secondary w-75   ">
-                    <div>
-                    تسجيل الدخول
-
-                    </div>
+                    <div>تسجيل الدخول</div>
                   </button>
                 </div>
               </div>
@@ -101,13 +101,22 @@ function login() {
   );
 }
 
-function register() {
+function Register() {
+  const [listOfFields, setListOfFields] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:9000/fields").then((response) => {
+      setListOfFields(response.data);
+    });
+  }, []);
+
   const validationSchema = Yup.object().shape({
     username: Yup.string().required().min(3).max(24),
     email: Yup.string().required().email(),
     password: Yup.string().required(),
+    gender: Yup.string().required(),
     experience: Yup.number().required().min(0).max(99),
-    field: Yup.string().required(),
+    fieldIds: Yup.array().min(1, "Please select at least one specialization"),
     description: Yup.string().required(),
   });
 
@@ -118,9 +127,10 @@ function register() {
   };
 
   const onSubmitTrainer = (data) => {
-    axios.post("http://localhost:9000/trainer", data).then((response) => {
-      console.log("post done");
+    axios.post("http://localhost:9000/trainerFields", data).then((response) => {
+    
     });
+
   };
 
   return (
@@ -257,9 +267,7 @@ function register() {
                             className="btn w-75 btn-primary mx-auto"
                             type="submit"
                           >
-                            <div>
-                            تسجيل
-                            </div>
+                            <div>تسجيل</div>
                           </button>
                         </div>
                       </div>
@@ -279,7 +287,8 @@ function register() {
                       password: "",
                       experience: "",
                       description: "",
-                      field: "",
+                      fieldIds: "",
+                      gender: "",
                     }}
                     validationSchema={validationSchema}
                     onSubmit={onSubmitTrainer}
@@ -348,18 +357,13 @@ function register() {
                           <Field
                             as="select"
                             className="form-select bg-transparent"
-                            name="field"
+                            name="gender"
                           >
-                            <option value="">اختر مجالك </option>
-                            <option value="كمال اجسام">كمال اجسام</option>
-                            <option value="كروس فيت">كروس فيت</option>
-                            <option value="باور ليفتنق">باور ليفتنق</option>
-                            <option value="تغذية">تغذية</option>
-                            <option value="رفع اثقال">رفع اثقال</option>
-                            <option value="الجري">الجري</option>
-                            <option value="كالسثنكس">كالسثنكس</option>
+                            <option value="رجال فقط">رجال فقط </option>
+                            <option value="نساء فقط">نساء فقط </option>
+                            <option value="رجال و نساء">رجال و نساء </option>
                           </Field>
-                          <label className="bg-transparent" >المجال </label>
+
                           <ErrorMessage
                             name="field"
                             component="span"
@@ -367,9 +371,39 @@ function register() {
                           />
                         </div>
 
+                        <div className="col-12">
+                          <h6 className="bg-transparent">المجالات </h6>
+                          <div className="d-flex gap-2 flex-wrap ">
+                            {listOfFields.map((value, key) => {
+                              return (
+                                <>
+                                  <Field
+                                    type="checkbox"
+                                    className="btn-check"
+                                    id={value.fieldName}
+                                    name="fieldIds"
+                                    value={`${value.id}`}
+                                  />
+                                  <label
+                                    className="btn btn-outline-secondary"
+                                    htmlFor={value.fieldName}
+                                  >
+                                    {value.fieldName}
+                                  </label>
+                                </>
+                              );
+                            })}
+                          </div>
+                          <ErrorMessage
+                            name="fieldIds"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
+
                         <div className="col-12 form-floating">
                           <Field
-                            as="textarea"
+                            type="textarea"
                             className="form-control bg-transparent"
                             name="description"
                             placeholder=" "
@@ -388,10 +422,7 @@ function register() {
                             className="btn w-75 btn-primary mx-auto"
                             type="submit"
                           >
-                            <div>
-                            تسجيل
-                            </div>
-                            
+                            <div>تسجيل</div>
                           </button>
                         </div>
                       </div>
@@ -408,4 +439,4 @@ function register() {
   );
 }
 
-export { login, register };
+export { login, Register };

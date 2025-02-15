@@ -15,7 +15,7 @@ import Footer from "./partials/footer";
 import AccountData from "./pages/accountData";
 import MySubscription from "./pages/mySubscription";
 import AboutTrainer from "./pages/aboutTrainer";
-import { login as Login, register as Register } from "./partials/modals.js";
+import { login as Login, Register } from "./partials/modals.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   BrowserView,
@@ -38,7 +38,7 @@ import {
               <Route path="/Offers" element={<Offers />} />
               <Route path="/accountData" element={<AccountData />} />
               <Route path="/mySubscription" element={<MySubscription />} />
-              <Route path="/aboutTrainer" element={<AboutTrainer />} />
+              <Route path="/aboutTrainer/:id" element={<AboutTrainer />} />
             </Routes>
 
             <Footer />
@@ -53,7 +53,7 @@ import {
               <Route path="/Offers" element={<Offers />} />
               <Route path="/accountData" element={<AccountData />} />
               <Route path="/mySubscription" element={<MySubscription />} />
-              <Route path="/aboutTrainer" element={<AboutTrainer />} />
+              <Route path="/aboutTrainer/:id" element={<AboutTrainer />} />
             </Routes>
             <MobileBotNavbar />
           </MobileView>

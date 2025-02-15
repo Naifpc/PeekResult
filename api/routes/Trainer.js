@@ -17,6 +17,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/byId/:id' , async (req, res) => { // query by id 
+  try {
+    const id = req.params.id
+    const trainer = await Trainer.findByPk(id); // find trainer with id 
+
+    // Get all fields associated with the trainer
+    const fields = await trainer.getFields();
+
+    const trainerFields = {trainer, fields}
+
+    res.json(trainerFields);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to get Trainer' });
+  }
+});
+
+
+
 router.post('/', async (req, res) => {
   try {
     const post = req.body;
@@ -24,7 +44,9 @@ router.post('/', async (req, res) => {
 
     post.imagePath = "/images/cat.jpg";
 
-    const newTrainee = await Trainer.create(post);
+    await Trainer.create(post);  
+
+
     
 
 

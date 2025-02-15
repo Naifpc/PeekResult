@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function trainer({ name, experience, field, image }) {
+function Trainer({ name, experience, field, image, id }) {
   // Construct the image URL
   const imageUrl = `url(http://localhost:9000${image})`;
 
-  console.log(imageUrl);
+  let navigate = useNavigate();
 
   return (
     <div className="col-xxl-2 col-xl-3 col-md-3 col-lg-3 col-sm-4 col-6 mb-4">
-      <Link to="/aboutTrainer" className="link-underline link-underline-opacity-0">
-        <div className="card shadow bg-body-secondary border-0 card-custom">
+      
+        <div className="card  bg-body-secondary border-0 card-custom"  onClick={() => {navigate(`/aboutTrainer/${id}`)}}>
           <div
             className="card-custom-img"
             style={{ backgroundImage: imageUrl }}
@@ -26,7 +27,7 @@ function trainer({ name, experience, field, image }) {
             </div>
           </div>
         </div>
-      </Link> 
+    
     </div>
   );
 }
@@ -59,4 +60,4 @@ function offer() {
   );
 }
 
-export { trainer, offer };
+export { Trainer, offer };

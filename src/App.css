@@ -154,10 +154,10 @@
   overflow: hidden;
 }
 
-.header-image::after {
-  position: absolute;
+.aboutTrainer-container::before {
+  position: relative;
+  bottom: 0;
   content: "";
-  top: 484px; /* Position it at the bottom */
   left: 0;
   width: 0;
   height: 0;
@@ -240,7 +240,7 @@
 
 }
 
-.btn-primary, .btn-outline-primary,.btn-secondary {
+.btn-primary, .btn-outline-primary,.btn-secondary,.btn-outline-secondary {
 
   border-radius: 0 !important;
   transform: skew(-20deg);
@@ -259,7 +259,7 @@
 
 
 
-.btn-primary *, .btn-outline-primary * ,.btn-secondary *{
+.btn-primary *, .btn-outline-primary * ,.btn-secondary *, .btn-outline-secondary *{
 
   transform: skew(20deg) ;
 }

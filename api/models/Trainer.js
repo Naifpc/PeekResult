@@ -26,12 +26,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        field:{
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-
-        
     });
+    Trainer.associate = (models) => {
+        Trainer.belongsToMany(models.Fields, {
+            through: 'TrainerFields',
+            onDelete: 'cascade',
+        });
+    }
+    
     return Trainer;
 };

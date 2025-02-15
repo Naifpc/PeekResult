@@ -1,63 +1,71 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-function aboutTrainer() {
+function AboutTrainer() {
+  let { id } = useParams(); // get id from url
+  const [trainerObject, setTrainerObject] = useState({});
+
+  useEffect(() => {
+    axios.get(`http://localhost:9000/trainer/byId/${id}`).then((response) => {
+      //query data by ID
+      setTrainerObject(response.data);
+      console.log(response.data);
+    });
+  }, []);
+
   return (
     <>
-    <div className="container-fluid bg-body-secondary  ">
-      <div className="row justify-content-center">
-        <div className="col-12 col-md-4">
-          <div className="header-image "></div>
+      <div className="container-fluid bg-body-secondary  ">
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-4">
+            <div className="header-image "></div>
+          </div>
         </div>
       </div>
-    </div>
-    
-      
-      <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
+      <div className="aboutTrainer-container"></div>
+      <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5  ">
         <div className="container">
-          <div className="row ">
-            <div className="col">
-              <h1>محمد نايف</h1>
+          <div className="row g-1 mb-4">
+            <div className="col-12">
+              <h1 className="fw-bold">{trainerObject.trainer?.username}</h1>
             </div>
-            <div className="col d-flex gap-2 justify-content-end text-primary align-items-center">
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </div>
-          </div>
 
-          <div className="row ">
-
-            <div className="col">
-              <h6>
-              <span class="badge text-bg-secondary">كمال اجسام</span>
+            <div className="col-12   ">
+              <h6 className="d-flex gap-1">
+                <i class="bi bi-clock-history text-secondary"></i>
+                <span class="text-secondary text-nowrap">الخبرة</span>
+                <span class="text-primary-emphasis text-nowrap">
+                  {trainerObject.trainer?.experience}
+                </span>
+                <span class="text-primary-emphasis text-nowrap">سنوات</span>
               </h6>
-              
-            </div>
-            
-          </div>
-
-          <div className="row">
-
-          <div className="col">
-              <h6>
-                <span class="text-secondary text-nowrap"> الخبرة/ 5 سنوات</span>
+              <h6 className="d-flex gap-1">
+                <i class="bi bi-gender-ambiguous text-secondary"></i>
+                <span class="text-secondary text-nowrap">تدريب</span>
+                <span class="text-primary-emphasis text-nowrap">رجال فقط</span>
               </h6>
-              
-          </div>
+            </div>
 
-          </div>
-          <div className="row my-4">
-            <div className="col ">
-              <h4 className="fw-bold">الوصف</h4>
-              <p className="fs-6">
-                محمد نايف انا مدرب متخصص في تدريب كمال اجسام، يتمتع بخبرة واسعة
-                في تدريب الأفراد من الأساسيات إلى المستوى المحترف. يقدم محمد
-                نايف دروساً متكاملة تشمل تقنيات الدفاع والهجوم، بالإضافة إلى
-                تدريبات لتحسين اللياقة البدنية والتحكم في الأداء الفني. يشتهر
-                بأسلوبه الفعال والمبدع في تحفيز الطلاب وتطوير مهاراتهم.
+            <div className="col-12">
+              <h5 className="text-secondary">المجالات</h5>
+
+              <div className="d-flex gap-1">
+                {trainerObject.fields?.map((element, index) => (
+                  <span
+                    key={index}
+                    className="badge bg-body-secondary p-2 fw-normal"
+                  >
+                    {element.fieldName}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="col-12  ">
+              <h5 className="text-secondary ">الوصف</h5>
+              <p className="fs-6 bg-body-secondary rounded p-3 m-0">
+                {trainerObject.trainer?.description}
               </p>
             </div>
           </div>
@@ -135,7 +143,7 @@ function aboutTrainer() {
               <div class="card  text-center mb-4 sub-card">
                 <div class="card-header">
                   <h4 class="my-0 font-weight-normal"> باقة الدايت</h4>
-                </div> 
+                </div>
                 <div class="card-body sub-card-body">
                   <h1 class="card-title pricing-card-title">
                     60sr <small class="text-muted">/ شهر</small>
@@ -172,4 +180,4 @@ function aboutTrainer() {
   );
 }
 
-export default aboutTrainer;
+export default AboutTrainer;
