@@ -173,25 +173,7 @@
   transform: translateY(100%) rotate(-0deg); /* Adjust rotation as needed */
 }
 
-.footer-bar::before {
 
-  position: relative;
-  bottom: -3px;
-  content: "";
-  left: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-top-width: 50px; /* Height of the triangle */
-  border-right-width: 0;
-  border-bottom-width: 0;
-  border-left-width: 100vw; /* full Width of the view port */
-  border-top-color: transparent;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  border-left-color: var(--bs-tertiary-bg);
-  transform: translateY(100%) rotate(-0deg); /* Adjust rotation as needed */
-}
 
 
 /* CalendarStyles.css */
@@ -244,6 +226,7 @@
 
   border-radius: 0 !important;
   transform: skew(-20deg);
+  border-radius: 3px !important;
   font-size:2em;
   padding:.5em 2em;
   text-decoration:none;

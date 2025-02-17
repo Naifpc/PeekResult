@@ -26,35 +26,42 @@ function AboutTrainer() {
       <div className="aboutTrainer-container"></div>
       <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5  ">
         <div className="container">
-          <div className="row g-1 mb-4">
+          <div className="row g-3 gx-5 mb-4">
             <div className="col-12">
               <h1 className="fw-bold">{trainerObject.trainer?.username}</h1>
             </div>
-
-            <div className="col-12   ">
-              <h6 className="d-flex gap-1">
-                <i class="bi bi-clock-history text-secondary"></i>
-                <span class="text-secondary text-nowrap">الخبرة</span>
-                <span class="text-primary-emphasis text-nowrap">
-                  {trainerObject.trainer?.experience}
-                </span>
-                <span class="text-primary-emphasis text-nowrap">سنوات</span>
-              </h6>
-              <h6 className="d-flex gap-1">
-                <i class="bi bi-gender-ambiguous text-secondary"></i>
-                <span class="text-secondary text-nowrap">تدريب</span>
-                <span class="text-primary-emphasis text-nowrap">رجال فقط</span>
-              </h6>
+            <h5 className=" ">الوصف</h5>
+            <div className="col-12 col-lg-6  ">
+              
+              <p className="fs-6 text-secondary m-0">
+                {trainerObject.trainer?.description}
+              </p>
             </div>
 
-            <div className="col-12">
-              <h5 className="text-secondary">المجالات</h5>
+            <div className="col-12  col-lg-6 ">
+              <table>
+                <tr>
+                  <td><i class="bi bi-clock-history text-secondary"></i>
+                  <span class="text-secondary text-nowrap">الخبرة:</span></td>
+                  <td><span class="text-primary-emphasis text-nowrap">
+                  {trainerObject.trainer?.experience}
+                </span></td>
+                </tr>
+                <tr >
+                  <td className="ps-5" > <i class="bi bi-gender-ambiguous text-secondary"></i>
+                  <span class="text-secondary text-nowrap ">تدريب:</span></td>
+                  <td><span class="text-primary-emphasis text-nowrap">رجال فقط</span></td>
+                </tr>
+              </table>
+            </div>
 
-              <div className="d-flex gap-1">
+            <div className="col-12">             
+              <div className="d-flex gap-1 align-items-center ">
+              <h6 className="text-secondary border-start m-0 ps-2 ms-2  ">المجالات</h6>
                 {trainerObject.fields?.map((element, index) => (
                   <span
                     key={index}
-                    className="badge bg-body-secondary p-2 fw-normal"
+                    className="badge bg-transparent border border-1 text-secondary  p-2 fw-normal"
                   >
                     {element.fieldName}
                   </span>
@@ -62,12 +69,7 @@ function AboutTrainer() {
               </div>
             </div>
 
-            <div className="col-12  ">
-              <h5 className="text-secondary ">الوصف</h5>
-              <p className="fs-6 bg-body-secondary rounded p-3 m-0">
-                {trainerObject.trainer?.description}
-              </p>
-            </div>
+          
           </div>
         </div>
         <div className="container">

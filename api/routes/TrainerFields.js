@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Trainer, Fields , TrainerFields } = require('../models');
+const { isEmptyObject } = require('jquery');
 
 
 
@@ -36,7 +37,26 @@ router.post('/', async (req, res) => {
     }
     });
 
+router.get('/byFieldID/:id?' , async (req, res) => { // query by id 
+  try {
+    const id = req.params.id
 
+   
+        const fields = await Fields.findByPk(id)
+    
+        
+        const trainers = await fields.getTrainers();// Get all trainers associated with the field
+    
+        res.json(trainers);
+    
+
+    
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to get Trainer' });
+  }
+});
 
 
  

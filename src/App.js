@@ -1,7 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
 import "./App.css";
-import axios from "axios"; 
 import Home from "./pages/home";
 import Schedules from "./pages/schedules";
 import Offers from "./pages/offers";
@@ -33,7 +31,7 @@ import {
 
             <Routes>
               <Route path="/Account" element={<Account />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/:id?" element={<Home />} />
               <Route path="/Schedules" element={<Schedules />} />
               <Route path="/Offers" element={<Offers />} />
               <Route path="/accountData" element={<AccountData />} />
@@ -48,7 +46,7 @@ import {
             <MobiletopNavbar />
             <Routes>
               <Route path="/Account" element={<Account />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/:id?" element={<Home />} />
               <Route path="/Schedules" element={<Schedules />} />
               <Route path="/Offers" element={<Offers />} />
               <Route path="/accountData" element={<AccountData />} />

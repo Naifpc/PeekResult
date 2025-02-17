@@ -3,7 +3,7 @@ import { NavLink, Outlet, Link } from "react-router-dom";
 
 function BrowserNavbar() {
   return (
-    <div class="sticky-top bg-body bg-opacity-75 ">
+    <div class="sticky-top bg-body-tertiary bg-opacity-75 ">
       <nav class="container  navbar navbar-expand-lg   px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5   ">
         <button
           class="navbar-toggler border-0 fs-1 p-0"
@@ -36,21 +36,17 @@ function BrowserNavbar() {
             </button>
           </div>
           <div class="offcanvas-body ">
-            <ul class="navbar-nav  justify-content-start px-0 ">
-              <li class="nav-item" data-bs-dismiss="offcanvas">
-                <button
+          <button
                   type="button"
                   data-bs-toggle="modal"
                   data-bs-target="#loginModal"
-                  class="nav-link  w-100 btn btn-primary bg-primary rounded-0 text-white fw-bold "
+                  class="nav-link  "
                   to="/"
                 >
-                  <div>
-                    <i class="bi bi-person m-1"></i>
-                    دخول/تسجيل
-                  </div>
-                </button>
-              </li>
+                  <i class="bi bi-person-circle fs-3 "></i>
+            </button>
+            <ul class="navbar-nav mx-auto px-0 ">
+
               <li class="nav-item" data-bs-dismiss="offcanvas">
                 <NavLink
                   className={({ isActive }) =>
@@ -116,7 +112,7 @@ function BrowserNavbar() {
 
 function MobileBotNavbar() {
   return (
-    <nav class="navbar py-0 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 fixed-bottom bg-body ">
+    <nav class="navbar py-0 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 fixed-bottom bg-body  ">
       <div class="container-fluid p-0">
         <ul class="navbar-nav d-flex flex-row justify-content-evenly p-0 w-100">
           <li class="nav-item">
@@ -149,7 +145,7 @@ function MobileBotNavbar() {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center p-0"
+                  ? "nav-link active text-center d-flex flex-column align-items-center p-0  "
                   : "nav-link text-center d-flex flex-column align-items-center p-0"
               }
               to="/Offers"
@@ -179,21 +175,18 @@ function MobileBotNavbar() {
 
 function MobiletopNavbar() {
   return (
-    <div class=" bg-body  ">
+    <div class=" bg-body-tertiary bg-opacity-75  ">
       <nav class="container d-flex justify-content-between navbar navbar-expand-lg px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5">
         <div>
-          <button
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#loginModal"
-            class="nav-link  w-100 btn btn-primary bg-primary rounded-0 text-white  p-1 me-1 "
-            to="/"
-          >
-            <div>
-              <i class="bi bi-person m-1"></i>
-              دخول/تسجيل
-            </div>
-          </button>
+        <button
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                  class="nav-link d-flex gap-2   align-items-center"
+                  to="/"
+                >
+                  <i class="bi bi-person-circle fs-1 "></i> دخول/تسجيل
+            </button>
         </div>
         <Link class="" to="/">
           <img

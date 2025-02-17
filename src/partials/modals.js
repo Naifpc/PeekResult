@@ -56,7 +56,7 @@ function login() {
                   </label>
                   <input
                     type="email"
-                    class="form-control bg-body-secondary border-0 shadow"
+                    class="form-control bg-body-secondary border-0 "
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="example@email.com"
@@ -68,7 +68,7 @@ function login() {
                   </label>
                   <input
                     type="password"
-                    class="form-control  bg-body-secondary border-0 shadow"
+                    class="form-control  bg-body-secondary border-0 "
                     id="exampleInputPassword1"
                   />
                 </div>

@@ -3,15 +3,35 @@ import { Trainer } from "../partials/cards";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Filter from "../partials/filter"
+import { useParams } from "react-router-dom";
 
 function Home() {
   const [listOfTrainers, setListOfTrainers] = useState([]);
 
-  useEffect(() => {
-    axios.get("http://localhost:9000/trainer").then((response) => {
-      setListOfTrainers(response.data);
-    });
-  }, []);
+  let { id } = useParams(); // get id from url
+  
+
+
+    useEffect(() => {
+      
+      if (!id){
+
+        axios.get(`http://localhost:9000/trainer`).then((response) => {
+          setListOfTrainers(response.data);
+        });
+
+      }else{
+
+        axios.get(`http://localhost:9000/trainerFields/byFieldID/${id}`).then((response) => {
+          setListOfTrainers(response.data);
+          console.log(response.data)
+        });
+   
+      }
+      
+    }, [id]); //[id] to re run every time id changes
+
+
   return (
     <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5  ">
       <h4 className="mb-4">المدربين</h4>

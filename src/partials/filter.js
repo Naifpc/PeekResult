@@ -1,8 +1,12 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { NavLink, Outlet, Link } from "react-router-dom";
+
 
 function Filter() {
+
+
   const [listOfFields, setListOfFields] = useState([]);
 
   useEffect(() => {
@@ -12,37 +16,40 @@ function Filter() {
   }, []);
 
   return (
-    <div class="d-flex  gap-2">
+    <div class="d-flex  gap-2  ">
       <p class="align-content-center pb-2 fs-6 border-start ps-2">المجالات</p>
 
-      <div class="d-flex overflow-x-auto nowrap  gap-2  pb-4 px-2">
-        <input
-          type="checkbox"
-          class="btn-check"
-          id="الكل"
-          name="الكل"
-          checked={true}
-        />
-        <label class="btn btn-outline-secondary  filter" for="الكل">
-          <div>الكل</div>
-        </label>
-        {listOfFields.map((value, key) => {
-          return (
-            <>
-              <input
-                type="checkbox"
-                class="btn-check"
-                id={value.id}
-                name={value.fieldName}
-                value={value.id}
-              />
-              <label class="btn btn-outline-secondary  filter" for={value.id}>
-                <div>{value.fieldName}</div>
-              </label>
-            </>
-          );
-        })}
-      </div>
+      <ul class=" flex-nowrap nav d-flex overflow-x-auto  gap-2 pb-4 px-2 ">
+      <li class="nav-item" >
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link text-white bg-primary rounded-pill"
+                    : "nav-link text-body bg-body-secondary rounded-pill"
+                }
+                to="/"
+            
+              >
+                الكل
+              </NavLink>
+            </li>
+        {listOfFields.map((value, key) => (
+          <React.Fragment key={key}>
+            <li class="nav-item" >
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link text-white bg-primary rounded-pill"
+                    : "nav-link text-body bg-body-secondary rounded-pill"
+                }
+                to={`/${value.id}`}
+              >
+                {value.fieldName}
+              </NavLink>
+            </li>
+          </React.Fragment>
+        ))}
+      </ul>
     </div>
   );
 }
