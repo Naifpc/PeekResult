@@ -196,7 +196,7 @@ function Register() {
               </ul>
 
               <div
-                class="tab-content p-5 rounded bg-body-secondary shadow"
+                class="tab-content p-5 rounded bg-body-secondary "
                 id="myTabContent"
               >
                 <div
@@ -388,7 +388,10 @@ function Register() {
                                     className="btn btn-outline-secondary"
                                     htmlFor={value.fieldName}
                                   >
+                                    <div>
                                     {value.fieldName}
+                                    </div>
+                                   
                                   </label>
                                 </>
                               );

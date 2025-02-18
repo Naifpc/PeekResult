@@ -25,7 +25,7 @@ function Filter() {
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link text-white bg-primary rounded-pill"
-                    : "nav-link text-body bg-body-secondary rounded-pill"
+                    : "nav-link text-body bg-body-secondary rounded-pill filter-badge"
                 }
                 to="/"
             
@@ -40,7 +40,7 @@ function Filter() {
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link text-white bg-primary rounded-pill"
-                    : "nav-link text-body bg-body-secondary rounded-pill"
+                    : "nav-link text-body bg-body-secondary rounded-pill filter-badge"
                 }
                 to={`/${value.id}`}
               >

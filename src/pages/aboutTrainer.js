@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { NavLink, Outlet, Link } from "react-router-dom";
 
 function AboutTrainer() {
   let { id } = useParams(); // get id from url
@@ -59,12 +60,15 @@ function AboutTrainer() {
               <div className="d-flex gap-1 align-items-center ">
               <h6 className="text-secondary border-start m-0 ps-2 ms-2  ">المجالات</h6>
                 {trainerObject.fields?.map((element, index) => (
-                  <span
+                  
+                  <Link to={`/${element.id}`}>
+                    <span
                     key={index}
-                    className="badge bg-transparent border border-1 text-secondary  p-2 fw-normal"
+                    className="field-badge badge  bg-transparent border border-1 text-secondary  p-2 fw-normal"
                   >
                     {element.fieldName}
                   </span>
+                  </Link>
                 ))}
               </div>
             </div>

@@ -3,7 +3,7 @@ import { NavLink, Outlet, Link } from "react-router-dom";
 
 function BrowserNavbar() {
   return (
-    <div class="sticky-top bg-body-tertiary bg-opacity-75 ">
+    <div class="sticky-top bg-body-tertiary">
       <nav class="container  navbar navbar-expand-lg   px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5   ">
         <button
           class="navbar-toggler border-0 fs-1 p-0"
@@ -40,10 +40,10 @@ function BrowserNavbar() {
                   type="button"
                   data-bs-toggle="modal"
                   data-bs-target="#loginModal"
-                  class="nav-link  "
-                  to="/"
+                  class="nav-link"
+
                 >
-                  <i class="bi bi-person-circle fs-3 "></i>
+                  <i class="bi bi-person-circle fs-3 nav-link"></i>
             </button>
             <ul class="navbar-nav mx-auto px-0 ">
 
@@ -185,7 +185,7 @@ function MobiletopNavbar() {
                   class="nav-link d-flex gap-2   align-items-center"
                   to="/"
                 >
-                  <i class="bi bi-person-circle fs-1 "></i> دخول/تسجيل
+                  <i class="bi bi-person-circle fs-1 "></i> 
             </button>
         </div>
         <Link class="" to="/">
