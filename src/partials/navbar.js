@@ -3,7 +3,7 @@ import { NavLink, Outlet, Link } from "react-router-dom";
 
 function BrowserNavbar() {
   return (
-    <div class="sticky-top bg-body-tertiary">
+    <div class="sticky-top bg-body border-bottom">
       <nav class="container  navbar navbar-expand-lg   px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5   ">
         <button
           class="navbar-toggler border-0 fs-1 p-0"
@@ -51,7 +51,7 @@ function BrowserNavbar() {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link align-items-center rounded-pill bg-body"
+                      ? "nav-link align-items-center rounded-pill bg-body-secondary"
                       : "nav-link align-items-center"
                   }
                   to="/"
@@ -66,7 +66,7 @@ function BrowserNavbar() {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link align-items-center rounded-pill bg-body"
+                        ? "nav-link align-items-center rounded-pill bg-body-secondary"
                       : "nav-link align-items-center"
                   }
                   to="/Schedules"
@@ -82,7 +82,7 @@ function BrowserNavbar() {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link align-items-center rounded-pill bg-body"
+                        ? "nav-link align-items-center rounded-pill bg-body-secondary"
                       : "nav-link align-items-center"
                   }
                   to="/Offers"
@@ -98,7 +98,7 @@ function BrowserNavbar() {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link align-items-center rounded-pill bg-body"
+                        ? "nav-link align-items-center rounded-pill bg-body-secondary"
                       : "nav-link align-items-center"
                   }
                   to="/Account"
@@ -127,14 +127,14 @@ function BrowserNavbar() {
 
 function MobileBotNavbar() {
   return (
-    <nav class="navbar py-0 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 fixed-bottom bg-body  ">
+    <nav class="navbar py-0 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 fixed-bottom bg-body border-top  ">
       <div class="container-fluid p-0">
         <ul class="navbar-nav d-flex flex-row justify-content-evenly p-0 w-100">
           <li class="nav-item">
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center p-0"
+                  ? "nav-link active text-center d-flex flex-column align-items-center border-top border-primary border-2 p-0"
                   : "nav-link text-center d-flex flex-column align-items-center p-0"
               }
               to="/"
@@ -147,7 +147,7 @@ function MobileBotNavbar() {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center p-0"
+                  ? "nav-link active text-center d-flex flex-column align-items-center border-top border-primary border-2 p-0"
                   : "nav-link text-center d-flex flex-column align-items-center p-0"
               }
               to="/Schedules"
@@ -160,7 +160,7 @@ function MobileBotNavbar() {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center p-0  "
+                  ? "nav-link active text-center d-flex flex-column align-items-center p-0  border-top border-primary border-2 "
                   : "nav-link text-center d-flex flex-column align-items-center p-0"
               }
               to="/Offers"
@@ -173,7 +173,7 @@ function MobileBotNavbar() {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center p-0"
+                  ? "nav-link active text-center d-flex flex-column align-items-center border-top border-primary border-2 p-0"
                   : "nav-link text-center d-flex flex-column align-items-center p-0"
               }
               to="/Account"
@@ -190,7 +190,7 @@ function MobileBotNavbar() {
 
 function MobiletopNavbar() {
   return (
-    <div class=" bg-body-tertiary  ">
+    <div class=" bg-body  ">
       <nav class="container d-flex justify-content-between navbar navbar-expand-lg px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5">
         <div>
         <button
@@ -200,16 +200,10 @@ function MobiletopNavbar() {
                   class="nav-link d-flex gap-2   align-items-center"
                   to="/"
                 >
-                  <i class="bi bi-person-circle fs-1 "></i> 
+                  <i class="bi bi-person-circle fs-1 "></i> دخول/ تسجيل
             </button>
         </div>
-        <Link class="" to="/">
-          <img
-            src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
-            alt="PEEK RESULT"
-            width="90"
-          />
-        </Link>
+
       </nav>
     </div>
   );
