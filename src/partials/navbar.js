@@ -45,54 +45,69 @@ function BrowserNavbar() {
                 >
                   <i class="bi bi-person-circle fs-3 nav-link"></i>
             </button>
-            <ul class="navbar-nav mx-auto px-0 ">
+            <ul class="navbar-nav mx-auto px-0 gap-3">
 
               <li class="nav-item" data-bs-dismiss="offcanvas">
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link active text-center d-flex flex-column align-items-center"
-                      : "nav-link text-center d-flex flex-column align-items-center"
+                      ? "nav-link align-items-center rounded-pill bg-body"
+                      : "nav-link align-items-center"
                   }
                   to="/"
                 >
-                  الرئيسية
+                  <div className="d-flex align-items-center gap-1 ">
+                  <i class="bi bi-person-badge "></i>
+                  المدربين
+                  </div>
                 </NavLink>
               </li>
               <li class="nav-item " data-bs-dismiss="offcanvas">
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link active text-center d-flex flex-column align-items-center"
-                      : "nav-link text-center d-flex flex-column align-items-center"
+                      ? "nav-link align-items-center rounded-pill bg-body"
+                      : "nav-link align-items-center"
                   }
                   to="/Schedules"
                 >
+                   <div className="d-flex align-items-center gap-1 ">
+                   <i class="bi bi-calendar3"></i>
                   جداول
+                  </div>
+                  
                 </NavLink>
               </li>
               <li class="nav-item" data-bs-dismiss="offcanvas">
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link active text-center d-flex flex-column align-items-center"
-                      : "nav-link text-center d-flex flex-column align-items-center"
+                      ? "nav-link align-items-center rounded-pill bg-body"
+                      : "nav-link align-items-center"
                   }
                   to="/Offers"
                 >
-                  العروض
+                   <div className="d-flex align-items-center gap-1 ">
+                   <i class="bi bi-patch-check"></i>
+                   العروض
+                  </div>
+                  
                 </NavLink>
               </li>
               <li class="nav-item" data-bs-dismiss="offcanvas">
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link active text-center d-flex flex-column align-items-center"
-                      : "nav-link text-center d-flex flex-column align-items-center"
+                      ? "nav-link align-items-center rounded-pill bg-body"
+                      : "nav-link align-items-center"
                   }
                   to="/Account"
                 >
-                  الحساب
+                   <div className="d-flex align-items-center gap-1 ">
+                   <i class="bi bi-person"></i>
+                   الحساب
+                  </div>
+                  
                 </NavLink>
               </li>
             </ul>
@@ -102,7 +117,7 @@ function BrowserNavbar() {
           <img
             src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
             alt="PEEK RESULT"
-            width="90"
+            width="110"
           />
         </NavLink>
       </nav>
@@ -175,7 +190,7 @@ function MobileBotNavbar() {
 
 function MobiletopNavbar() {
   return (
-    <div class=" bg-body-tertiary bg-opacity-75  ">
+    <div class=" bg-body-tertiary  ">
       <nav class="container d-flex justify-content-between navbar navbar-expand-lg px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5">
         <div>
         <button

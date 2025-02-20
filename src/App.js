@@ -13,7 +13,8 @@ import Footer from "./partials/footer";
 import AccountData from "./pages/accountData";
 import MySubscription from "./pages/mySubscription";
 import AboutTrainer from "./pages/aboutTrainer";
-import { login as Login, Register } from "./partials/modals.js";
+import Login from "./partials/login";
+import Register from "./partials/register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   BrowserView,

@@ -5,14 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors= require('cors')
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 
-
-
-const trianeeRouter = require('./routes/Trainee');
+const usersRouter = require('./routes/users');
 const trianerRouter = require('./routes/Trainer');
 const fieldsRouter = require('./routes/Fields');
 const trainerFields = require('./routes/trainerFields');
+
+const jwt = require('jsonwebtoken')
 
 var app = express();
 
@@ -32,8 +31,7 @@ app.use('/images', express.static('images'));
 
 //Routers
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/trainee', trianeeRouter);
+app.use('/authenticate', usersRouter);
 app.use('/trainer', trianerRouter);
 app.use('/fields', fieldsRouter);
 app.use('/trainerFields', trainerFields);
