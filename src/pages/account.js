@@ -66,7 +66,7 @@ function Account() {
             <div className="col-12">
               <h5 className="m-0"> الجسم</h5>
 
-              <h2 className="fw-bold m-0">14</h2>
+              <h2 className="fw-bold m-0">70</h2>
               <h6 className="text-secondary">/100</h6>
 
               <div
@@ -77,13 +77,13 @@ function Account() {
                 aria-valuemin="0"
                 aria-valuemax="100"
               >
-                <div className="progress-bar " style={{ width: "14%" }}></div>
+                <div className="progress-bar " style={{ width: "70%" }}></div>
               </div>
             </div>
             <div className="col-12">
               <h5 className="m-0"> نسبة العضلات</h5>
 
-              <h2 className="fw-bold m-0">14</h2>
+              <h2 className="fw-bold m-0">16</h2>
               <h6 className="text-secondary">/100</h6>
 
               <div
@@ -96,7 +96,7 @@ function Account() {
               >
                 <div
                   className="progress-bar "
-                  style={{ width: "14%", backgroundColor: "rgb(54, 162, 235)" }}
+                  style={{ width: "16%", backgroundColor: "rgb(54, 162, 235)" }}
                 ></div>
               </div>
             </div>
