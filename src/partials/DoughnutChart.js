@@ -4,7 +4,12 @@ import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DoughnutChart = () => {
+const DoughnutChart = ({weight}) => {
+  console.log(weight)
+
+  if (!weight) {
+    return <div>Loading...</div>; // Display a loading message while waiting for the weight to be fetched
+  }
   const data = {
     datasets: [
       {
@@ -36,11 +41,11 @@ const DoughnutChart = () => {
 	  ctx.save();
   
 	  // Draw "75" (larger)
-	  ctx.font = `${height / 5}px Arial`; // Large font for number
+	  ctx.font = `${height / 7}px Arial`; // Large font for number
 	  ctx.fillStyle = "#FFFFFF"; 
 	  ctx.textAlign = "center";
 	  ctx.textBaseline = "middle";
-	  ctx.fillText("75 كجم", width / 2 - 10, height / 2);
+	  ctx.fillText(`${weight} كجم`, width / 2 - 10, height / 2);
 
 
   

@@ -78,7 +78,6 @@ function Login() {
                         className="form-control bg-transparent"
                         id="floatingEmail"
                         name="email"
-                        placeholder="الايميل"
                       />
                       <label htmlFor="floatingEmail">الايميل</label>
                       <ErrorMessage

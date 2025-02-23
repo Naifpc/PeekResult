@@ -6,7 +6,42 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+
+
+function calculateAge(birthDate) {
+  // Convert the birthdate string to a Date object
+  let birthDateObj = new Date(birthDate);
+
+  // Get today's date
+  let today = new Date();
+
+  // Calculate the age
+  let age = today.getFullYear() - birthDateObj.getFullYear();
+
+  // Adjust if the birthdate hasn't happened yet this year
+  let monthDifference = today.getMonth() - birthDateObj.getMonth();
+  if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDateObj.getDate())) {
+      age--;
+  }
+
+  return  age;
+
+}
+
 function Account() {
+
+  const [userData, setUserData] = useState([]);
+
+  useEffect(() => {
+      axios.get(`http://localhost:9000/authenticate/userData`,{ // get user data 
+        headers: {
+          accessToken: sessionStorage.getItem('accessToken')
+        }
+      }).then((response) => {
+        setUserData(response.data);
+      });
+    },[]);
+
   const validationSchema = Yup.object().shape({
     birthDate: Yup.date(),
     gender: Yup.string(),
@@ -20,15 +55,21 @@ function Account() {
     fatWeight: Yup.number().min(0).max(250),
   });
 
+
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:9000/authenticate/login", data)
+      .post("http://localhost:9000/authenticate/update", data,{
+        headers: {
+          accessToken: sessionStorage.getItem('accessToken')
+        }
+      })
       .then((response) => {
         if (response.data.error) {
           alert(response.data.error);
-        } else {
-          sessionStorage.setItem("accessToken", response.data);
+        } else{
+          alert('update success');
         }
+        
       });
   };
 
@@ -52,13 +93,16 @@ function Account() {
     setImageSrc(`${process.env.PUBLIC_URL}/body.svg`);
   };
 
+
+
   return (
     <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
       <h4 className="mb-4">القياسات</h4>
 
       <div className="row g-3 align-items-center">
         <div className="col-12 col-lg-6">
-          <DoughnutChart />
+          <DoughnutChart
+          weight={ userData.weight} />
         </div>
 
         <div className="col-12 col-lg-6">
@@ -66,7 +110,7 @@ function Account() {
             <div className="col-12">
               <h5 className="m-0"> الجسم</h5>
 
-              <h2 className="fw-bold m-0">70</h2>
+              <h2 className="fw-bold m-0">{userData.weight}</h2>
               <h6 className="text-secondary">/100</h6>
 
               <div
@@ -77,13 +121,13 @@ function Account() {
                 aria-valuemin="0"
                 aria-valuemax="100"
               >
-                <div className="progress-bar " style={{ width: "70%" }}></div>
+                <div className="progress-bar " style={{ width: `${userData.weight}%` }}></div>
               </div>
             </div>
             <div className="col-12">
               <h5 className="m-0"> نسبة العضلات</h5>
 
-              <h2 className="fw-bold m-0">16</h2>
+              <h2 className="fw-bold m-0">{userData.muscleWeight}</h2>
               <h6 className="text-secondary">/100</h6>
 
               <div
@@ -96,14 +140,14 @@ function Account() {
               >
                 <div
                   className="progress-bar "
-                  style={{ width: "16%", backgroundColor: "rgb(54, 162, 235)" }}
+                  style={{ width: `${userData.muscleWeight}%`, backgroundColor: "rgb(54, 162, 235)" }}
                 ></div>
               </div>
             </div>
             <div className="col-12">
               <h5 className="m-0"> نسبة الدهون</h5>
 
-              <h2 className="fw-bold m-0">14</h2>
+              <h2 className="fw-bold m-0">{userData.fatWeight}</h2>
               <h6 className="text-secondary">/100</h6>
 
               <div
@@ -116,7 +160,7 @@ function Account() {
               >
                 <div
                   className="progress-bar"
-                  style={{ width: "14%", backgroundColor: "rgb(255, 206, 86)" }}
+                  style={{ width: `${userData.fatWeight}%`, backgroundColor: "rgb(255, 206, 86)" }}
                 ></div>
               </div>
             </div>
@@ -128,13 +172,13 @@ function Account() {
       <div className=" row gap-3 g-1  ">
         <div className="col-sm-12 col-lg bg-body-secondary text-center p-1 rounded  ">
           <h6>الطول</h6>
-          <h2>160</h2>
+          <h2>{userData.height}</h2>
           <span class="badge rounded-pill text-bg-secondary">سم</span>
         </div>
 
         <div className="col-sm-12 col-lg  bg-body-secondary text-center p-1 rounded  ">
           <h6>العمر</h6>
-          <h2>23</h2>
+          <h2>{calculateAge(userData.birthDate)}</h2>
           <span class="badge rounded-pill text-bg-secondary">سنة</span>
         </div>
       </div>
@@ -225,7 +269,8 @@ function Account() {
                       className="form-control bg-transparent"
                       id="gender"
                       name="gender"
-                    >
+                    > 
+                      <option value="">اختر</option>
                       <option value="ذكر">ذكر</option>
                       <option value="انثى">انثى</option>
                     </Field>

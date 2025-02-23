@@ -8,9 +8,9 @@ const validateToken = (req, res, next) =>{
     try{
 
         const validToken = verify (accessToken, "pLFriwTWOsakqMX")
-
+        req.user = validToken ;
         if(validToken) {
-            return next();
+            return next(); //move forward with request 
         }
 
     }catch(err){

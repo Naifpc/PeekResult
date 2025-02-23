@@ -2,7 +2,7 @@ import React from "react";
 
 function footer() {
   return (
-    <footer class="text-center text-lg-end  bg-body-tertiary  pt-3 flex-column">
+    <footer class="text-center text-lg-end  bg-body-secondary  pt-3 flex-column">
       <div className="footer-wrap">
         <section class="">
           <div class="container text-center text-md-end mt-1">

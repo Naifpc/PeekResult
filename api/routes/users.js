@@ -48,4 +48,42 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get('/userData',validateToken, async (req, res) => {// get current user data
+  try {
+    
+    const tokenId = req.user.id
+    const userData = await Users.findOne({ where: { id: tokenId } });
+    res.json(userData);
+    
+
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to get Trainee' });
+  }
+});
+
+
+router.post("/update",validateToken, async (req, res) => {
+  // update user data
+  try {
+    const {gender, birthDate} = req.body ;
+    const tokenId = req.user.id;
+    const currentUser = await Users.update(
+      {gender,birthDate} ,
+      {
+        where: {
+          id: tokenId,
+        },
+      },
+    );
+
+    res.json('good')
+    
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to create Trainee" });
+  }
+});
+
 module.exports = router;
