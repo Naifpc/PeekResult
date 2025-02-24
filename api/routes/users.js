@@ -64,26 +64,35 @@ router.get('/userData',validateToken, async (req, res) => {// get current user d
 });
 
 
-router.post("/update",validateToken, async (req, res) => {
+router.post("/update", validateToken, async (req, res) => {
   // update user data
   try {
-    const {gender, birthDate} = req.body ;
+    const { gender, birthDate, height, waistLength,neckLength,weight,fatWeight,muscleWeight } = req.body;
     const tokenId = req.user.id;
-    const currentUser = await Users.update(
-      {gender,birthDate} ,
-      {
-        where: {
-          id: tokenId,
-        },
-      },
-    );
+    const updateData = {};
 
-    res.json('good')
+    if (gender !== undefined) updateData.gender = gender;
+    if (birthDate !== undefined) updateData.birthDate = birthDate;
+    if (height !== undefined) updateData.height = height;
+    if (waistLength !== undefined) updateData.waistLength = waistLength;
+    if (neckLength !== undefined) updateData.neckLength = neckLength;
+    if (weight !== undefined) updateData.weight = weight;
+    if (fatWeight !== undefined) updateData.fatWeight = fatWeight;
+    if (muscleWeight !== undefined) updateData.muscleWeight = muscleWeight;
+
+    await Users.update(updateData, {
+      where: {
+        id: tokenId,
+      },
+    });
+
+    res.json('good');
     
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to create Trainee" });
+    res.status(500).json({ error: "Failed to update user data" });
   }
 });
+
 
 module.exports = router;
