@@ -22,6 +22,12 @@ function calculateAge(birthDate) {
   return age;
 }
 
+function calculateBMI(heightCm, weightKg) {
+  let heightMeters = heightCm / 100;
+  let bmi = weightKg / (heightMeters * heightMeters);
+  return Math.trunc(bmi);
+}
+
 function Account() {
   const [userData, setUserData] = useState([]);
 
@@ -39,7 +45,12 @@ function Account() {
           },
         }
       );
-      setUserData(response.data);
+      console.log(response);
+      if (response.data.error) {
+        alert(response.data.error);
+      } else {
+        setUserData(response.data);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -100,12 +111,9 @@ function Account() {
   });
 
   return (
-    <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
-      
-
-      <div className="container">
+    <div class="container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5 ">
       <h4 className="mb-4">البيانات</h4>
-      <div className="row g-3 align-items-center rounded bg-body-secondary ">
+      <div className="row  g-3 align-items-center rounded bg-body-secondary ">
         <div className="col-12 col-lg-6 my-3">
           <DoughnutChart
             weight={userData.weight}
@@ -114,22 +122,22 @@ function Account() {
           />
         </div>
         <div className="col-12 col-lg-6">
-          <div className="row p-2">
+          <div className="row p-1">
             <div className="col-4 border-start">
               <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
-                <i class="bi bi-circle-fill text-primary "></i>
-                <p className=" m-0"> وزن الجسم </p>
+                <span class="p-1 rounded-circle bg-primary"></span>
+                <p className=" mb-1 m-0"> وزن الجسم </p>
               </div>
               <h2 className="fw-bold m-0">{userData.weight}</h2>
               <h6 className="text-secondary">/{userData.weight} كجم</h6>
             </div>
             <div className="col-4 ">
               <div className="d-flex flex-nowrap align-items-center gap-1 fs-6 ">
-                <i
-                  class="bi bi-circle-fill "
-                  style={{ color: "rgb(54, 162, 235)" }}
-                ></i>
-                <p className=" m-0"> وزن العضلات </p>
+                <span
+                  class="p-1 rounded-circle"
+                  style={{ backgroundColor: "rgb(54, 162, 235)" }}
+                ></span>
+                <p className=" mb-1 m-0  text-nowrap"> وزن العضلات </p>
               </div>
 
               <h2 className="fw-bold m-0">{userData.muscleWeight}</h2>
@@ -137,11 +145,11 @@ function Account() {
             </div>
             <div className="col-4 border-end">
               <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
-                <i
-                  class="bi bi-circle-fill "
-                  style={{ color: "rgb(255, 206, 86)" }}
-                ></i>
-                <p className=" m-0"> وزن الدهون </p>
+                <span
+                  class="p-1 rounded-circle"
+                  style={{ backgroundColor: "rgb(255, 206, 86)" }}
+                ></span>
+                <p className=" mb-1 m-0"> وزن الدهون </p>
               </div>
 
               <h2 className="fw-bold m-0">{userData.fatWeight}</h2>
@@ -153,9 +161,9 @@ function Account() {
 
       <div className=" row  p-1 gap-2 mt-1">
         <div className="col-sm-12 col-lg bg-body-secondary text-center p-1 rounded  ">
-          <h6>الطول</h6>
-          <h2>{userData.height}</h2>
-          <span class="badge rounded-pill text-bg-secondary">سم</span>
+          <h6>مؤشر كتلة الجسم</h6>
+          <h2>{calculateBMI(userData.height, userData.weight)}</h2>
+          <span class="badge rounded-pill text-bg-secondary">BMI</span>
         </div>
 
         <div className="col-sm-12 col-lg  bg-body-secondary text-center p-1 rounded  ">
@@ -164,13 +172,8 @@ function Account() {
           <span class="badge rounded-pill text-bg-secondary">سنة</span>
         </div>
       </div>
-      
-    
-
-    
-        <h4 className="my-4">تحديث البيانات</h4>
-
-        <div className="row p-1">
+      <h4 className="my-4">تحديث البيانات</h4>
+      <div className="row p-1">
         <ul class="nav nav-tabs " id="myTab" role="tablist">
           <li class=" nav-item " role="presentation">
             <button
@@ -450,7 +453,6 @@ function Account() {
           </div>
         </div>
       </div>
-        </div>
 
       <h4 className="my-4">الحساب</h4>
       <div className="container my-4">

@@ -3,7 +3,8 @@ const router = express.Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
-const {validateToken} = require("../middlewares/AuthMiddelware")
+const {validateToken} = require("../middlewares/AuthMiddelware");
+const { error } = require("jquery");
 
 router.post("/register", async (req, res) => {
   // register a new user
@@ -51,9 +52,15 @@ router.post("/login", async (req, res) => {
 router.get('/userData',validateToken, async (req, res) => {// get current user data
   try {
     
+    
     const tokenId = req.user.id
     const userData = await Users.findOne({ where: { id: tokenId } });
-    res.json(userData);
+    if(!userData){
+      res.json({error:"login required"})
+    }else{
+      res.json(userData);
+    }
+    
     
 
 
