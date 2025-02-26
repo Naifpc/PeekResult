@@ -5,11 +5,11 @@ import Schedules from "./pages/schedules";
 import Offers from "./pages/offers";
 import Account from "./pages/account";
 import {
-  BrowserNavbar,
   MobileBotNavbar,
   MobiletopNavbar,
-} from "./partials/navbar";
+} from "./partials/MobileNavbar";
 import Footer from "./partials/footer";
+import BrowserNavbar from "./partials/BrowserNavbar";
 import AccountData from "./pages/accountData";
 import MySubscription from "./pages/mySubscription";
 import AboutTrainer from "./pages/aboutTrainer";
