@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 
 function calculateAge(birthDate) {
   //calculate age from birthdate
@@ -72,6 +73,12 @@ function Account() {
         }
       });
   };
+
+  const logout = () => {
+    sessionStorage.removeItem("accessToken");
+    setUserData(false);
+  };
+
 
   const [imageSrc, setImageSrc] = useState(
     `${process.env.PUBLIC_URL}/body.svg`
@@ -480,18 +487,15 @@ function Account() {
           </div>
         </div>
       </div>
-      <div className="container-fluid my-4 mb-5">
-        <div className="row ">
-          <div className="col-12 col-md-4 ">
-            <button class="btn btn-outline-danger w-100">
-              {" "}
+      {isMobile && (
+        <div className="row mb-5">
+          <div className="col-12 col-md-4 mb-5 ">
+            <button class="btn btn-outline-danger w-100" onClick={logout}>
               <i class="bi bi-box-arrow-right "></i> تسجل خروج
             </button>
           </div>
         </div>
-      </div>
-
-      <div className="mb-5 p-1"></div>
+      )}
     </div>
   );
 }

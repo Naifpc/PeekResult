@@ -106,6 +106,10 @@
   
 }
 
+.dropdown-toggle::after{
+  margin-Right: 0.255em;
+}
+
 
 .form-floating > .form-control-plaintext ~ label::after, .form-floating > .form-control:focus ~ label::after, .form-floating > .form-control:not(:placeholder-shown) ~ label::after, .form-floating > .form-select ~ label::after{
   background-color: transparent !important;

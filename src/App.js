@@ -19,8 +19,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   BrowserView,
   MobileView,
-  isBrowser,
-  isMobile,
 } from "react-device-detect";
 
   function App() {
