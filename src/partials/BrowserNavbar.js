@@ -3,9 +3,12 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Dropdown } from "react-bootstrap";
+import Login from "./login";
+import {TopNavBtn, TopNavDrop} from "./topNavBtn";
 
 function BrowserNavbar() {
   const [userData, setUserData] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -40,43 +43,43 @@ function BrowserNavbar() {
     <>
       <div class="sticky-top bg-body border-bottom container-fluid   ">
         <div className="container d-flex justify-content-between py-2 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 ">
-        {!userData ? (
-          <button
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#loginModal"
-            class="nav-link d-flex gap-2 align-items-center  "
-            to="/"
-          >
-            <i class="bi bi-person-circle fs-5"></i>
-            <p className="fs-6 m-0">دخول / تسجيل</p>
-          </button>
-        ) : (
-          <div className="d-flex gap-3 align-items-center">
-            <i className="bi bi-bell fs-5"></i>
-            <div className="border h-100"></div>
-            <Dropdown>
-              <Dropdown.Toggle variant="" id="dropdown-basic" className="p-0">
-                يا هلا , {userData.username}
-              </Dropdown.Toggle>
+          {!userData ? (
+            <TopNavBtn onClick={() => setModalShow(true)} mainTxt={"دخول / تسجيل"} subTxt={"يا هلا"}/>
 
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={logout} className="text-danger">تسجيل الخروج  <i class="bi bi-box-arrow-right "></i></Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
-        )}
+          ) : (
+            <div className="d-flex gap-3 align-items-center">
+              <i className="bi bi-bell fs-5"></i>
+              <div className="border h-100"></div>
+              <Dropdown>
+                <Dropdown.Toggle variant="" id="dropdown-basic" className="p-0 d-flex align-items-center top-navbar rounded-pill">
+                <TopNavBtn mainTxt={"دخول / تسجيل"} subTxt={"يا هلا"}/>
+                </Dropdown.Toggle>
 
-        <NavLink class="" to="/">
-          <img
-            src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
-            alt="PEEK RESULT"
-            width="110"
-          />
-        </NavLink>
+                <Dropdown.Menu>
+
+                <Dropdown.Item onClick={logout}>
+                    تسجيل الخروج <i class="bi bi-box-arrow-right "></i>
+                  </Dropdown.Item>
+
+                <li><hr class="dropdown-divider"/></li>
+
+                  <Dropdown.Item onClick={logout} className="text-danger">
+                    تسجيل الخروج <i class="bi bi-box-arrow-right "></i>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          )}
+
+          <NavLink class="" to="/">
+            <img
+              src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
+              alt="PEEK RESULT"
+              width="110"
+            />
+          </NavLink>
         </div>
       </div>
-
 
       <nav class="navbar navbar-expand-lg navbar-light bg-body border-bottom">
         <div class="container-fluid">
@@ -161,6 +164,7 @@ function BrowserNavbar() {
           </div>
         </div>
       </nav>
+      <Login  show={modalShow} onHide={() => setModalShow(false)  } fetchData={fetchData} />
     </>
   );
 }

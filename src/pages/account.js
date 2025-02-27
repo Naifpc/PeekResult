@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
+import LoginRequired from "../partials/loginRequired";
 
 function calculateAge(birthDate) {
   //calculate age from birthdate
@@ -48,7 +49,7 @@ function Account() {
       );
       console.log(response);
       if (response.data.error) {
-        alert(response.data.error);
+        setModalShow(true);
       } else {
         setUserData(response.data);
       }
@@ -117,7 +118,10 @@ function Account() {
     fatWeight: Yup.number().min(0).max(250).required(),
   });
 
+  const [modalShow, setModalShow] = useState(false);
+
   return (
+    <>
     <div class="container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5 ">
       <h4 className="mb-4">البيانات</h4>
       <div className="row  g-3 align-items-center rounded bg-body-secondary ">
@@ -496,7 +500,10 @@ function Account() {
           </div>
         </div>
       )}
+      
     </div>
+    <LoginRequired show={modalShow} onHide={() => setModalShow(false) } />
+    </>
   );
 }
 

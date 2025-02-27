@@ -13,7 +13,6 @@ import BrowserNavbar from "./partials/BrowserNavbar";
 import AccountData from "./pages/accountData";
 import MySubscription from "./pages/mySubscription";
 import AboutTrainer from "./pages/aboutTrainer";
-import Login from "./partials/login";
 import Register from "./partials/register";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
@@ -55,7 +54,6 @@ import {
             <MobileBotNavbar />
           </MobileView>
 
-          <Login />
           <Register />
         </>
       </Router>
