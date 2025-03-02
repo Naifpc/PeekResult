@@ -27,8 +27,8 @@ function TopNavDrop({ mainTxt, subTxt, item }) {
       >
         <i className="bi bi-person fs-2 pe-1"></i>
         <div className="top-navbar-text px-2">
-        <p className=" text-secondary text-end m-0 fw-light">{subTxt}</p>
-        <p className=" m-0 fw-bold">{mainTxt}</p>
+        <p className=" text-secondary text-end m-0 fw-light ">{subTxt}</p>
+        <p className=" m-0 fw-bold ">{mainTxt}</p>
       </div>
       </Dropdown.Toggle>
 

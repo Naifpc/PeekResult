@@ -80,7 +80,6 @@ function Account() {
     setUserData(false);
   };
 
-
   const [imageSrc, setImageSrc] = useState(
     `${process.env.PUBLIC_URL}/body.svg`
   );
@@ -122,387 +121,387 @@ function Account() {
 
   return (
     <>
-    <div class="container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5 ">
-      <h4 className="mb-4">البيانات</h4>
-      <div className="row  g-3 align-items-center rounded bg-body-secondary ">
-        <div className="col-12 col-lg-6 my-3">
-          <DoughnutChart
-            weight={userData.weight}
-            fatWeight={userData.fatWeight}
-            muscleWeight={userData.muscleWeight}
-          />
-        </div>
-        <div className="col-12 col-lg-6">
-          <div className="row p-1">
-            <div className="col-4 border-start">
-              <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
-                <span class="p-1 rounded-circle bg-primary"></span>
-                <p className=" mb-1 m-0"> وزن الجسم </p>
+      <div class="container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5 ">
+        <h4 className="mb-4">البيانات</h4>
+        <div className="row  g-3 align-items-center rounded bg-body-secondary ">
+          <div className="col-12 col-lg-6 my-3">
+            <DoughnutChart
+              weight={userData.weight}
+              fatWeight={userData.fatWeight}
+              muscleWeight={userData.muscleWeight}
+            />
+          </div>
+          <div className="col-12 col-lg-6">
+            <div className="row p-1">
+              <div className="col-4 border-start">
+                <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
+                  <span class="p-1 rounded-circle bg-primary"></span>
+                  <p className=" mb-1 m-0"> وزن الجسم </p>
+                </div>
+                <h2 className="fw-bold m-0">{userData.weight}</h2>
+                <h6 className="text-secondary">/{userData.weight} كجم</h6>
               </div>
-              <h2 className="fw-bold m-0">{userData.weight}</h2>
-              <h6 className="text-secondary">/{userData.weight} كجم</h6>
-            </div>
-            <div className="col-4 ">
-              <div className="d-flex flex-nowrap align-items-center gap-1 fs-6 ">
-                <span
-                  class="p-1 rounded-circle"
-                  style={{ backgroundColor: "rgb(54, 162, 235)" }}
-                ></span>
-                <p className=" mb-1 m-0  text-nowrap"> وزن العضلات </p>
-              </div>
+              <div className="col-4 ">
+                <div className="d-flex flex-nowrap align-items-center gap-1 fs-6 ">
+                  <span
+                    class="p-1 rounded-circle"
+                    style={{ backgroundColor: "rgb(54, 162, 235)" }}
+                  ></span>
+                  <p className=" mb-1 m-0  text-nowrap"> وزن العضلات </p>
+                </div>
 
-              <h2 className="fw-bold m-0">{userData.muscleWeight}</h2>
-              <h6 className="text-secondary">/{userData.weight} كجم</h6>
-            </div>
-            <div className="col-4 border-end">
-              <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
-                <span
-                  class="p-1 rounded-circle"
-                  style={{ backgroundColor: "rgb(255, 206, 86)" }}
-                ></span>
-                <p className=" mb-1 m-0"> وزن الدهون </p>
+                <h2 className="fw-bold m-0">{userData.muscleWeight}</h2>
+                <h6 className="text-secondary">/{userData.weight} كجم</h6>
               </div>
+              <div className="col-4 border-end">
+                <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
+                  <span
+                    class="p-1 rounded-circle"
+                    style={{ backgroundColor: "rgb(255, 206, 86)" }}
+                  ></span>
+                  <p className=" mb-1 m-0"> وزن الدهون </p>
+                </div>
 
-              <h2 className="fw-bold m-0">{userData.fatWeight}</h2>
-              <h6 className="text-secondary">/{userData.weight} كجم</h6>
+                <h2 className="fw-bold m-0">{userData.fatWeight}</h2>
+                <h6 className="text-secondary">/{userData.weight} كجم</h6>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className=" row  p-1 gap-2 mt-1">
-        <div className="col-sm-12 col-lg bg-body-secondary text-center p-1 rounded  ">
-          <h6>مؤشر كتلة الجسم</h6>
-          <h2>{calculateBMI(userData.height, userData.weight)}</h2>
-          <span class="badge rounded-pill text-bg-secondary">BMI</span>
+        <div className=" row  p-1 gap-2 mt-1">
+          <div className="col-sm-12 col-lg bg-body-secondary text-center p-1 rounded  ">
+            <h6>مؤشر كتلة الجسم</h6>
+            <h2>{calculateBMI(userData.height, userData.weight)}</h2>
+            <span class="badge rounded-pill text-bg-secondary">BMI</span>
+          </div>
+
+          <div className="col-sm-12 col-lg  bg-body-secondary text-center p-1 rounded  ">
+            <h6>العمر</h6>
+            <h2>{calculateAge(userData.birthDate)}</h2>
+            <span class="badge rounded-pill text-bg-secondary">سنة</span>
+          </div>
         </div>
+        <h4 className="my-4">تحديث البيانات</h4>
+        <div className="row p-1">
+          <ul class="nav nav-tabs " id="myTab" role="tablist">
+            <li class=" nav-item " role="presentation">
+              <button
+                class="nav-link text-body active"
+                id="home-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#home"
+                type="button"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >
+                عام
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link text-body"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                القياسات
+              </button>
+            </li>
+            <li class="nav-item " role="presentation">
+              <button
+                class="nav-link text-body"
+                id="contact-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#contact"
+                type="button"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+              >
+                inbody
+              </button>
+            </li>
+          </ul>
 
-        <div className="col-sm-12 col-lg  bg-body-secondary text-center p-1 rounded  ">
-          <h6>العمر</h6>
-          <h2>{calculateAge(userData.birthDate)}</h2>
-          <span class="badge rounded-pill text-bg-secondary">سنة</span>
-        </div>
-      </div>
-      <h4 className="my-4">تحديث البيانات</h4>
-      <div className="row p-1">
-        <ul class="nav nav-tabs " id="myTab" role="tablist">
-          <li class=" nav-item " role="presentation">
-            <button
-              class="nav-link text-body active"
-              id="home-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#home"
-              type="button"
-              role="tab"
-              aria-controls="home"
-              aria-selected="true"
-            >
-              عام
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button
-              class="nav-link text-body"
-              id="profile-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#profile"
-              type="button"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
-            >
-              القياسات
-            </button>
-          </li>
-          <li class="nav-item " role="presentation">
-            <button
-              class="nav-link text-body"
-              id="contact-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#contact"
-              type="button"
-              role="tab"
-              aria-controls="contact"
-              aria-selected="false"
-            >
-              inbody
-            </button>
-          </li>
-        </ul>
-
-        <div
-          class="tab-content p-5 rounded bg-body-secondary "
-          id="myTabContent"
-        >
           <div
-            class="tab-pane fade show active"
-            id="home"
-            role="tabpanel"
-            aria-labelledby="home-tab"
+            class="tab-content p-5 rounded bg-body-secondary "
+            id="myTabContent"
           >
-            <Formik
-              enableReinitialize
-              initialValues={{
-                birthDate: userData.birthDate,
-                gender: userData.gender,
-              }}
-              validationSchema={generalValidationSchema}
-              onSubmit={onSubmit}
+            <div
+              class="tab-pane fade show active"
+              id="home"
+              role="tabpanel"
+              aria-labelledby="home-tab"
             >
-              <Form>
-                <div className="row g-3 mt-3">
-                  <div className="form-floating mb-3 col-12">
-                    <Field
-                      type="date"
-                      className="form-control bg-transparent"
-                      id="birthDate"
-                      name="birthDate"
-                    />
-                    <label htmlFor="birthDate">تاريخ الميلاد</label>
-                    <ErrorMessage
-                      name="birthDate"
-                      component="span"
-                      className="text-danger"
-                    />
-                  </div>
+              <Formik
+                enableReinitialize
+                initialValues={{
+                  birthDate: userData.birthDate,
+                  gender: userData.gender,
+                }}
+                validationSchema={generalValidationSchema}
+                onSubmit={onSubmit}
+              >
+                <Form>
+                  <div className="row g-3 mt-3">
+                    <div className="form-floating mb-3 col-12">
+                      <Field
+                        type="date"
+                        className="form-control bg-transparent"
+                        id="birthDate"
+                        name="birthDate"
+                      />
+                      <label htmlFor="birthDate">تاريخ الميلاد</label>
+                      <ErrorMessage
+                        name="birthDate"
+                        component="span"
+                        className="text-danger"
+                      />
+                    </div>
 
-                  <div className="form-floating mb-3 col-12">
-                    <Field
-                      as="select"
-                      className="form-control bg-transparent"
-                      id="gender"
-                      name="gender"
-                    >
-                      <option value="">اختر</option>
-                      <option value="ذكر">ذكر</option>
-                      <option value="انثى">انثى</option>
-                    </Field>
-                    <label htmlFor="gender">الجنس</label>
-                    <ErrorMessage
-                      name="gender"
-                      component="span"
-                      className="text-danger"
-                    />
-                  </div>
+                    <div className="form-floating mb-3 col-12">
+                      <Field
+                        as="select"
+                        className="form-control bg-transparent"
+                        id="gender"
+                        name="gender"
+                      >
+                        <option value="">اختر</option>
+                        <option value="ذكر">ذكر</option>
+                        <option value="انثى">انثى</option>
+                      </Field>
+                      <label htmlFor="gender">الجنس</label>
+                      <ErrorMessage
+                        name="gender"
+                        component="span"
+                        className="text-danger"
+                      />
+                    </div>
 
-                  <div className="col-12 d-flex justify-content-center">
-                    <div class="col-12">
-                      <button class="btn btn-secondary" type="submit">
-                        حفظ
-                      </button>
+                    <div className="col-12 d-flex justify-content-center">
+                      <div class="col-12">
+                        <button class="btn btn-secondary" type="submit">
+                          حفظ
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Form>
-            </Formik>
-          </div>
-          <div
-            class="tab-pane fade"
-            id="profile"
-            role="tabpanel"
-            aria-labelledby="profile-tab"
-          >
-            <div className="row">
-              <div className="col-6">
-                <Formik
-                  enableReinitialize
-                  initialValues={{
-                    height: userData.height,
-                    neckLength: userData.neckLength,
-                    waistLength: userData.waistLength,
-                  }}
-                  validationSchema={heightValidationSchema}
-                  onSubmit={onSubmit}
-                >
-                  <Form>
-                    <div className="row g-3 mt-3">
-                      <div className="form-floating mb-3 col-12">
-                        <Field
-                          type="number"
-                          className="form-control bg-transparent"
-                          id="height"
-                          name="height"
-                          onFocus={handleClickLength}
-                          onBlur={handleBlur}
-                        />
-                        <label htmlFor="height">الطول/ سم</label>
-                        <ErrorMessage
-                          name="height"
-                          component="span"
-                          className="text-danger"
-                        />
-                      </div>
+                </Form>
+              </Formik>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="profile"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+            >
+              <div className="row">
+                <div className="col-6">
+                  <Formik
+                    enableReinitialize
+                    initialValues={{
+                      height: userData.height,
+                      neckLength: userData.neckLength,
+                      waistLength: userData.waistLength,
+                    }}
+                    validationSchema={heightValidationSchema}
+                    onSubmit={onSubmit}
+                  >
+                    <Form>
+                      <div className="row g-3 mt-3">
+                        <div className="form-floating mb-3 col-12">
+                          <Field
+                            type="number"
+                            className="form-control bg-transparent"
+                            id="height"
+                            name="height"
+                            onFocus={handleClickLength}
+                            onBlur={handleBlur}
+                          />
+                          <label htmlFor="height">الطول/ سم</label>
+                          <ErrorMessage
+                            name="height"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
 
-                      <div className="form-floating mb-3 col-12">
-                        <Field
-                          type="number"
-                          className="form-control bg-transparent"
-                          id="neckLength"
-                          name="neckLength"
-                          onFocus={handleClickNeck}
-                          onBlur={handleBlur}
-                        />
-                        <label htmlFor="neckLength">الرقبة/ سم</label>
-                        <ErrorMessage
-                          name="neckLength"
-                          component="span"
-                          className="text-danger"
-                        />
-                      </div>
+                        <div className="form-floating mb-3 col-12">
+                          <Field
+                            type="number"
+                            className="form-control bg-transparent"
+                            id="neckLength"
+                            name="neckLength"
+                            onFocus={handleClickNeck}
+                            onBlur={handleBlur}
+                          />
+                          <label htmlFor="neckLength">الرقبة/ سم</label>
+                          <ErrorMessage
+                            name="neckLength"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
 
-                      <div className="form-floating mb-3 col-12">
-                        <Field
-                          type="number"
-                          className="form-control bg-transparent"
-                          id="waistLength"
-                          name="waistLength"
-                          onFocus={handleClickWaist}
-                          onBlur={handleBlur}
-                        />
-                        <label htmlFor="waistLength">الخصر/ سم</label>
-                        <ErrorMessage
-                          name="waistLength"
-                          component="span"
-                          className="text-danger"
-                        />
-                      </div>
+                        <div className="form-floating mb-3 col-12">
+                          <Field
+                            type="number"
+                            className="form-control bg-transparent"
+                            id="waistLength"
+                            name="waistLength"
+                            onFocus={handleClickWaist}
+                            onBlur={handleBlur}
+                          />
+                          <label htmlFor="waistLength">الخصر/ سم</label>
+                          <ErrorMessage
+                            name="waistLength"
+                            component="span"
+                            className="text-danger"
+                          />
+                        </div>
 
-                      <div className="col-12 d-flex justify-content-center">
-                        <div class="col-12">
-                          <button class="btn btn-secondary" type="submit">
-                            حفظ
-                          </button>
+                        <div className="col-12 d-flex justify-content-center">
+                          <div class="col-12">
+                            <button class="btn btn-secondary" type="submit">
+                              حفظ
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Form>
-                </Formik>
-              </div>
-              <div className="col-6 d-flex justify-content-center">
-                <img
-                  className="text-center "
-                  src={imageSrc}
-                  alt="PEEK RESULT"
-                  width="150"
-                />
+                    </Form>
+                  </Formik>
+                </div>
+                <div className="col-6 d-flex justify-content-center">
+                  <img
+                    className="text-center "
+                    src={imageSrc}
+                    alt="PEEK RESULT"
+                    width="150"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="tab-pane fade"
-            id="contact"
-            role="tabpanel"
-            aria-labelledby="contact-tab"
-          >
-            <Formik
-              enableReinitialize
-              initialValues={{
-                weight: userData.weight,
-                muscleWeight: userData.muscleWeight,
-                fatWeight: userData.fatWeight,
-              }}
-              validationSchema={weightValidationSchema}
-              onSubmit={onSubmit}
+            <div
+              class="tab-pane fade"
+              id="contact"
+              role="tabpanel"
+              aria-labelledby="contact-tab"
             >
-              <Form>
-                <div className="row g-3 mt-3">
-                  <div className="form-floating mb-3 col-12">
-                    <Field
-                      type="number"
-                      className="form-control bg-transparent"
-                      id="weight"
-                      name="weight"
-                    />
-                    <label htmlFor="weight">وزن الجسم/ كجم</label>
-                    <ErrorMessage
-                      name="weight"
-                      component="span"
-                      className="text-danger"
-                    />
-                  </div>
+              <Formik
+                enableReinitialize
+                initialValues={{
+                  weight: userData.weight,
+                  muscleWeight: userData.muscleWeight,
+                  fatWeight: userData.fatWeight,
+                }}
+                validationSchema={weightValidationSchema}
+                onSubmit={onSubmit}
+              >
+                <Form>
+                  <div className="row g-3 mt-3">
+                    <div className="form-floating mb-3 col-12">
+                      <Field
+                        type="number"
+                        className="form-control bg-transparent"
+                        id="weight"
+                        name="weight"
+                      />
+                      <label htmlFor="weight">وزن الجسم/ كجم</label>
+                      <ErrorMessage
+                        name="weight"
+                        component="span"
+                        className="text-danger"
+                      />
+                    </div>
 
-                  <div className="form-floating mb-3 col-12">
-                    <Field
-                      type="number"
-                      className="form-control bg-transparent"
-                      id="muscleWeight "
-                      name="muscleWeight"
-                    />
-                    <label htmlFor="muscleWeight">وزن العضلات/ كجم</label>
-                    <ErrorMessage
-                      name="muscleWeight"
-                      component="span"
-                      className="text-danger"
-                    />
-                  </div>
+                    <div className="form-floating mb-3 col-12">
+                      <Field
+                        type="number"
+                        className="form-control bg-transparent"
+                        id="muscleWeight "
+                        name="muscleWeight"
+                      />
+                      <label htmlFor="muscleWeight">وزن العضلات/ كجم</label>
+                      <ErrorMessage
+                        name="muscleWeight"
+                        component="span"
+                        className="text-danger"
+                      />
+                    </div>
 
-                  <div className="form-floating mb-3 col-12">
-                    <Field
-                      type="number"
-                      className="form-control bg-transparent"
-                      id="fatWeight"
-                      name="fatWeight"
-                    />
-                    <label htmlFor="fatWeight">وزن الدهون/ كجم</label>
-                    <ErrorMessage
-                      name="fatWeight"
-                      component="span"
-                      className="text-danger"
-                    />
-                  </div>
+                    <div className="form-floating mb-3 col-12">
+                      <Field
+                        type="number"
+                        className="form-control bg-transparent"
+                        id="fatWeight"
+                        name="fatWeight"
+                      />
+                      <label htmlFor="fatWeight">وزن الدهون/ كجم</label>
+                      <ErrorMessage
+                        name="fatWeight"
+                        component="span"
+                        className="text-danger"
+                      />
+                    </div>
 
-                  <div className="col-12 d-flex justify-content-center">
-                    <div class="col-12">
-                      <button class="btn btn-secondary" type="submit">
-                        حفظ
-                      </button>
+                    <div className="col-12 d-flex justify-content-center">
+                      <div class="col-12">
+                        <button class="btn btn-secondary" type="submit">
+                          حفظ
+                        </button>
+                      </div>
                     </div>
                   </div>
+                </Form>
+              </Formik>
+            </div>
+          </div>
+        </div>
+
+        <h4 className="my-4">الحساب</h4>
+        {isMobile && (
+          <div className="row">
+            <div class="list-group p-1  ">
+              <button
+                type="button "
+                class="list-group-item d-flex justify-content-between list-group-item-action border-0 border-bottom  bg-body-secondary p-4 "
+                aria-current="true"
+              >
+                <div>
+                <i class="bi bi-person ms-1"></i>
+                تحديث الحساب
                 </div>
-              </Form>
-            </Formik>
-          </div>
-        </div>
-      </div>
+                <i class="bi bi-arrow-left"></i>
+              </button>
+              <button
+                type="button"
+                class="list-group-item d-flex justify-content-between list-group-item-action  border-0  bg-body-secondary p-4"
+              >
+                <div>
+                <i class="bi bi-person-vcard ms-1"></i>
+                اشتراكي 
+                </div>
+                <i class="bi bi-arrow-left"></i>  
+              </button>
 
-      <h4 className="my-4">الحساب</h4>
-      <div className="container my-4">
-        <div className="row gap-3">
-          <div className="col bg-body-secondary rounded text-center ">
-            <Link className="nav-link" to="/accountData">
-              <div className=" p-4  ">
-                <h1 className="">
-                  <i class="bi bi-person-fill "></i>
-                </h1>
-                <h6 className="">الملف الشخصي</h6>
+            </div>
+            
+              <div className="mt-4 p-1">
+              <button class="btn bg-body-secondary text-danger  w-100" onClick={logout}>
+                <i class="bi bi-box-arrow-right "></i> تسجل خروج
+              </button>
               </div>
-            </Link>
+              <div className="my-5"></div>
           </div>
-
-          <div className="col bg-body-secondary rounded text-center ">
-            <Link className="nav-link" to="/mySubscription">
-              <div className="p-4  ">
-                <h1 className="">
-                  <i class="bi bi-person-vcard-fill"></i>
-                </h1>
-                <h6>الاشتراكات </h6>
-              </div>
-            </Link>
-          </div>
-        </div>
+        )}
       </div>
-      {isMobile && (
-        <div className="row mb-5">
-          <div className="col-12 col-md-4 mb-5 ">
-            <button class="btn btn-outline-danger w-100" onClick={logout}>
-              <i class="bi bi-box-arrow-right "></i> تسجل خروج
-            </button>
-          </div>
-        </div>
-      )}
-      
-    </div>
-    <LoginRequired show={modalShow} onHide={() => setModalShow(false) } />
+      <LoginRequired show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Dropdown } from "react-bootstrap";
 import Login from "./login";
-import {TopNavBtn, TopNavDrop} from "./topNavBtn";
+import { TopNavBtn, TopNavDrop } from "./topNavBtn";
 
 function BrowserNavbar() {
   const [userData, setUserData] = useState([]);
@@ -44,27 +44,45 @@ function BrowserNavbar() {
       <div class="sticky-top bg-body border-bottom container-fluid   ">
         <div className="container d-flex justify-content-between py-2 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 ">
           {!userData ? (
-            <TopNavBtn onClick={() => setModalShow(true)} mainTxt={"دخول / تسجيل"} subTxt={"يا هلا"}/>
-
+            <TopNavBtn
+              onClick={() => setModalShow(true)}
+              mainTxt={"دخول / تسجيل"}
+              subTxt={"يا هلا"}
+            />
           ) : (
             <div className="d-flex gap-3 align-items-center">
               <i className="bi bi-bell fs-5"></i>
+              <i class="bi bi-moon fs-5"></i>
               <div className="border h-100"></div>
               <Dropdown>
-                <Dropdown.Toggle variant="" id="dropdown-basic" className="p-0 d-flex align-items-center top-navbar rounded-pill">
-                <TopNavBtn mainTxt={"دخول / تسجيل"} subTxt={"يا هلا"}/>
+                <Dropdown.Toggle
+                  variant=""
+                  id="dropdown-basic"
+                  className="p-0 d-flex align-items-center top-navbar rounded-pill"
+                >
+                  <TopNavBtn
+                    mainTxt={"الحساب"}
+                    subTxt={`يا هلا ${userData.username}!`}
+                  />
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-
-                <Dropdown.Item onClick={logout}>
-                    تسجيل الخروج <i class="bi bi-box-arrow-right "></i>
+                <Dropdown.Menu className="text-end">
+                  <Dropdown.Item onClick={logout}>
+                  <i class="bi bi-person-gear ms-1"></i>
+                     تحديث الحساب 
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={logout}>
+                  <i class="bi bi-person-vcard ms-1"></i>
+                      اشتراكي 
                   </Dropdown.Item>
 
-                <li><hr class="dropdown-divider"/></li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
 
                   <Dropdown.Item onClick={logout} className="text-danger">
-                    تسجيل الخروج <i class="bi bi-box-arrow-right "></i>
+                  <i class="bi bi-box-arrow-right ms-1 "></i> 
+                    تسجيل الخروج 
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -81,7 +99,7 @@ function BrowserNavbar() {
         </div>
       </div>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-body border-bottom">
+      <nav class="navbar navbar-expand-lg navbar-light bg-body border-bottom py-0">
         <div class="container-fluid">
           <button
             data-mdb-collapse-init
@@ -104,7 +122,7 @@ function BrowserNavbar() {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link align-items-center rounded-pill bg-body-secondary"
+                      ? "nav-link align-items-center border-bottom border-primary border-2"
                       : "nav-link align-items-center"
                   }
                   to="/"
@@ -119,7 +137,7 @@ function BrowserNavbar() {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link align-items-center rounded-pill bg-body-secondary"
+                      ? "nav-link align-items-center border-bottom border-primary border-2"
                       : "nav-link align-items-center"
                   }
                   to="/Schedules"
@@ -134,7 +152,7 @@ function BrowserNavbar() {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link align-items-center rounded-pill bg-body-secondary"
+                      ? "nav-link align-items-center border-bottom border-primary border-2"
                       : "nav-link align-items-center"
                   }
                   to="/Offers"
@@ -149,14 +167,14 @@ function BrowserNavbar() {
                 <NavLink
                   className={({ isActive }) =>
                     isActive
-                      ? "nav-link align-items-center rounded-pill bg-body-secondary"
+                      ? "nav-link align-items-center border-bottom border-primary border-2"
                       : "nav-link align-items-center"
                   }
                   to="/Account"
                 >
                   <div className="d-flex align-items-center gap-1 ">
-                    <i class="bi bi-person"></i>
-                    الحساب
+                  <i class="bi bi-pie-chart"></i>
+                    بياناتي
                   </div>
                 </NavLink>
               </li>
@@ -164,7 +182,11 @@ function BrowserNavbar() {
           </div>
         </div>
       </nav>
-      <Login  show={modalShow} onHide={() => setModalShow(false)  } fetchData={fetchData} />
+      <Login
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        fetchData={fetchData}
+      />
     </>
   );
 }

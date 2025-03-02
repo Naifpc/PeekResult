@@ -57,8 +57,8 @@ function MobileBotNavbar() {
               }
               to="/Account"
             >
-              <i class="bi bi-person fs-3"></i>
-              <h6 class="nav-link p-0">الحساب</h6>
+              <i class="bi bi-pie-chart fs-3"></i>
+              <h6 class="nav-link p-0">بياناتي</h6>
             </NavLink>
           </li>
         </ul>
