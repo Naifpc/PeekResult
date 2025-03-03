@@ -9,7 +9,7 @@ var indexRouter = require('./routes/index');
 const usersRouter = require('./routes/Users');
 const trianerRouter = require('./routes/Trainer');
 const fieldsRouter = require('./routes/Fields');
-const trainerFields = require('./routes/trainerFields');
+const trainerFields = require('./routes/TrainerFields');
 
 const jwt = require('jsonwebtoken')
 
@@ -34,6 +34,8 @@ app.use('/', indexRouter);
 app.use('/authenticate', usersRouter);
 app.use('/trainer', trianerRouter);
 app.use('/fields', fieldsRouter);
+app.use('/uploads', express.static('./uploads'));
+app.use(express.urlencoded({ extended: true }));
 app.use('/trainerFields', trainerFields);
 
 // catch 404 and forward to error handler

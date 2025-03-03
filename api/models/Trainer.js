@@ -22,10 +22,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT('tiny'), // TINYTEXT 255 chars
             allowNull: false,
         },
-        imagePath:{
+        avatar:{
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
+
     });
     Trainer.associate = (models) => {
         Trainer.belongsToMany(models.Fields, {

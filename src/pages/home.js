@@ -52,6 +52,7 @@ function Home() {
                 field={value.field}
                 image={value.imagePath}
                 id={value.id}
+                avatar={value.avatar.replace("\\", "/")}
               />
             );
           })}

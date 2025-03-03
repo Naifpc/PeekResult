@@ -6,8 +6,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DangerAlert from "./DangerAlertMsg";
 import Modal from "react-bootstrap/Modal";
+import Register from "./register";
 
 function Login(props) {
+  const [modalShow, setModalShow] = useState(false);
+
+
   const validationSchema = Yup.object().shape({
     email: Yup.string().required().email(),
     password: Yup.string().required().min(8).max(24),
@@ -30,6 +34,7 @@ function Login(props) {
   };
 
   return (
+   <>
     <Modal
       {...props}
       className=""
@@ -122,14 +127,20 @@ function Login(props) {
             className="btn btn-link link-offset-2  link-offset-3-hover
                                 link-underline link-underline-opacity-0 
                                 link-underline-opacity-75-hover pt-0"
-            data-bs-toggle="modal"
-            data-bs-target="#registerModal"
+                                onClick={() => setModalShow(true)}
           >
             تسجيل حساب
           </button>
         </p>
       </Modal.Footer>
     </Modal>
+    <Register
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+    />
+   </>
+
+
   );
 }
 

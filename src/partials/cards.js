@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function Trainer({ name, experience, field, image, id }) {
+function Trainer({ name, experience, field, image, id,avatar }) {
   // Construct the image URL
-  const imageUrl = `url(http://localhost:9000${image})`;
+  const imageUrl = `url(http://localhost:9000/${avatar})`;
 
   let navigate = useNavigate();
 
@@ -17,7 +17,7 @@ function Trainer({ name, experience, field, image, id }) {
             style={{ backgroundImage: imageUrl }}
           ></div>
 
-          <div className="card-body text-end">
+          <div className="card-body card-custom-body text-end">
             <h3 className="card-title">{name}</h3>
             <div className="d-flex mt-2 justify-content-between text-secondary">
               <h6 className="card-subtitle align-content-center">

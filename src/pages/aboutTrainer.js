@@ -6,6 +6,9 @@ import { NavLink, Outlet, Link } from "react-router-dom";
 function AboutTrainer() {
   let { id } = useParams(); // get id from url
   const [trainerObject, setTrainerObject] = useState({});
+  const imageUrl = `url(http://localhost:9000/${trainerObject.trainer?.avatar.replace("\\", "/")})`;
+
+  console.log(imageUrl)
 
   useEffect(() => {
     axios.get(`http://localhost:9000/trainer/byId/${id}`).then((response) => {
@@ -20,7 +23,9 @@ function AboutTrainer() {
       <div className="container-fluid bg-body-secondary  ">
         <div className="row justify-content-center">
           <div className="col-12 col-md-4">
-            <div className="header-image "></div>
+            <div className="header-image "
+            style={{ backgroundImage: imageUrl }}
+            ></div>
           </div>
         </div>
       </div>

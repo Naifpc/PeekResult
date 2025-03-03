@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import Login from "./login";
 
 function MobileBotNavbar() {
   return (
@@ -69,6 +69,7 @@ function MobileBotNavbar() {
 
 function MobiletopNavbar() {
   const [userData, setUserData] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -94,16 +95,19 @@ function MobiletopNavbar() {
     }
   };
 
+  
+
   return (
+
+  <>
     <div class=" bg-body  ">
       <nav class="container d-flex justify-content-between navbar navbar-expand-lg px-3 px-sm-3 px-md-3 px-lg-4 px-xl-5">
         {!userData && (
           <button
             type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#loginModal"
-            class="nav-link d-flex gap-2 align-items-center  "
-            to="/"
+            onClick={() => setModalShow(true)}
+            className="nav-link d-flex gap-2 align-items-center  "
+
           >
             <i class="bi bi-person-circle fs-5"></i>
             <p className="fs-6 m-0">دخول / تسجيل</p>
@@ -125,6 +129,13 @@ function MobiletopNavbar() {
         </NavLink>
       </nav>
     </div>
+    <Login
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        fetchData={fetchData}
+        fullscreen={true}
+      />
+  </>
   );
 }
 

@@ -1,64 +1,92 @@
-const express = require('express');
+const express = require("express");
+const multer  = require('multer')
 const router = express.Router();
-const { Trainer, Fields , TrainerFields } = require('../models');
-const { isEmptyObject } = require('jquery');
+const { Trainer, Fields } = require("../models");
+
+const path = require('path');
+
+//Upload Image controller
+
+const imgconfig = multer.diskStorage({
+    destination:(req, file,callback)=>{
+        callback(null,'uploads')
+    },
+    filename:(req, file, callback)=>{
+        callback(null, `image-${Date.now()}.${file.originalname}`)
+    }
+})
+
+//image filter
+const upload = multer({
+    
+    storage: imgconfig,
+    limits:{fileSize:'1000000'},
+    fileFilter:(req, file, callback)=>{
+        const fileType = /jpeg|jpg|png|gif/
+        const mimeType = fileType.test(file.mimetype)
+        const extname = fileType.test(path.extname(file.originalname))
+        if(mimeType && extname){
+            return callback(null, true)
+        }
+        callback('Give proper file format to upload')
+    }
+})
 
 
 
 // POST route to create a new trainer and associate with fields
-router.post('/', async (req, res) => {
-  const { username, email, password, experience, description, imagePath, fieldIds } = req.body;
-  
+router.post("/newTrianer", upload.single('avatar'), async (req, res) => {
+  const {
+    username,
+    email,
+    password,
+    experience,
+    description,
+    fieldIds,
+  } = req.body;
+
   try {
-      // Create the new trainer
-      const newTrainer = await Trainer.create({
-          username,
-          email,
-          password,
-          experience,
-          description,
-          imagePath
-      });
-      
-      // Find the fields by their IDs
-      const fields = await Fields.findAll({
-          where: {
-              id: fieldIds // Assuming fieldIds is an array of field IDs
-          }
-      });
-      
-      // Associate the trainer with the fields
-      await newTrainer.addFields(fields);
-
-      res.status(201).json(newTrainer);
-  } catch (error) {
-      res.status(500).json({ error: error.message });
-
-    }
+    // Create the new trainer
+    const newTrainer = await Trainer.create({
+      username,
+      email,
+      password,
+      experience,
+      description,
+      avatar: req.file ? req.file.path : null, // Save image path
     });
 
-router.get('/byFieldID/:id?' , async (req, res) => { // query by id 
-  try {
-    const id = req.params.id
+    // Find the fields by their IDs
+    const fields = await Fields.findAll({
+      where: {
+        id: fieldIds, // Assuming fieldIds is an array of field IDs
+      },
+    });
 
-   
-        const fields = await Fields.findByPk(id)
-    
-        
-        const trainers = await fields.getTrainers();// Get all trainers associated with the field
-    
-        res.json(trainers);
-    
-
-    
-
+    // Associate the trainer with the fields
+    await newTrainer.addFields(fields);
+    res.status(201).json(req.body);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Failed to get Trainer' });
+    res.status(500).json({ error: error.message });
   }
 });
 
 
- 
+
+// query trainer by id
+router.get("/byFieldID/:id?", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const fields = await Fields.findByPk(id);
+
+    const trainers = await fields.getTrainers(); // Get all trainers associated with the field
+
+    res.json(trainers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to get Trainer" });
+  }
+});
 
 module.exports = router;
