@@ -4,10 +4,14 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
+import DangerAlert from "./DangerAlertMsg";
 
 function Register(props) {
   const [listOfFields, setListOfFields] = useState([]);
   const [file, setFile] = useState([]);
+  const [alertMessage, setAlertMessage] = useState(false);
+  const [msg, setMsg] = useState("");
+  
 
 
   useEffect(() => {
@@ -16,16 +20,35 @@ function Register(props) {
     });
   }, []);
 
-  const validationSchema = Yup.object().shape({
+  const trianeeValidation = Yup.object().shape({
     username: Yup.string().required().min(3).max(24),
     email: Yup.string().required().email(),
     password: Yup.string().required().min(8).max(24),
   });
 
+  const trianerValidation = Yup.object().shape({
+    username: Yup.string().required().min(3).max(24),
+    email: Yup.string().required().email(),
+    password: Yup.string().required().min(8).max(24),
+    experience: Yup.number().required().min(0).max(70),
+    description: Yup.string().required().min(4).max(255),
+    fieldIds: Yup.array().required().min(1),
+    gender: Yup.string().required().min(4).max(255),
+
+  });
+
   const onSubmitTrainee = (data) => {
     axios
       .post("http://localhost:9000/authenticate/register", data)
-      .then((response) => {});
+      .then((response) => {
+
+        if (response.data.error) {
+          setMsg("حصل خطأ في انشاء المتدرب")
+          setAlertMessage(true);
+        } else {
+          props.onHide();
+        }
+      });
   };
 
   const onSubmitTrainer = (data) => {
@@ -55,16 +78,21 @@ function Register(props) {
       })
       .then((response) => {
 
-        props.onHide();
+        if (response.data.error) {
+          setMsg("حصل خطأ في انشاء المدرب")
+          setAlertMessage(true);
+        } else {
+          props.onHide();
+        }
 
       });
   };
 
   return (
     <Modal {...props} fullscreen={true}>
-      <Modal.Header className="flex-row-reverse" closeButton>
+      <Modal.Header className="flex-row-reverse " closeButton>
         <Modal.Title>
-          <h3 className=" mb-3">انشاء حساب</h3>
+          <h4 className="m-0">انشاء حساب</h4>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -113,6 +141,9 @@ function Register(props) {
             class="tab-content p-5 rounded bg-body-secondary "
             id="myTabContent"
           >
+
+            {alertMessage && <DangerAlert msg={msg} />}
+           
             <div
               class="tab-pane fade show active"
               id="home"
@@ -121,7 +152,7 @@ function Register(props) {
             >
               <Formik
                 initialValues={{ username: "", email: "", password: "" }}
-                validationSchema={validationSchema}
+                validationSchema={trianeeValidation}
                 onSubmit={onSubmitTrainee}
               >
                 <Form>
@@ -203,7 +234,7 @@ function Register(props) {
                   gender: "",
                   avatar: "",
                 }}
-                validationSchema={validationSchema}
+                validationSchema={trianerValidation}
                 onSubmit={onSubmitTrainer}
               >
                 <Form encType={"multipart/form-data"}>
@@ -254,6 +285,7 @@ function Register(props) {
 
                     <div className="col-12 form-floating">
                       <Field
+                      type="number"
                         className="form-control bg-transparent"
                         name="experience"
                         placeholder=" "

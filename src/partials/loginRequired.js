@@ -1,51 +1,63 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Login from "./login"
+import { useEffect, useState } from "react";
 
 import Modal from "react-bootstrap/Modal";
 
 function LoginRequired(props) {
- 
+  let navigate = useNavigate();
+  const [modalShow, setModalShow] = useState(false);
+  
   return (
-    <Modal
-      {...props}
-      backdrop="static"
-      keyboard={false}
-      size="md"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header  className="border-0">
-        <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
-      </Modal.Header>
+    <>
+      <Modal
+        {...props}
+        backdrop="static"
+        keyboard={false}
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header className="border-0">
+          <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+        </Modal.Header>
 
-      <Modal.Body className="border-0 p-5 text-center">
-      <div className="row g-2">
-      <i class="bi bi-person fs-1"></i>
-        <h4 className="fw-bold">يجب تسجيل الدخول</h4>
-        <h6 className="text-secondary">
-          عليك تسجيل الدخول لعرض هذه الصفحة
-        </h6>
-        <button className="btn w-50 btn-primary mx-auto" type="submit">
-                  <div>تسجيل دخول</div>
-                </button>
-      </div>
-      </Modal.Body>
-      <Modal.Footer>
-        <p className="fs-6 w-100 text-center">
-          ليس لديك حساب؟
-          <button
-            type="button"
-            className="btn btn-link link-offset-2  link-offset-3-hover
-                                link-underline link-underline-opacity-0 
-                                link-underline-opacity-75-hover pt-0"
-            data-bs-toggle="modal"
-            data-bs-target="#registerModal"
-          >
-            تسجيل حساب
-          </button>
-        </p>
-      </Modal.Footer>
-    </Modal>
+        <Modal.Body className="border-0 p-5 text-center">
+          <div className="row g-2">
+            <div className="col-12">
+            <i class="bi bi-person fs-1"></i>
+            <h4 className="fw-bold">يجب تسجيل الدخول</h4>
+            </div>
+            <div className="col-12">
+            <h6 className="text-secondary">
+              عليك تسجيل الدخول لعرض هذه الصفحة
+            </h6>
+            </div>
+            <div className="col-12">
+              <button className="btn w-75 btn-primary mx-auto" type="button"   onClick={() => setModalShow(true)}>
+                <div>تسجيل الدخول</div>
+              </button>
+            </div>
+            <div className="col-12">
+              <button
+                className="btn w-75 btn-outline-secondary mx-auto"
+                type="button"
+                onClick={() => {
+                  navigate(`/`);
+                }}
+              >
+                <div>رجوع</div>
+              </button>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Login
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+    />
+    </>
   );
 }
 

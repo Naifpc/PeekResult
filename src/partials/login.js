@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import DangerAlert from "./DangerAlertMsg";
 import Modal from "react-bootstrap/Modal";
 import Register from "./register";
+import { isMobile } from "react-device-detect";
 
 function Login(props) {
   const [modalShow, setModalShow] = useState(false);
@@ -35,13 +36,16 @@ function Login(props) {
 
   return (
    <>
+
     <Modal
       {...props}
+      fullscreen={isMobile?(true):(false)}
       className=""
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
+   
       <Modal.Header closeButton className="border-0">
         <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
       </Modal.Header>

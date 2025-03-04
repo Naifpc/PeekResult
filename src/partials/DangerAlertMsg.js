@@ -8,7 +8,7 @@ function DangerAlert({ msg }) {
       role="alert"
     >
       <i class="bi bi-exclamation-triangle-fill"></i>
-      <div>كلمة السر او الايميل خاطئ</div>
+      <div>{msg}</div>
     </div>
   );
 }

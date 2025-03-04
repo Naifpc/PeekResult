@@ -133,7 +133,6 @@ function MobiletopNavbar() {
         show={modalShow}
         onHide={() => setModalShow(false)}
         fetchData={fetchData}
-        fullscreen={true}
       />
   </>
   );

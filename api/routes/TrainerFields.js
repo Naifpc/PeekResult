@@ -1,6 +1,7 @@
 const express = require("express");
 const multer  = require('multer')
 const router = express.Router();
+const bcrypt = require("bcrypt");
 const { Trainer, Fields } = require("../models");
 
 const path = require('path');
@@ -36,21 +37,22 @@ const upload = multer({
 
 // POST route to create a new trainer and associate with fields
 router.post("/newTrianer", upload.single('avatar'), async (req, res) => {
-  const {
-    username,
-    email,
-    password,
-    experience,
-    description,
-    fieldIds,
-  } = req.body;
-
   try {
-    // Create the new trainer
-    const newTrainer = await Trainer.create({
+    const {
       username,
       email,
       password,
+      experience,
+      description,
+      fieldIds,
+    } = req.body;
+
+    // Create the new trainer with hashed password
+    const hash = await bcrypt.hash(password, 10);
+    const newTrainer = await Trainer.create({
+      username,
+      email,
+      password: hash,
       experience,
       description,
       avatar: req.file ? req.file.path : null, // Save image path
@@ -64,12 +66,15 @@ router.post("/newTrianer", upload.single('avatar'), async (req, res) => {
     });
 
     // Associate the trainer with the fields
-    await newTrainer.addFields(fields);
-    res.status(201).json(req.body);
+    await newTrainer.addFields(fields); 
+
+    res.json("SUCCESS");
+
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
 
 
 

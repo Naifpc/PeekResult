@@ -8,5 +8,8 @@ $body-secondary-bg-dark:  #272727ff;
 $body-tertiary-bg-dark:  #323232ff;
 $secondary:    #666666ff ;
 
+$btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor'><path d='M6 1L12 8L6 15L4.5 13.5L9 8L4.5 2.5L6 1Z'/></svg>");
+
+
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
