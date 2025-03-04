@@ -13,6 +13,12 @@ function Home() {
   let { id } = useParams(); // get id from url
 
   useEffect(() => {
+    fetchData();
+  }, [id]); //[id] to re run every time id changes
+
+
+
+  const fetchData = async () => {
     if (!id) {
       axios.get(`http://localhost:9000/trainer`).then((response) => { //return all trainers if no id on url
         setListOfTrainers(response.data);
@@ -24,7 +30,7 @@ function Home() {
           setListOfTrainers(response.data);//return all trainers with same field id 
         });
     }
-  }, [id]); //[id] to re run every time id changes
+  };
 
   const filteredTrainers = useMemo(() =>{ 
     return listOfTrainers.filter((item) => {

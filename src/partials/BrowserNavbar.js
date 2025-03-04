@@ -51,8 +51,7 @@ function BrowserNavbar() {
             />
           ) : (
             <div className="d-flex gap-3 align-items-center">
-              <i className="bi bi-bell fs-5"></i>
-              <i class="bi bi-moon fs-5"></i>
+              <i class="bi bi-chat fs-4"></i>
               <div className="border h-100"></div>
               <Dropdown>
                 <Dropdown.Toggle

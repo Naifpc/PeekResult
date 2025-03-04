@@ -6,6 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import LoginRequired from "../partials/loginRequired";
+import { useNavigate } from "react-router-dom";
 
 function calculateAge(birthDate) {
   //calculate age from birthdate
@@ -30,6 +31,7 @@ function calculateBMI(heightCm, weightKg) {
 }
 
 function Account() {
+  let navigate = useNavigate();
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
@@ -77,6 +79,7 @@ function Account() {
   const logout = () => {
     sessionStorage.removeItem("accessToken");
     setUserData(false);
+    navigate('/')
   };
 
   const [imageSrc, setImageSrc] = useState(

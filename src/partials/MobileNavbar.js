@@ -116,7 +116,7 @@ function MobiletopNavbar() {
 
         {userData && (
           <div>
-            <i class="bi bi-bell fs-5"></i>
+            <i class="bi bi-chat fs-4"></i>
           </div>
         )}
 
