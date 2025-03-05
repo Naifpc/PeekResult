@@ -6,7 +6,7 @@ export default function CalendarGfg() {
     const [value, onChange] = useState(new Date());
 
     return (
-        <div className='container-fluid'>
+        <>
 
             <Calendar 
                 
@@ -15,9 +15,9 @@ export default function CalendarGfg() {
                 calendarType='islamic'
 
 
-                className="w-100 bg-body-secondary border-0 rounded"
+                className="w-100 bg-body border rounded"
             />
-        </div>
+        </>
     );
 }
 
