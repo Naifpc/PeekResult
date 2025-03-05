@@ -5,60 +5,63 @@ import axios from "axios";
 import Login from "./login";
 
 function MobileBotNavbar() {
+
+  const active = "nav-link active text-center d-flex flex-column align-items-center p-0  text-primary ";
+  const unactive ="nav-link text-center d-flex flex-column align-items-center p-0 "
   return (
-    <nav class="navbar py-0 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 fixed-bottom bg-body border-top  ">
+    <nav class="navbar py-0 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 fixed-bottom bg-body   ">
       <div class="container-fluid p-0">
         <ul class="navbar-nav d-flex flex-row justify-content-evenly p-0 w-100">
           <li class="nav-item">
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center border-top border-primary border-2 p-0"
-                  : "nav-link text-center d-flex flex-column align-items-center p-0"
+                  ? active
+                  : unactive
               }
               to="/"
             >
               <i class="bi bi-person-badge fs-3"></i>
-              <h2 class="nav-link p-0">المدربين</h2>
+              <h6 class="p-0 fw-light">المدربين</h6>
             </NavLink>
           </li>
           <li class="nav-item">
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center border-top border-primary border-2 p-0"
-                  : "nav-link text-center d-flex flex-column align-items-center p-0"
+              ? active
+              : unactive
               }
               to="/Schedules"
             >
               <i class="bi bi-calendar3 fs-3"></i>
-              <h2 class="nav-link p-0">الجداول</h2>
+              <h6 class="p-0 fw-light">الجداول</h6>
             </NavLink>
           </li>
           <li class="nav-item ">
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center p-0  border-top border-primary border-2 "
-                  : "nav-link text-center d-flex flex-column align-items-center p-0"
+              ? active
+              : unactive
               }
               to="/Offers"
             >
-              <i class="bi bi-patch-check fs-3"></i>
-              <h2 class="nav-link p-0">العروض</h2>
+              <i class="bi bi-percent fs-3"></i>
+              <h6 class="p-0 fw-light">العروض</h6>
             </NavLink>
           </li>
           <li class="nav-item">
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active text-center d-flex flex-column align-items-center border-top border-primary border-2 p-0 "
-                  : "nav-link text-center d-flex flex-column align-items-center p-0"
+              ? active
+              : unactive
               }
               to="/Account"
             >
               <i class="bi bi-pie-chart fs-3"></i>
-              <h6 class="nav-link p-0">بياناتي</h6>
+              <h6 class="p-0 fw-light">بياناتي</h6>
             </NavLink>
           </li>
         </ul>

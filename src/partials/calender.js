@@ -13,9 +13,7 @@ export default function CalendarGfg() {
                 onChange={onChange}
                 value={value}
                 calendarType='islamic'
-
-
-                className="w-100 bg-body border rounded"
+                className="w-100 bg-body-secondary border-0 rounded"
             />
         </>
     );

@@ -6,20 +6,20 @@ import HumanBody from "../partials/humanBody.js";
 function schedules() {
   return (
     <div class="container p-3  p-sm-3 p-md-3 p-lg-4 p-xl-5 ">
+      <h4 className="mb-4">الجداول</h4>
       <div className="row mb-5 g-3">
-        <div className="col-12">
-          <h4 className="mb-4">الجداول</h4>
-        </div>
+
         <div className="col-12 col-lg-6">
           <Calender />
         </div>
         <div className="col-12 col-lg-6">
-          <Accordion >
+          <Accordion flush >
             <Accordion.Item eventKey="0">
               <Accordion.Header>
                 <div className="text-end">
                   <h5> اسم التمرين</h5>
                   <div className="d-flex gap-1 text-secondary">
+                  <i class="bi bi-stopwatch"></i>
                     <h6 className="fw-light">10</h6>
                     <h6 className="fw-light">دقائق</h6>
                   </div>
@@ -41,6 +41,7 @@ function schedules() {
                     </div>
                     <div className="border"></div>
                     <div className="d-flex justify-content-center gap-1">
+
                       <h6 className="m-0">10</h6>
                       <h6 className="m-0">عدات</h6>
                     </div>
@@ -59,6 +60,7 @@ function schedules() {
                 <div className="text-end">
                   <h5> اسم التمرين</h5>
                   <div className="d-flex gap-1 text-secondary">
+                  <i class="bi bi-stopwatch"></i>
                     <h6 className="fw-light">10</h6>
                     <h6 className="fw-light">دقائق</h6>
                   </div>
@@ -80,6 +82,7 @@ function schedules() {
                     </div>
                     <div className="border"></div>
                     <div className="d-flex justify-content-center gap-1">
+
                       <h6 className="m-0">10</h6>
                       <h6 className="m-0">عدات</h6>
                     </div>
@@ -98,6 +101,7 @@ function schedules() {
                 <div className="text-end">
                   <h5> اسم التمرين</h5>
                   <div className="d-flex gap-1 text-secondary">
+                  <i class="bi bi-stopwatch"></i>
                     <h6 className="fw-light">10</h6>
                     <h6 className="fw-light">دقائق</h6>
                   </div>
@@ -119,6 +123,7 @@ function schedules() {
                     </div>
                     <div className="border"></div>
                     <div className="d-flex justify-content-center gap-1">
+
                       <h6 className="m-0">10</h6>
                       <h6 className="m-0">عدات</h6>
                     </div>
@@ -137,6 +142,7 @@ function schedules() {
                 <div className="text-end">
                   <h5> اسم التمرين</h5>
                   <div className="d-flex gap-1 text-secondary">
+                  <i class="bi bi-stopwatch"></i>
                     <h6 className="fw-light">10</h6>
                     <h6 className="fw-light">دقائق</h6>
                   </div>

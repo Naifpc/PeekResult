@@ -41,7 +41,7 @@ function BrowserNavbar() {
 
   return (
     <>
-      <div class="sticky-top bg-body border-bottom container-fluid   ">
+      <div class="sticky-top bg-body  container-fluid   ">
         <div className="container d-flex justify-content-between py-2 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 ">
           {!userData ? (
             <TopNavBtn
@@ -157,7 +157,7 @@ function BrowserNavbar() {
                   to="/Offers"
                 >
                   <div className="d-flex align-items-center gap-1 ">
-                    <i class="bi bi-patch-check"></i>
+                  <i class="bi bi-percent"></i>
                     العروض
                   </div>
                 </NavLink>
