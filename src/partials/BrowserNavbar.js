@@ -98,7 +98,7 @@ function BrowserNavbar() {
         </div>
       </div>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-body border-bottom py-0">
+      <nav class="navbar navbar-expand-lg navbar-light bg-body-secondary  py-0">
         <div class="container-fluid">
           <button
             data-mdb-collapse-init
