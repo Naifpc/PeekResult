@@ -15,48 +15,50 @@ function TriaingItem({ num }) {
       </Accordion.Header>
       <Accordion.Body>
         <div className="row g-2">
-          <div className="col-12 col-lg-6 border p-5 text-center rounded">
+          <div className="col-6 col-lg-6 border p-5 text-center rounded">
             <h1>video</h1>
           </div>
-          <div className="col-12 col-lg-6 text-center">
+          <div className="col-6 col-lg-6 text-center">
             <HumanBody />
           </div>
-          
+
           <div className="col-12">
-            <div className="row rounded bg-body-secondary p-2 text-center">
-              <div className="col-6">
+            <div className="row rounded-top bg-body-secondary p-2 text-center">
+              <div className="col-4">
                 <h6 className="text-secondary">الوزن</h6>
-                <input type="number" className="form-control border-0 text-center" defaultValue={15} />
+                <input
+                  type="number"
+                  className="form-control bg-transparent text-center"
+                  defaultValue={15}
+                />
               </div>
 
-              <div className="col-6">
+              <div className="col-4">
                 <h6 className="text-secondary">العدات</h6>
                 <h6 className="m-0">
-                  <input type="number" className="form-control border-0 text-center" defaultValue={8} />
+                  <input
+                    type="number"
+                    className="form-control bg-transparent text-center"
+                    defaultValue={8}
+                  />
                 </h6>
               </div>
 
-              <div className="col-12 mt-3">
-            <div
-              class=" progress bg-body"
-              role="progressbar"
-              aria-label="Success example"
-              aria-valuenow="25"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              <div class="progress-bar bg-success" style={{ width: "25%" }}>
-                {" "}
-                شدة منخفضة
+              <div className="col-4 ">
+                <h6 className="text-secondary">حفظ</h6>
+                <button className="btn bg-primary w-100 ">
+                  <i class="bi bi-save2"></i>
+                </button>
               </div>
+             
             </div>
           </div>
-          <div className="col-12 mt-3">
-            <button className="btn btn-primary w-50"><i class="bi bi-save2"></i> حفظ</button>
-          </div>
-            </div>
-          </div>
+          
         </div>
+        <div className="row border-top bg-body-secondary rounded-bottom">
+              <div className="col-12  text-center border-bottom text-secondary">شدة عالية</div>
+              <div className="col-12 text-center text-secondary">5 جلسات فعلية</div>
+          </div>
       </Accordion.Body>
     </Accordion.Item>
   );
