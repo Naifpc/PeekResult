@@ -1,6 +1,6 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
-
+import AnimatedPage from "../animations/AnimatedPage"
 import { useState } from "react";
 import TriaingItem from "../partials/trainingItem.js";
 
@@ -25,6 +25,7 @@ function Schedules() {
   };
 
   return (
+    <AnimatedPage>
     <div class="container p-3  p-sm-3 p-md-3 p-lg-4 p-xl-5 ">
       <h4 className="mb-4">الجداول</h4>
       <div className="row mb-5 g-3">
@@ -42,11 +43,11 @@ function Schedules() {
             <TriaingItem num={2}/>
             <TriaingItem num={3}/>
             <TriaingItem num={4}/>
-       
           </Accordion>
         </div>
       </div>
     </div>
+    </AnimatedPage>
   );
 }
 

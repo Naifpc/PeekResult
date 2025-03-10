@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Dropdown } from "react-bootstrap";
@@ -7,6 +7,7 @@ import Login from "./login";
 import { TopNavBtn, TopNavDrop } from "./topNavBtn";
 
 function BrowserNavbar() {
+  let navigate = useNavigate();
   const [userData, setUserData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
 
@@ -36,6 +37,7 @@ function BrowserNavbar() {
 
   const logout = () => {
     sessionStorage.removeItem("accessToken");
+    navigate('/');
     setUserData(false);
   };
 

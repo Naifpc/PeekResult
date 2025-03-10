@@ -3,9 +3,6 @@ var router = express.Router();
 
 const db = require("../models");
 
-
-
-
 db.sequelize.sync().then(() => {
   /* GET home page. */
   router.get("/", function (req, res, next) {

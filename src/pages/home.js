@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Filter from "../partials/filter";
 import { useParams } from "react-router-dom";
 import Search from "../partials/search";
-
+import AnimatedPage from "../animations/AnimatedPage"
 function Home() {
   const [listOfTrainers, setListOfTrainers] = useState([]);
   const [query, setQuery] = useState("");
@@ -20,12 +20,12 @@ function Home() {
 
   const fetchData = async () => {
     if (!id) {
-      axios.get(`http://localhost:9000/trainer`).then((response) => { //return all trainers if no id on url
+      axios.get(`http://localhost:9000/trainers/findAll`).then((response) => { //return all trainers if no id on url
         setListOfTrainers(response.data);
       });
     } else {
       axios
-        .get(`http://localhost:9000/trainerFields/byFieldID/${id}`)
+        .get(`http://localhost:9000/trainers/byFieldID/${id}`)
         .then((response) => {
           setListOfTrainers(response.data);//return all trainers with same field id 
         });
@@ -39,6 +39,7 @@ function Home() {
   }, [listOfTrainers, query]);// useMemo to only run when query or listOfItemsChange
 
   return (
+    <AnimatedPage>
     <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5  ">
       <h4 className="mb-4">المدربين</h4>
 
@@ -67,6 +68,7 @@ function Home() {
         </div>
       </div>
     </div>
+    </AnimatedPage>
   );
 }
 

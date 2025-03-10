@@ -3,10 +3,10 @@ const router = express.Router();
 const { Fields } = require("../models");
 
 
-
+// find all Fields
 router.get('/', async (req, res) => {
   try {
-    const allFields = await Fields.findAll(); // find all trainers
+    const allFields = await Fields.findAll(); 
     res.json(allFields);
     
 

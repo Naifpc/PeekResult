@@ -34,8 +34,9 @@ const upload = multer({
 })
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////
 // POST route to create a new trainer and associate with fields
+//////////////////////////////////////////////////////////////////////////////////////
 router.post("/newTrianer", upload.single('avatar'), async (req, res) => {
   try {
     const {
@@ -77,17 +78,59 @@ router.post("/newTrianer", upload.single('avatar'), async (req, res) => {
 
 
 
-
-// query trainer by id
+//////////////////////////////////////////////////////////////////////////////////////
+// query trainer by field id
+//////////////////////////////////////////////////////////////////////////////////////
 router.get("/byFieldID/:id?", async (req, res) => {
   try {
     const id = req.params.id;
 
     const fields = await Fields.findByPk(id);
 
-    const trainers = await fields.getTrainers(); // Get all trainers associated with the field
+    const trainers = await fields.getTrainers({attributes: ['id','username', 'experience','avatar']}); // Get all trainers associated with the field
 
     res.json(trainers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to get Trainer" });
+  }
+});
+
+//////////////////////////////////////////////////////////////////////////////////////
+// query all trainers
+//////////////////////////////////////////////////////////////////////////////////////
+router.get("/findAll", async (req, res) => {
+  try {
+    const allTrainers = await Trainer.findAll({attributes: ['id','username', 'experience','avatar']}); 
+    res.json(allTrainers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to get Trainer" });
+  }
+});
+
+//////////////////////////////////////////////////////////////////////////////////////
+// find trainer with id
+//////////////////////////////////////////////////////////////////////////////////////
+router.get("/byId/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const trainer = await Trainer.findByPk(id);
+    
+    const trainerData = {
+      username: trainer.username,
+      description:  trainer.description,
+      experience:  trainer.experience,
+      avatar:  trainer.avatar,
+
+    }
+
+    // Get all fields associated with the trainer
+    const fields = await trainer.getFields();
+
+    const trainerFields = { trainerData, fields };
+
+    res.json(trainerFields);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to get Trainer" });

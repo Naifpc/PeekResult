@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import DangerAlert from "./DangerAlertMsg";
+import Alerts from "./alerts";
 import Modal from "react-bootstrap/Modal";
 import Register from "./register";
 import { isMobile } from "react-device-detect";
@@ -73,7 +73,15 @@ function Login(props) {
           </Link>
         </h6>
 
-        {alerMessage && <DangerAlert msg={`كلمة السر او الايميل خاطئ`} />}
+        <Alerts
+         variant={'danger'} 
+         key={'danger'}
+         showAlert={alerMessage}
+         onClose={() => setAlerMessage(false)} 
+         icon={<i class="bi bi-exclamation-triangle-fill"></i>}
+         msg={`كلمة السر او الايميل خاطئ`} 
+         
+         />
 
         <Formik
           initialValues={{ username: "", email: "", password: "" }}

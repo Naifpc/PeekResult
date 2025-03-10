@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { NavLink, Outlet, Link } from "react-router-dom";
+import AnimatedPage from "../animations/AnimatedPage"
 
 function AboutTrainer() {
   let { id } = useParams(); // get id from url
   const [trainerObject, setTrainerObject] = useState({});
-  const imageUrl = `url(http://localhost:9000/${trainerObject.trainer?.avatar.replace("\\", "/")})`;
+  const imageUrl = `url(http://localhost:9000/${trainerObject.trainerData?.avatar.replace("\\", "/")})`;
 
   console.log(imageUrl)
 
   useEffect(() => {
-    axios.get(`http://localhost:9000/trainer/byId/${id}`).then((response) => {
+    axios.get(`http://localhost:9000/trainers/byId/${id}`).then((response) => {
       //query data by ID
       setTrainerObject(response.data);
       console.log(response.data);
@@ -19,6 +20,7 @@ function AboutTrainer() {
   }, []);
 
   return (
+    <AnimatedPage>
     <>
       <div className="container-fluid bg-body-secondary  ">
         <div className="row justify-content-center">
@@ -34,13 +36,13 @@ function AboutTrainer() {
         <div className="container">
           <div className="row g-3 gx-5 mb-4">
             <div className="col-12">
-              <h1 className="fw-bold">{trainerObject.trainer?.username}</h1>
+              <h1 className="fw-bold">{trainerObject.trainerData?.username}</h1>
             </div>
             <h5 className=" ">الوصف</h5>
             <div className="col-12 col-lg-6  ">
               
               <p className="fs-6 text-secondary m-0">
-                {trainerObject.trainer?.description}
+                {trainerObject.trainerData?.description}
               </p>
             </div>
 
@@ -50,7 +52,7 @@ function AboutTrainer() {
                   <td><i class="bi bi-clock-history text-secondary"></i>
                   <span class="text-secondary text-nowrap">الخبرة:</span></td>
                   <td><span class="text-primary-emphasis text-nowrap">
-                  {trainerObject.trainer?.experience}
+                  {trainerObject.trainerData?.experience}
                 </span></td>
                 </tr>
                 <tr >
@@ -188,6 +190,7 @@ function AboutTrainer() {
         </div>
       </div>
     </>
+    </AnimatedPage>
   );
 }
 

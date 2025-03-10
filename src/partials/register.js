@@ -71,7 +71,7 @@ function Register(props) {
     }
 
     axios
-      .post("http://localhost:9000/trainerFields/newTrianer", formData, {
+      .post("http://localhost:9000/trainers/newTrianer", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

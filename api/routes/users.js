@@ -3,7 +3,7 @@ const router = express.Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
-const {validateToken} = require("../middlewares/AuthMiddelware");
+const { validateToken } = require("../middlewares/AuthMiddelware");
 const { error } = require("jquery");
 
 router.post("/register", async (req, res) => {
@@ -30,18 +30,18 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     const user = await Users.findOne({ where: { email: email } });
 
-    if (!user) res.json({ error: "user not found" });
+    if (!user) return res.json({ error: "user not found" });
 
     bcrypt.compare(password, user.password).then((match) => {
-      if (!match) res.json({ error: "Wrong email and password compnation" });
-
-      const accessToken = sign(
-        { username: user.username, id: user.id },
-        "pLFriwTWOsakqMX"
-      );
-
-      res.json(accessToken);
-
+      if (!match) {
+        return res.json({ error: "Wrong email and password compnation" });
+      } else {
+        const accessToken = sign(
+          { username: user.username, id: user.id },
+          "pLFriwTWOsakqMX"
+        );
+        return res.json(accessToken);
+      }
     });
   } catch (error) {
     console.error(error);
@@ -49,32 +49,48 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get('/userData',validateToken, async (req, res) => {// get current user data
+router.get("/userData", validateToken, async (req, res) => {
+  // get current user data
   try {
-    
-    
-    const tokenId = req.user.id
-    const userData = await Users.findOne({ where: { id: tokenId } });
-    if(!userData){
-      res.json({error:"login required"})
-    }else{
+    const tokenId = req.user.id;
+    const userData = await Users.findOne({
+      attributes: [
+        "id",
+        "username",
+        "weight",
+        "height",
+        "birthDate",
+        "waistLength",
+        "neckLength",
+        "fatWeight",
+        "muscleWeight",
+      ],
+      where: { id: tokenId },
+    });
+    if (!userData) {
+      res.json({ error: "login required" });
+    } else {
       res.json(userData);
     }
-    
-    
-
-
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Failed to get Trainee' });
+    res.status(500).json({ error: "Failed to get Trainee" });
   }
 });
-
 
 router.post("/update", validateToken, async (req, res) => {
   // update user data
   try {
-    const { gender, birthDate, height, waistLength,neckLength,weight,fatWeight,muscleWeight } = req.body;
+    const {
+      gender,
+      birthDate,
+      height,
+      waistLength,
+      neckLength,
+      weight,
+      fatWeight,
+      muscleWeight,
+    } = req.body;
     const tokenId = req.user.id;
     const updateData = {};
 
@@ -93,13 +109,11 @@ router.post("/update", validateToken, async (req, res) => {
       },
     });
 
-    res.json('good');
-    
+    res.json("good");
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Failed to update user data" });
   }
 });
-
 
 module.exports = router;

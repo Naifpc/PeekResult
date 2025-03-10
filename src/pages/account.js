@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import LoginRequired from "../partials/loginRequired";
 import { useNavigate } from "react-router-dom";
+import Alerts from "../partials/alerts";
+import AnimatedPage from "../animations/AnimatedPage"
 
 function calculateAge(birthDate) {
   //calculate age from birthdate
@@ -71,7 +73,7 @@ function Account() {
           alert(response.data.error);
         } else {
           fetchData();
-          alert("update success");
+          setAlertMessage(true);
         }
       });
   };
@@ -79,7 +81,7 @@ function Account() {
   const logout = () => {
     sessionStorage.removeItem("accessToken");
     setUserData(false);
-    navigate('/')
+    navigate("/");
   };
 
   const [imageSrc, setImageSrc] = useState(
@@ -120,11 +122,27 @@ function Account() {
   });
 
   const [modalShow, setModalShow] = useState(false);
+  const [alertMessage, setAlertMessage] = useState(false);
+
+
+  
 
   return (
+    <AnimatedPage>
     <>
+
+              <Alerts
+                variant={"success"}
+                key={"success"}
+                showAlert={alertMessage}
+                onClose={() => setAlertMessage(false)}
+                msg={`تم تحديث البيانات بنجاح`}
+                icon={<i class="bi bi-check-circle-fill"></i>}
+              />
+         
       <div class="container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5 ">
         <h4 className="mb-4">البيانات</h4>
+
         <div className="row  g-3 align-items-center rounded bg-body-secondary ">
           <div className="col-12 col-lg-6 my-3">
             <DoughnutChart
@@ -476,8 +494,8 @@ function Account() {
                 aria-current="true"
               >
                 <div>
-                <i class="bi bi-person ms-1"></i>
-                تحديث الحساب
+                  <i class="bi bi-person ms-1"></i>
+                  تحديث الحساب
                 </div>
                 <i class="bi bi-arrow-left"></i>
               </button>
@@ -486,25 +504,28 @@ function Account() {
                 class="list-group-item d-flex justify-content-between list-group-item-action  border-0  bg-body-secondary p-4"
               >
                 <div>
-                <i class="bi bi-person-vcard ms-1"></i>
-                اشتراكي 
+                  <i class="bi bi-person-vcard ms-1"></i>
+                  اشتراكي
                 </div>
-                <i class="bi bi-arrow-left"></i>  
+                <i class="bi bi-arrow-left"></i>
               </button>
-
             </div>
-            
-              <div className="mt-4 p-1">
-              <button class="btn bg-body-secondary text-danger  w-100" onClick={logout}>
+
+            <div className="mt-4 p-1">
+              <button
+                class="btn bg-body-secondary text-danger  w-100"
+                onClick={logout}
+              >
                 <i class="bi bi-box-arrow-right "></i> تسجل خروج
               </button>
-              </div>
-              <div className="my-5"></div>
+            </div>
+            <div className="my-5"></div>
           </div>
         )}
       </div>
       <LoginRequired show={modalShow} onHide={() => setModalShow(false)} />
     </>
+    </AnimatedPage>
   );
 }
 
