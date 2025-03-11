@@ -70,36 +70,8 @@ function MobileBotNavbar() {
   );
 }
 
-function MobiletopNavbar() {
-  const [userData, setUserData] = useState([]);
+function MobiletopNavbar({userData,fetchData}) {
   const [modalShow, setModalShow] = useState(false);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:9000/authenticate/userData",
-        {
-          headers: {
-            accessToken: sessionStorage.getItem("accessToken"),
-          },
-        }
-      );
-      if (response.data.error) {
-        setUserData(false);
-      } else {
-        setUserData(response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  
-
   return (
 
   <>

@@ -18,12 +18,13 @@ function LoginRequired(props) {
         size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        fullscreen={true}
       >
         <Modal.Header className="border-0">
           <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
         </Modal.Header>
 
-        <Modal.Body className="border-0 p-5 text-center">
+        <Modal.Body className="border-0 p-5 text-center align-content-center">
           <div className="row g-2">
             <div className="col-12">
             <i class="bi bi-person fs-1"></i>
