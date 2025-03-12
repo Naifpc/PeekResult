@@ -22,7 +22,7 @@ function BrowserNavbar({logout,fetchData,userData}) {
           ) : (
             <div className="d-flex gap-3 align-items-center">
               <i class="bi bi-chat fs-4"></i>
-              <div className="border h-100"></div>
+              <hr className="border h-50"></hr>
               <Dropdown>
                 <Dropdown.Toggle
                   variant=""
@@ -38,7 +38,7 @@ function BrowserNavbar({logout,fetchData,userData}) {
                 <Dropdown.Menu className="text-end">
                   <Dropdown.Item onClick={logout}>
                   <i class="bi bi-person-gear ms-1"></i>
-                     تحديث الحساب 
+                     اعدادات الحساب 
                   </Dropdown.Item>
                   <Dropdown.Item onClick={logout}>
                   <i class="bi bi-person-vcard ms-1"></i>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DoughnutChart from "../partials/DoughnutChart";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -7,7 +7,8 @@ import { isMobile } from "react-device-detect";
 import LoginRequired from "../partials/loginRequired";
 import Alerts from "../partials/alerts";
 import AnimatedPage from "../animations/AnimatedPage";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import HumanBody from "../partials/humanBody";
 
 function calculateAge(birthDate) {
   //calculate age from birthdate
@@ -25,14 +26,13 @@ function calculateAge(birthDate) {
   return age;
 }
 
-function getFirstLetter(username) {
-  let firstLetter = username[0];
-  return firstLetter.toUpperCase();
-}
-
 function Account({ fetchData, userData, logout }) {
   const [modalShow, setModalShow] = useState(true);
   const [alertMessage, setAlertMessage] = useState(false);
+  const [bodyImage, setBodyImage] = useState([]);
+
+
+
 
   const onSubmit = (data) => {
     axios
@@ -51,25 +51,7 @@ function Account({ fetchData, userData, logout }) {
       });
   };
 
-  const [imageSrc, setImageSrc] = useState(
-    `${process.env.PUBLIC_URL}/body.svg`
-  );
 
-  const handleClickLength = () => {
-    setImageSrc(`${process.env.PUBLIC_URL}/body-length.svg`);
-  };
-
-  const handleClickNeck = () => {
-    setImageSrc(`${process.env.PUBLIC_URL}/body-neck.svg`);
-  };
-
-  const handleClickWaist = () => {
-    setImageSrc(`${process.env.PUBLIC_URL}/body-waist.svg`);
-  };
-
-  const handleBlur = () => {
-    setImageSrc(`${process.env.PUBLIC_URL}/body.svg`);
-  };
 
   const generalValidationSchema = Yup.object().shape({
     birthDate: Yup.date().required(),
@@ -102,107 +84,113 @@ function Account({ fetchData, userData, logout }) {
           />
 
           <div class="container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5 ">
-            
-
             <div className=" row p-1 gap-4 mt-1">
-            <h4 className="">البيانات</h4>
-              <div className="col-12 ">
-              <div className="col-12 d-flex justify-content-center align-items-center ">
-                <div className="bg-body-secondary d-flex flex-nowrap justify-content-center border border-4 rounded-circle p-4 text-center  align-items-center mb-2">
-                  <h3 className="m-3 text-secondary">{getFirstLetter(userData.username)}</h3>
-                </div>
-              </div>
-              <div className="col-12 mb-4">
-                <h3 className="text-center mb-1">{userData.username}</h3>
-                <h6 className="text-center fw-light text-secondary">
-                  {userData.email}
-                </h6>
-              </div>
-              <div className="col-12 d-flex justify-content-evenly">
-                <div className="text-center">
-                  <div className="d-flex gap-1 align-items-baseline">
-                    <h1 className="fw-bold m-0">55</h1>
-                    <h6 className="fw-light text-secondary m-0">كجم</h6>
-                  </div>
-                  <h6 className="fw-light ">الوزن</h6>
-                </div>
-
-                <hr className="border"></hr>
-
-                <div className="text-center">
-                  <div className="d-flex gap-1 align-items-baseline">
-                    <h1 className="fw-bold m-0">55</h1>
-                    <h6 className="fw-light text-secondary m-0">كجم</h6>
-                  </div>
-                  <h6 className="fw-light ">الطول</h6>
-                </div>
-
-                <hr className="border"></hr>
-
-                <div className="text-center">
-                  <div className="d-flex gap-1 align-items-baseline">
-                    <h1 className="fw-bold m-0">
-                      {calculateAge(userData.birthDate)}
+              <h4 className="">البيانات</h4>
+              
+                <div className="col-12 d-flex justify-content-center align-items-center ">
+                  <div className="bg-body-secondary d-flex flex-nowrap justify-content-center border border-4 rounded-circle text-center  align-items-center">
+                    <h1 className="m-3 mx-4 text-secondary">
+                      {userData.username[0].toUpperCase()}
                     </h1>
-                    <h6 className="fw-light text-secondary m-0">سنة</h6>
                   </div>
-                  <h6 className="fw-light">العمر</h6>
                 </div>
-              </div>
-              </div>
-
-              <div className="col-12  bg-body-secondary rounded-4 align-items-center p-3">
-                <h4 className="mb-4 text-center">توزيع الوزن</h4>
-                <div className="col-12 col-lg-6 my-3 ">
-                  <DoughnutChart
-                    weight={userData.weight}
-                    fatWeight={userData.fatWeight}
-                    muscleWeight={userData.muscleWeight}
-                  />
+                <div className="col-12 align-items-center mb-4">
+                  <h3 className="text-center mb-1">{userData.username}</h3>
+                  <h6 className="text-center fw-light text-secondary">
+                    {userData.email}
+                  </h6>
                 </div>
-                <div className="col-12 col-lg-6">
-                  <div className="row p-1">
-                    <div className="col-4">
-                      <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
-                        <span class="p-1 rounded-circle bg-primary"></span>
-                        <p className=" mb-1 m-0"> وزن الجسم </p>
-                      </div>
-                      <div className="d-flex gap-1 align-items-baseline">
-                        <h2 className="fw-bold m-0">{userData.weight}</h2>
-                        <h6 className="text-secondary">
-                          /{userData.weight} كجم
-                        </h6>
-                      </div>
+                <div className="col-12  d-flex justify-content-evenly">
+                  <div className="text-center">
+                    <div className="d-flex gap-1 align-items-baseline">
+                      <h1 className="fw-bold m-0">{userData.weight}</h1>
+                      <h6 className="fw-light text-secondary m-0">كجم</h6>
                     </div>
-                    <div className="col-4 ">
-                      <div className="d-flex flex-nowrap align-items-center gap-1 fs-6 ">
-                        <span
-                          class="p-1 rounded-circle"
-                          style={{ backgroundColor: "rgb(54, 162, 235)" }}
-                        ></span>
-                        <p className=" mb-1 m-0  text-nowrap"> وزن العضلات </p>
-                      </div>
+                    <h6 className="fw-light ">الوزن</h6>
+                  </div>
 
-                      <div className="d-flex gap-1 align-items-baseline">
-                        <h2 className="fw-bold m-0">{userData.muscleWeight}</h2>
-                        <h6 className="text-secondary">
-                          /{userData.weight} كجم
-                        </h6>
-                      </div>
+                  <hr className="border"></hr>
+
+                  <div className="text-center">
+                    <div className="d-flex gap-1 align-items-baseline">
+                      <h1 className="fw-bold m-0">{userData.height}</h1>
+                      <h6 className="fw-light text-secondary m-0">كجم</h6>
                     </div>
-                    <div className="col-4">
-                      <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
-                        <span
-                          class="p-1 rounded-circle"
-                          style={{ backgroundColor: "rgb(255, 206, 86)" }}
-                        ></span>
-                        <p className=" mb-1 m-0"> وزن الدهون </p>
+                    <h6 className="fw-light ">الطول</h6>
+                  </div>
+
+                  <hr className="border"></hr>
+
+                  <div className="text-center">
+                    <div className="d-flex gap-1 align-items-baseline">
+                      <h1 className="fw-bold m-0">
+                        {calculateAge(userData.birthDate)}
+                      </h1>
+                      <h6 className="fw-light text-secondary m-0">سنة</h6>
+                    </div>
+                    <h6 className="fw-light">العمر</h6>
+                  </div>
+                </div>
+             
+              <div className="col-12">
+                <div className="row bg-body-secondary rounded-4 align-items-center p-3">
+                  <h4 className="mb-4 text-center">توزيع الوزن</h4>
+                  <div className="col-12 col-lg-6 my-3 ">
+                    <DoughnutChart
+                      weight={userData.weight}
+                      fatWeight={userData.fatWeight}
+                      muscleWeight={userData.muscleWeight}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-6">
+                    <div className="row p-1">
+                      <div className="col-4">
+                        <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
+                          <span class="p-1 rounded-circle bg-primary"></span>
+                          <p className=" mb-1 m-0"> وزن الجسم </p>
+                        </div>
+                        <div className="d-flex gap-1 align-items-baseline">
+                          <h2 className="fw-bold m-0">{userData.weight}</h2>
+                          <h6 className="text-secondary">
+                            /{userData.weight} كجم
+                          </h6>
+                        </div>
                       </div>
-                      <div className="d-flex gap-1 align-items-baseline">
-                        <h2 className="fw-bold m-0">{userData.fatWeight}</h2>
-                        <h6 className="text-secondary">
-                          /{userData.weight} كجم
-                        </h6>
+                      <div className="col-4 ">
+                        <div className="d-flex flex-nowrap align-items-center gap-1 fs-6 ">
+                          <span
+                            class="p-1 rounded-circle"
+                            style={{ backgroundColor: "rgb(54, 162, 235)" }}
+                          ></span>
+                          <p className=" mb-1 m-0  text-nowrap">
+                            {" "}
+                            وزن العضلات{" "}
+                          </p>
+                        </div>
+
+                        <div className="d-flex gap-1 align-items-baseline">
+                          <h2 className="fw-bold m-0">
+                            {userData.muscleWeight}
+                          </h2>
+                          <h6 className="text-secondary">
+                            /{userData.weight} كجم
+                          </h6>
+                        </div>
+                      </div>
+                      <div className="col-4">
+                        <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
+                          <span
+                            class="p-1 rounded-circle"
+                            style={{ backgroundColor: "rgb(255, 206, 86)" }}
+                          ></span>
+                          <p className=" mb-1 m-0"> وزن الدهون </p>
+                        </div>
+                        <div className="d-flex gap-1 align-items-baseline">
+                          <h2 className="fw-bold m-0">{userData.fatWeight}</h2>
+                          <h6 className="text-secondary">
+                            /{userData.weight} كجم
+                          </h6>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -215,7 +203,7 @@ function Account({ fetchData, userData, logout }) {
               <ul class="nav nav-tabs " id="myTab" role="tablist">
                 <li class=" nav-item " role="presentation">
                   <button
-                    class="nav-link text-body active"
+                    class="nav-link text-body  rounded-top-4 active"
                     id="home-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#home"
@@ -229,7 +217,7 @@ function Account({ fetchData, userData, logout }) {
                 </li>
                 <li class="nav-item" role="presentation">
                   <button
-                    class="nav-link text-body"
+                    class="nav-link text-body rounded-top-4"
                     id="profile-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#profile"
@@ -243,7 +231,7 @@ function Account({ fetchData, userData, logout }) {
                 </li>
                 <li class="nav-item " role="presentation">
                   <button
-                    class="nav-link text-body"
+                    class="nav-link text-body rounded-top-4"
                     id="contact-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#contact"
@@ -314,7 +302,7 @@ function Account({ fetchData, userData, logout }) {
 
                         <div className="col-12 col-lg-2 d-flex justify-content-center">
                           <button class="btn btn-secondary w-75" type="submit">
-                            حفظ
+                            <div>حفظ</div>
                           </button>
                         </div>
                       </div>
@@ -347,8 +335,8 @@ function Account({ fetchData, userData, logout }) {
                                 className="form-control bg-transparent"
                                 id="height"
                                 name="height"
-                                onFocus={handleClickLength}
-                                onBlur={handleBlur}
+                                onFocus={()=>setBodyImage("height")}
+                                onBlur={()=>setBodyImage("front")}
                               />
                               <label htmlFor="height">الطول/ سم</label>
                               <ErrorMessage
@@ -364,8 +352,8 @@ function Account({ fetchData, userData, logout }) {
                                 className="form-control bg-transparent"
                                 id="neckLength"
                                 name="neckLength"
-                                onFocus={handleClickNeck}
-                                onBlur={handleBlur}
+                                onFocus={()=>setBodyImage("neck")}
+                                onBlur={()=>setBodyImage("front")}
                               />
                               <label htmlFor="neckLength">الرقبة/ سم</label>
                               <ErrorMessage
@@ -381,8 +369,8 @@ function Account({ fetchData, userData, logout }) {
                                 className="form-control bg-transparent"
                                 id="waistLength"
                                 name="waistLength"
-                                onFocus={handleClickWaist}
-                                onBlur={handleBlur}
+                                onFocus={()=>setBodyImage("waist")}
+                                onBlur={()=>setBodyImage("front")}
                               />
                               <label htmlFor="waistLength">الخصر/ سم</label>
                               <ErrorMessage
@@ -397,7 +385,7 @@ function Account({ fetchData, userData, logout }) {
                                 class="btn btn-secondary w-75"
                                 type="submit"
                               >
-                                حفظ
+                                <div>حفظ</div>
                               </button>
                             </div>
                           </div>
@@ -405,10 +393,8 @@ function Account({ fetchData, userData, logout }) {
                       </Formik>
                     </div>
                     <div className="col-6 d-flex justify-content-center">
-                      <img
-                        className="text-center "
-                        src={imageSrc}
-                        alt="PEEK RESULT"
+                      <HumanBody
+                        value={bodyImage}
                         width="150"
                       />
                     </div>
@@ -479,7 +465,7 @@ function Account({ fetchData, userData, logout }) {
 
                         <div className="col-12 col-lg-2 d-flex justify-content-center">
                           <button class="btn btn-secondary w-75" type="submit">
-                            حفظ
+                            <div>حفظ</div>
                           </button>
                         </div>
                       </div>
@@ -500,7 +486,7 @@ function Account({ fetchData, userData, logout }) {
                   >
                     <div>
                       <i class="bi bi-person ms-1"></i>
-                      تحديث الحساب
+                      اعدادات الحساب
                     </div>
                     <i class="bi bi-arrow-left"></i>
                   </button>
@@ -530,7 +516,7 @@ function Account({ fetchData, userData, logout }) {
           </div>
         </>
       ) : (
-        <LoginRequired show={modalShow} onHide={() => setModalShow(false)} />
+        <LoginRequired show={modalShow} onHide={() => setModalShow(false)} fetchData={fetchData} />
       )}
     </AnimatedPage>
   );

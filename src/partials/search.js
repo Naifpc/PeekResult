@@ -2,7 +2,7 @@ import React from "react";
 
 function Search({ query, setQuery }) {
   return (
-    <div class="input-group search-bar ">
+    <div class="input-group  search-bar  ">
       <span
         class="input-group-text rounded-0 rounded-end bg-body-secondary border-0 "
         id="search-addon"

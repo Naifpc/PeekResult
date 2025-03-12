@@ -30,10 +30,13 @@ const Alerts = (props) => {
           transition={{ duration: 0.4 }}
           style={{ position: "fixed", top: 0, left: 0, right: 0,zIndex: 9999 }}
         >
-          <Alert {...props} className="d-flex gap-1  m-2 m-lg-5">
+          
+          <div className="container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5">
+          <Alert {...props} className=" d-flex gap-1 ">
             {props.icon}
             {props.msg}
           </Alert>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

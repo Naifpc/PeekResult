@@ -57,6 +57,7 @@ function LoginRequired(props) {
       <Login
       show={modalShow}
       onHide={() => setModalShow(false)}
+      fetchData={props.fetchData}
     />
     </>
   );
