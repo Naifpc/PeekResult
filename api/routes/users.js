@@ -57,6 +57,7 @@ router.get("/userData", validateToken, async (req, res) => {
       attributes: [
         "id",
         "username",
+        "email",
         "weight",
         "height",
         "birthDate",

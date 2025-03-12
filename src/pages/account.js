@@ -25,16 +25,14 @@ function calculateAge(birthDate) {
   return age;
 }
 
-function calculateBMI(heightCm, weightKg) {
-  let heightMeters = heightCm / 100;
-  let bmi = weightKg / (heightMeters * heightMeters);
-  return Math.trunc(bmi);
+function getFirstLetter(username) {
+  let firstLetter = username[0];
+  return firstLetter.toUpperCase();
 }
 
 function Account({ fetchData, userData, logout }) {
   const [modalShow, setModalShow] = useState(true);
   const [alertMessage, setAlertMessage] = useState(false);
-
 
   const onSubmit = (data) => {
     axios
@@ -104,67 +102,114 @@ function Account({ fetchData, userData, logout }) {
           />
 
           <div class="container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5 ">
-            <h4 className="mb-4">البيانات</h4>
+            
 
-            <div className="row  g-3 align-items-center rounded bg-body-secondary ">
-              <div className="col-12 col-lg-6 my-3">
-                <DoughnutChart
-                  weight={userData.weight}
-                  fatWeight={userData.fatWeight}
-                  muscleWeight={userData.muscleWeight}
-                />
+            <div className=" row p-1 gap-4 mt-1">
+            <h4 className="">البيانات</h4>
+              <div className="col-12 ">
+              <div className="col-12 d-flex justify-content-center align-items-center ">
+                <div className="bg-body-secondary d-flex flex-nowrap justify-content-center border border-4 rounded-circle p-4 text-center  align-items-center mb-2">
+                  <h3 className="m-3 text-secondary">{getFirstLetter(userData.username)}</h3>
+                </div>
               </div>
-              <div className="col-12 col-lg-6">
-                <div className="row p-1">
-                  <div className="col-4 border-start">
-                    <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
-                      <span class="p-1 rounded-circle bg-primary"></span>
-                      <p className=" mb-1 m-0"> وزن الجسم </p>
-                    </div>
-                    <h2 className="fw-bold m-0">{userData.weight}</h2>
-                    <h6 className="text-secondary">/{userData.weight} كجم</h6>
+              <div className="col-12 mb-4">
+                <h3 className="text-center mb-1">{userData.username}</h3>
+                <h6 className="text-center fw-light text-secondary">
+                  {userData.email}
+                </h6>
+              </div>
+              <div className="col-12 d-flex justify-content-evenly">
+                <div className="text-center">
+                  <div className="d-flex gap-1 align-items-baseline">
+                    <h1 className="fw-bold m-0">55</h1>
+                    <h6 className="fw-light text-secondary m-0">كجم</h6>
                   </div>
-                  <div className="col-4 ">
-                    <div className="d-flex flex-nowrap align-items-center gap-1 fs-6 ">
-                      <span
-                        class="p-1 rounded-circle"
-                        style={{ backgroundColor: "rgb(54, 162, 235)" }}
-                      ></span>
-                      <p className=" mb-1 m-0  text-nowrap"> وزن العضلات </p>
-                    </div>
+                  <h6 className="fw-light ">الوزن</h6>
+                </div>
 
-                    <h2 className="fw-bold m-0">{userData.muscleWeight}</h2>
-                    <h6 className="text-secondary">/{userData.weight} كجم</h6>
+                <hr className="border"></hr>
+
+                <div className="text-center">
+                  <div className="d-flex gap-1 align-items-baseline">
+                    <h1 className="fw-bold m-0">55</h1>
+                    <h6 className="fw-light text-secondary m-0">كجم</h6>
                   </div>
-                  <div className="col-4 border-end">
-                    <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
-                      <span
-                        class="p-1 rounded-circle"
-                        style={{ backgroundColor: "rgb(255, 206, 86)" }}
-                      ></span>
-                      <p className=" mb-1 m-0"> وزن الدهون </p>
-                    </div>
+                  <h6 className="fw-light ">الطول</h6>
+                </div>
 
-                    <h2 className="fw-bold m-0">{userData.fatWeight}</h2>
-                    <h6 className="text-secondary">/{userData.weight} كجم</h6>
+                <hr className="border"></hr>
+
+                <div className="text-center">
+                  <div className="d-flex gap-1 align-items-baseline">
+                    <h1 className="fw-bold m-0">
+                      {calculateAge(userData.birthDate)}
+                    </h1>
+                    <h6 className="fw-light text-secondary m-0">سنة</h6>
+                  </div>
+                  <h6 className="fw-light">العمر</h6>
+                </div>
+              </div>
+              </div>
+
+              <div className="col-12  bg-body-secondary rounded-4 align-items-center p-3">
+                <h4 className="mb-4 text-center">توزيع الوزن</h4>
+                <div className="col-12 col-lg-6 my-3 ">
+                  <DoughnutChart
+                    weight={userData.weight}
+                    fatWeight={userData.fatWeight}
+                    muscleWeight={userData.muscleWeight}
+                  />
+                </div>
+                <div className="col-12 col-lg-6">
+                  <div className="row p-1">
+                    <div className="col-4">
+                      <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
+                        <span class="p-1 rounded-circle bg-primary"></span>
+                        <p className=" mb-1 m-0"> وزن الجسم </p>
+                      </div>
+                      <div className="d-flex gap-1 align-items-baseline">
+                        <h2 className="fw-bold m-0">{userData.weight}</h2>
+                        <h6 className="text-secondary">
+                          /{userData.weight} كجم
+                        </h6>
+                      </div>
+                    </div>
+                    <div className="col-4 ">
+                      <div className="d-flex flex-nowrap align-items-center gap-1 fs-6 ">
+                        <span
+                          class="p-1 rounded-circle"
+                          style={{ backgroundColor: "rgb(54, 162, 235)" }}
+                        ></span>
+                        <p className=" mb-1 m-0  text-nowrap"> وزن العضلات </p>
+                      </div>
+
+                      <div className="d-flex gap-1 align-items-baseline">
+                        <h2 className="fw-bold m-0">{userData.muscleWeight}</h2>
+                        <h6 className="text-secondary">
+                          /{userData.weight} كجم
+                        </h6>
+                      </div>
+                    </div>
+                    <div className="col-4">
+                      <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
+                        <span
+                          class="p-1 rounded-circle"
+                          style={{ backgroundColor: "rgb(255, 206, 86)" }}
+                        ></span>
+                        <p className=" mb-1 m-0"> وزن الدهون </p>
+                      </div>
+                      <div className="d-flex gap-1 align-items-baseline">
+                        <h2 className="fw-bold m-0">{userData.fatWeight}</h2>
+                        <h6 className="text-secondary">
+                          /{userData.weight} كجم
+                        </h6>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className=" row  p-1 gap-2 mt-1">
-              <div className="col-sm-12 col-lg bg-body-secondary text-center p-1 rounded  ">
-                <h6>مؤشر كتلة الجسم</h6>
-                <h2>{calculateBMI(userData.height, userData.weight)}</h2>
-                <span class="badge rounded-pill text-bg-secondary">BMI</span>
-              </div>
-
-              <div className="col-sm-12 col-lg  bg-body-secondary text-center p-1 rounded  ">
-                <h6>العمر</h6>
-                <h2>{calculateAge(userData.birthDate)}</h2>
-                <span class="badge rounded-pill text-bg-secondary">سنة</span>
-              </div>
-            </div>
             <h4 className="my-4">تحديث البيانات</h4>
             <div className="row p-1">
               <ul class="nav nav-tabs " id="myTab" role="tablist">
@@ -213,7 +258,7 @@ function Account({ fetchData, userData, logout }) {
               </ul>
 
               <div
-                class="tab-content p-5 rounded bg-body-secondary "
+                class="tab-content p-5 rounded-4 bg-body-secondary "
                 id="myTabContent"
               >
                 <div
@@ -444,15 +489,13 @@ function Account({ fetchData, userData, logout }) {
               </div>
             </div>
 
-            
             {isMobile && (
-              
               <div className="row">
                 <h4 className="my-4">الحساب</h4>
-                <div class="list-group p-1  ">
+                <div class="list-group p-1 rounded-4 ">
                   <button
                     type="button "
-                    class="list-group-item d-flex justify-content-between list-group-item-action border-0 border-bottom  bg-body-secondary p-4 "
+                    class="list-group-item  d-flex justify-content-between list-group-item-action border-0 border-bottom  bg-body-secondary p-4 "
                     aria-current="true"
                   >
                     <div>
@@ -475,7 +518,7 @@ function Account({ fetchData, userData, logout }) {
 
                 <div className="mt-4 p-1">
                   <button
-                    className="btn bg-body-secondary text-danger  w-100 p-3"
+                    className="btn bg-body-secondary text-danger rounded-4  w-100 p-3"
                     onClick={logout}
                   >
                     <i class="bi bi-box-arrow-right "></i> تسجل خروج
@@ -485,13 +528,9 @@ function Account({ fetchData, userData, logout }) {
               </div>
             )}
           </div>
-          
         </>
-      ):(
-
+      ) : (
         <LoginRequired show={modalShow} onHide={() => setModalShow(false)} />
-
-
       )}
     </AnimatedPage>
   );
