@@ -88,8 +88,9 @@ function Account({ fetchData, userData, logout }) {
               <h4 className="">البيانات</h4>
               
                 <div className="col-12 d-flex justify-content-center align-items-center ">
-                  <div className="bg-body-secondary d-flex flex-nowrap justify-content-center border border-4 rounded-circle text-center  align-items-center">
-                    <h1 className="m-3 mx-4 text-secondary">
+                  <div className="bg-body-secondary d-flex  justify-content-center border border-4 rounded-circle align-items-center"
+                  style={{width:100,height:100}}>
+                    <h1 className="text-secondary m-0 text-center opacity-50">
                       {userData.username[0].toUpperCase()}
                     </h1>
                   </div>
@@ -133,7 +134,7 @@ function Account({ fetchData, userData, logout }) {
                 </div>
              
               <div className="col-12">
-                <div className="row bg-body-secondary rounded-4 align-items-center p-3">
+                <div className="row bg-body-secondary rounded align-items-center p-3">
                   <h4 className="mb-4 text-center">توزيع الوزن</h4>
                   <div className="col-12 col-lg-6 my-3 ">
                     <DoughnutChart
@@ -142,9 +143,9 @@ function Account({ fetchData, userData, logout }) {
                       muscleWeight={userData.muscleWeight}
                     />
                   </div>
-                  <div className="col-12 col-lg-6">
-                    <div className="row p-1">
-                      <div className="col-4">
+                  <div className="col-12 col-lg-6 d-flex justify-content-evenly">
+                   
+                      <div className="">
                         <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
                           <span class="p-1 rounded-circle bg-primary"></span>
                           <p className=" mb-1 m-0"> وزن الجسم </p>
@@ -156,15 +157,17 @@ function Account({ fetchData, userData, logout }) {
                           </h6>
                         </div>
                       </div>
-                      <div className="col-4 ">
+
+                      <hr className="border"></hr>
+
+                      <div className="">
                         <div className="d-flex flex-nowrap align-items-center gap-1 fs-6 ">
                           <span
                             class="p-1 rounded-circle"
                             style={{ backgroundColor: "rgb(54, 162, 235)" }}
                           ></span>
                           <p className=" mb-1 m-0  text-nowrap">
-                            {" "}
-                            وزن العضلات{" "}
+                            وزن العضلات
                           </p>
                         </div>
 
@@ -177,7 +180,10 @@ function Account({ fetchData, userData, logout }) {
                           </h6>
                         </div>
                       </div>
-                      <div className="col-4">
+
+                      <hr className="border"></hr>
+
+                      <div className="">
                         <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
                           <span
                             class="p-1 rounded-circle"
@@ -192,7 +198,7 @@ function Account({ fetchData, userData, logout }) {
                           </h6>
                         </div>
                       </div>
-                    </div>
+                   
                   </div>
                 </div>
               </div>
@@ -203,7 +209,7 @@ function Account({ fetchData, userData, logout }) {
               <ul class="nav nav-tabs " id="myTab" role="tablist">
                 <li class=" nav-item " role="presentation">
                   <button
-                    class="nav-link text-body  rounded-top-4 active"
+                    class="nav-link text-body   active"
                     id="home-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#home"
@@ -217,7 +223,7 @@ function Account({ fetchData, userData, logout }) {
                 </li>
                 <li class="nav-item" role="presentation">
                   <button
-                    class="nav-link text-body rounded-top-4"
+                    class="nav-link text-body "
                     id="profile-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#profile"
@@ -231,7 +237,7 @@ function Account({ fetchData, userData, logout }) {
                 </li>
                 <li class="nav-item " role="presentation">
                   <button
-                    class="nav-link text-body rounded-top-4"
+                    class="nav-link text-body "
                     id="contact-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#contact"
@@ -246,7 +252,7 @@ function Account({ fetchData, userData, logout }) {
               </ul>
 
               <div
-                class="tab-content p-5 rounded-4 bg-body-secondary "
+                class="tab-content p-5 rounded bg-body-secondary "
                 id="myTabContent"
               >
                 <div
@@ -478,7 +484,7 @@ function Account({ fetchData, userData, logout }) {
             {isMobile && (
               <div className="row">
                 <h4 className="my-4">الحساب</h4>
-                <div class="list-group p-1 rounded-4 ">
+                <div class="list-group p-1 rounded ">
                   <button
                     type="button "
                     class="list-group-item  d-flex justify-content-between list-group-item-action border-0 border-bottom  bg-body-secondary p-4 "
@@ -504,7 +510,7 @@ function Account({ fetchData, userData, logout }) {
 
                 <div className="mt-4 p-1">
                   <button
-                    className="btn bg-body-secondary text-danger rounded-4  w-100 p-3"
+                    className="btn bg-body-secondary text-danger rounded  w-100 p-3"
                     onClick={logout}
                   >
                     <i class="bi bi-box-arrow-right "></i> تسجل خروج
