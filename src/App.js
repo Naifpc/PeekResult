@@ -5,8 +5,6 @@ import Schedules from "./pages/schedules";
 import Offers from "./pages/offers";
 import Account from "./pages/account";
 import { MobileBotNavbar, MobiletopNavbar } from "./partials/MobileNavbar";
-import Footer from "./partials/footer";
-import BrowserNavbar from "./partials/BrowserNavbar";
 import AccountData from "./pages/accountData";
 import MySubscription from "./pages/mySubscription";
 import AboutTrainer from "./pages/aboutTrainer";
@@ -19,6 +17,9 @@ import {
 import { BrowserView, MobileView } from "react-device-detect";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import DefaultLayout from "./layouts/defaultLayout";
+import TrainerHome from "./pages/trainer-home";
+import TrainersLayout from "./layouts/TrainersLayout";
 
 function App() {
   const [userData, setUserData] = useState([]);
@@ -57,32 +58,46 @@ function App() {
     <Router>
       <>
         <BrowserView>
-          <BrowserNavbar
-            fetchData={fetchData}
-            userData={userData}
-            logout={logout}
-          />
-
           <Routes>
             <Route
-              path="/Account"
               element={
-                <Account
+                <DefaultLayout
                   fetchData={fetchData}
                   userData={userData}
                   logout={logout}
                 />
               }
-            />
-            <Route path="/:id?" element={<Home />} />
-            <Route path="/Schedules" element={<Schedules />} />
-            <Route path="/Offers" element={<Offers />} />
-            <Route path="/accountData" element={<AccountData />} />
-            <Route path="/mySubscription" element={<MySubscription />} />
-            <Route path="/aboutTrainer/:id" element={<AboutTrainer />} />
-          </Routes>
+            >
+              <Route
+                path="/Account"
+                element={
+                  <Account
+                    fetchData={fetchData}
+                    userData={userData}
+                    logout={logout}
+                  />
+                }
+              />
+              <Route path="/:id?" element={<Home />} />
+              <Route path="/Schedules" element={<Schedules />} />
+              <Route path="/Offers" element={<Offers />} />
+              <Route path="/accountData" element={<AccountData />} />
+              <Route path="/mySubscription" element={<MySubscription />} />
+              <Route path="/aboutTrainer/:id" element={<AboutTrainer />} />
+            </Route>
 
-          <Footer />
+            <Route
+              element={
+                <TrainersLayout
+                  fetchData={fetchData}
+                  userData={userData}
+                  logout={logout}
+                />
+              }
+            >
+              <Route path="/trainers" element={<TrainerHome />} />
+            </Route>
+          </Routes>
         </BrowserView>
 
         <MobileView>

@@ -11,8 +11,6 @@ function Register(props) {
   const [file, setFile] = useState([]);
   const [alertMessage, setAlertMessage] = useState(false);
   const [msg, setMsg] = useState("");
-  
-
 
   useEffect(() => {
     axios.get("http://localhost:9000/fields").then((response) => {
@@ -33,17 +31,15 @@ function Register(props) {
     experience: Yup.number().required().min(0).max(70),
     description: Yup.string().required().min(4).max(255),
     fieldIds: Yup.array().required().min(1),
-    gender: Yup.string().required().min(4).max(255),
-
+    gender: Yup.string().required(),
   });
 
   const onSubmitTrainee = (data) => {
     axios
       .post("http://localhost:9000/authenticate/register", data)
       .then((response) => {
-
         if (response.data.error) {
-          setMsg("حصل خطأ في انشاء المتدرب")
+          setMsg("حصل خطأ في انشاء المتدرب");
           setAlertMessage(true);
         } else {
           props.onHide();
@@ -60,7 +56,7 @@ function Register(props) {
     formData.append("experience", data.experience);
     formData.append("description", data.description);
     formData.append("gender", data.gender);
-  
+
     // Append fieldIds as an array
     if (Array.isArray(data.fieldIds)) {
       data.fieldIds.forEach((fieldId) => {
@@ -77,35 +73,32 @@ function Register(props) {
         },
       })
       .then((response) => {
-
         if (response.data.error) {
-          setMsg("حصل خطأ في انشاء المدرب")
+          setMsg("يوجد حساب بنفس الايميل");
           setAlertMessage(true);
         } else {
           props.onHide();
         }
-
       });
   };
 
   return (
     <Modal {...props} fullscreen={true}>
-      <Modal.Header className="flex-row-reverse " closeButton>
-        <Modal.Title>
-          <h4 className="m-0">انشاء حساب</h4>
-        </Modal.Title>
+      <Modal.Header className="border-0  " closeButton>
+        <Modal.Title></Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <div className="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
-          <div className="text-center">
-            <img
-              className=" mb-3"
-              src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
-              alt="PEEK RESULT"
-              width="150"
-            />
-          </div>
+      <Modal.Body className="border-0 p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5  ">
+        <div className="text-center">
+          <img
+            className=" mb-3"
+            src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
+            alt="PEEK RESULT"
+            width="150"
+          />
+          <h4 className="fw-bold mb-4 ">تسجيل الحساب</h4>
+        </div>
 
+        <div className="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5 ">
           <ul class="nav nav-tabs " id="myTab" role="tablist">
             <li class=" nav-item " role="presentation">
               <button
@@ -141,9 +134,8 @@ function Register(props) {
             class="tab-content p-5 rounded bg-body-secondary "
             id="myTabContent"
           >
-
             {alertMessage && <DangerAlert msg={msg} />}
-           
+
             <div
               class="tab-pane fade show active"
               id="home"
@@ -205,7 +197,7 @@ function Register(props) {
                       />
                     </div>
 
-                    <div className="col-12 d-flex justify-content-center mt-5">
+                    <div className="col-12 col-lg-2 d-flex justify-content-center mt-5">
                       <button
                         className="btn w-75 btn-primary mx-auto"
                         type="submit"
@@ -285,7 +277,7 @@ function Register(props) {
 
                     <div className="col-12 form-floating">
                       <Field
-                      type="number"
+                        type="number"
                         className="form-control bg-transparent"
                         name="experience"
                         placeholder=" "
@@ -304,13 +296,14 @@ function Register(props) {
                         className="form-select bg-transparent"
                         name="gender"
                       >
+                        <option value="">اختر جنس المتدرب</option>
                         <option value="رجال فقط">رجال فقط </option>
                         <option value="نساء فقط">نساء فقط </option>
                         <option value="رجال و نساء">رجال و نساء </option>
                       </Field>
 
                       <ErrorMessage
-                        name="field"
+                        name="gender"
                         component="span"
                         className="text-danger"
                       />
@@ -378,7 +371,7 @@ function Register(props) {
                       />
                     </div>
 
-                    <div className="col-12 d-flex justify-content-center mt-5">
+                    <div className="col-12 col-lg-2 d-flex justify-content-center mt-5">
                       <button
                         className="btn w-75 btn-primary mx-auto"
                         type="submit"
