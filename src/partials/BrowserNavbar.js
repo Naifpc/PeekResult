@@ -5,8 +5,7 @@ import { Dropdown } from "react-bootstrap";
 import Login from "./login";
 import { TopNavBtn, TopNavDrop } from "./topNavBtn";
 
-function BrowserNavbar({logout,fetchData,userData}) {
-
+function BrowserNavbar({ logout, fetchData, userData, links }) {
   const [modalShow, setModalShow] = useState(false);
 
   return (
@@ -37,12 +36,12 @@ function BrowserNavbar({logout,fetchData,userData}) {
 
                 <Dropdown.Menu className="text-end">
                   <Dropdown.Item onClick={logout}>
-                  <i class="bi bi-person-gear ms-1"></i>
-                     اعدادات الحساب 
+                    <i class="bi bi-person-gear ms-1"></i>
+                    اعدادات الحساب
                   </Dropdown.Item>
                   <Dropdown.Item onClick={logout}>
-                  <i class="bi bi-person-vcard ms-1"></i>
-                      اشتراكي 
+                    <i class="bi bi-person-vcard ms-1"></i>
+                    اشتراكي
                   </Dropdown.Item>
 
                   <li>
@@ -50,8 +49,8 @@ function BrowserNavbar({logout,fetchData,userData}) {
                   </li>
 
                   <Dropdown.Item onClick={logout} className="text-danger">
-                  <i class="bi bi-box-arrow-right ms-1 "></i> 
-                    تسجيل الخروج 
+                    <i class="bi bi-box-arrow-right ms-1 "></i>
+                    تسجيل الخروج
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -87,66 +86,23 @@ function BrowserNavbar({logout,fetchData,userData}) {
             id="navbarCenteredExample"
           >
             <ul class="navbar-nav mb-2 mb-lg-0">
-              <li class="nav-item" data-bs-dismiss="collapse">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "nav-link align-items-center border-bottom border-primary border-2"
-                      : "nav-link align-items-center"
-                  }
-                  to="/"
-                >
-                  <div className="d-flex align-items-center gap-1 ">
-                    <i class="bi bi-person-badge "></i>
-                    المدربين
-                  </div>
-                </NavLink>
-              </li>
-              <li class="nav-item " data-bs-dismiss="collapse">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "nav-link align-items-center border-bottom border-primary border-2"
-                      : "nav-link align-items-center"
-                  }
-                  to="/Schedules"
-                >
-                  <div className="d-flex align-items-center gap-1 ">
-                    <i class="bi bi-calendar3"></i>
-                    جداول
-                  </div>
-                </NavLink>
-              </li>
-              <li class="nav-item" data-bs-dismiss="collapse">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "nav-link align-items-center border-bottom border-primary border-2"
-                      : "nav-link align-items-center"
-                  }
-                  to="/Offers"
-                >
-                  <div className="d-flex align-items-center gap-1 ">
-                  <i class="bi bi-percent"></i>
-                    العروض
-                  </div>
-                </NavLink>
-              </li>
-              <li class="nav-item" data-bs-dismiss="collapse">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "nav-link align-items-center border-bottom border-primary border-2"
-                      : "nav-link align-items-center"
-                  }
-                  to="/Account"
-                >
-                  <div className="d-flex align-items-center gap-1 ">
-                  <i class="bi bi-pie-chart"></i>
-                    بياناتي
-                  </div>
-                </NavLink>
-              </li>
+              {links.map((item, index) => (
+                <li key={index} class="nav-item" data-bs-dismiss="collapse">
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "nav-link align-items-center border-bottom border-primary border-2"
+                        : "nav-link align-items-center"
+                    }
+                    to={item.link}
+                  >
+                    <div className="d-flex align-items-center gap-1 ">
+                      <i className={item.icon}></i>
+                      {item.name}
+                    </div>
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

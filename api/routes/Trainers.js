@@ -177,4 +177,27 @@ router.post("/login", async (req, res) => {
   }
 });
 
+//////////////////////////////////////////////////////////////////////////////////////
+// check trainer token
+//////////////////////////////////////////////////////////////////////////////////////
+
+router.get("/userData", validateToken, async (req, res) => {
+  // get current user data
+  try {
+    const tokenId = req.user.id;
+    const userData = await Trainer.findOne({
+      attributes: ["id", "username", "email"],
+      where: { id: tokenId },
+    });
+    if (!userData) {
+      res.json({ error: "login required" });
+    } else {
+      res.json(userData);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to get Trainee" });
+  }
+});
+
 module.exports = router;
