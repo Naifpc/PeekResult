@@ -13,6 +13,7 @@ import axios from "axios";
 import DefaultLayout from "./layouts/defaultLayout";
 import TrainerHome from "./pages/trainer-home";
 import TrainersLayout from "./layouts/TrainersLayout";
+import AboutTrainee from "./pages/aboutTrainee";
 
 function App() {
   const [userData, setUserData] = useState([]);
@@ -103,6 +104,7 @@ function App() {
             }
           >
             <Route path="/trainers" element={<TrainerHome />} />
+            <Route path="/aboutTrainee/:id" element={<AboutTrainee />} />
           </Route>
         </Routes>
       </>

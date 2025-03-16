@@ -9,6 +9,13 @@ import AnimatedPage from "../animations/AnimatedPage";
 function Home() {
   const [listOfTrainers, setListOfTrainers] = useState([]);
   const [query, setQuery] = useState("");
+  const [listOfFields, setListOfFields] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:9000/fields").then((response) => {
+      setListOfFields(response.data);
+    });
+  }, []);
 
   let { id } = useParams(); // get id from url
 
@@ -42,10 +49,10 @@ function Home() {
       <div class="container p-2 p-sm-2 p-md-3 p-lg-4 p-xl-5  ">
         <h4 className="mb-4">المدربين</h4>
 
-        <Search query={query} setQuery={setQuery} />
+        <Search query={query} setQuery={setQuery} placeholder={"اسم المدرب"} />
         <div class="m-4"></div>
 
-        <Filter />
+        <Filter listOfFields={listOfFields} />
         <div class="m-4"></div>
 
         <div className="container">

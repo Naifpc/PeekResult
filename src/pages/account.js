@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import DoughnutChart from "../partials/DoughnutChart";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -9,22 +9,9 @@ import Alerts from "../partials/alerts";
 import AnimatedPage from "../animations/AnimatedPage";
 import { useState } from "react";
 import HumanBody from "../partials/humanBody";
-
-function calculateAge(birthDate) {
-  //calculate age from birthdate
-  let birthDateObj = new Date(birthDate);
-  let today = new Date();
-  let age = today.getFullYear() - birthDateObj.getFullYear();
-  let monthDifference = today.getMonth() - birthDateObj.getMonth();
-  if (
-    monthDifference < 0 ||
-    (monthDifference === 0 && today.getDate() < birthDateObj.getDate())
-  ) {
-    age--;
-  }
-
-  return age;
-}
+import UserIcon from "../partials/userIcon";
+import Measurements from "../partials/measurements";
+import WightChart from "../partials/weightChart";
 
 function Account({ fetchData, userData, logout }) {
   const [modalShow, setModalShow] = useState(true);
@@ -83,14 +70,7 @@ function Account({ fetchData, userData, logout }) {
               <h4 className="">البيانات</h4>
 
               <div className="col-12 d-flex justify-content-center align-items-center ">
-                <div
-                  className="bg-body-secondary d-flex  justify-content-center border border-4 rounded-circle align-items-center"
-                  style={{ width: 100, height: 100 }}
-                >
-                  <h1 className="text-secondary m-0 text-center opacity-50">
-                    {userData.username[0].toUpperCase()}
-                  </h1>
-                </div>
+                <UserIcon username={userData.username} size={100} />
               </div>
               <div className="col-12 align-items-center mb-4">
                 <h3 className="text-center mb-1">{userData.username}</h3>
@@ -98,100 +78,9 @@ function Account({ fetchData, userData, logout }) {
                   {userData.email}
                 </h6>
               </div>
-              <div className="col-12  d-flex justify-content-evenly">
-                <div className="text-center">
-                  <div className="d-flex gap-1 align-items-baseline">
-                    <h1 className="fw-bold m-0">{userData.weight}</h1>
-                    <h6 className="fw-light text-secondary m-0">كجم</h6>
-                  </div>
-                  <h6 className="fw-light ">الوزن</h6>
-                </div>
-
-                <hr className="border"></hr>
-
-                <div className="text-center">
-                  <div className="d-flex gap-1 align-items-baseline">
-                    <h1 className="fw-bold m-0">{userData.height}</h1>
-                    <h6 className="fw-light text-secondary m-0">كجم</h6>
-                  </div>
-                  <h6 className="fw-light ">الطول</h6>
-                </div>
-
-                <hr className="border"></hr>
-
-                <div className="text-center">
-                  <div className="d-flex gap-1 align-items-baseline">
-                    <h1 className="fw-bold m-0">
-                      {calculateAge(userData.birthDate)}
-                    </h1>
-                    <h6 className="fw-light text-secondary m-0">سنة</h6>
-                  </div>
-                  <h6 className="fw-light">العمر</h6>
-                </div>
-              </div>
-
+              <Measurements userData={userData} />
               <div className="col-12">
-                <div className="row bg-body-secondary rounded align-items-center p-3">
-                  <h4 className="mb-4 text-center">توزيع الوزن</h4>
-                  <div className="col-12 col-lg-6 my-3 ">
-                    <DoughnutChart
-                      weight={userData.weight}
-                      fatWeight={userData.fatWeight}
-                      muscleWeight={userData.muscleWeight}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-6 d-flex justify-content-evenly">
-                    <div className="">
-                      <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
-                        <span class="p-1 rounded-circle bg-primary"></span>
-                        <p className=" mb-1 m-0"> وزن الجسم </p>
-                      </div>
-                      <div className="d-flex gap-1 align-items-baseline">
-                        <h2 className="fw-bold m-0">{userData.weight}</h2>
-                        <h6 className="text-secondary">
-                          /{userData.weight} كجم
-                        </h6>
-                      </div>
-                    </div>
-
-                    <hr className="border"></hr>
-
-                    <div className="">
-                      <div className="d-flex flex-nowrap align-items-center gap-1 fs-6 ">
-                        <span
-                          class="p-1 rounded-circle"
-                          style={{ backgroundColor: "rgb(54, 162, 235)" }}
-                        ></span>
-                        <p className=" mb-1 m-0  text-nowrap">وزن العضلات</p>
-                      </div>
-
-                      <div className="d-flex gap-1 align-items-baseline">
-                        <h2 className="fw-bold m-0">{userData.muscleWeight}</h2>
-                        <h6 className="text-secondary">
-                          /{userData.weight} كجم
-                        </h6>
-                      </div>
-                    </div>
-
-                    <hr className="border"></hr>
-
-                    <div className="">
-                      <div className="d-flex flex-nowrap align-items-center gap-1 fs-6">
-                        <span
-                          class="p-1 rounded-circle"
-                          style={{ backgroundColor: "rgb(255, 206, 86)" }}
-                        ></span>
-                        <p className=" mb-1 m-0"> وزن الدهون </p>
-                      </div>
-                      <div className="d-flex gap-1 align-items-baseline">
-                        <h2 className="fw-bold m-0">{userData.fatWeight}</h2>
-                        <h6 className="text-secondary">
-                          /{userData.weight} كجم
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <WightChart userData={userData} />
               </div>
             </div>
 

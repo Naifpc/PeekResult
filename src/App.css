@@ -266,7 +266,7 @@
 
 }
 
-.filter-badge:hover, .search-bar:hover *{
+.filter-badge:hover, .search-bar:hover * ,.user-row:hover{
   background-color: #3d3d3dff !important;
 }
 .top-navbar:hover{

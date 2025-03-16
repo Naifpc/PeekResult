@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search({ query, setQuery }) {
+function Search({ query, setQuery, placeholder }) {
   return (
     <div class="input-group  search-bar  ">
       <span
@@ -14,7 +14,7 @@ function Search({ query, setQuery }) {
         onChange={(e) => setQuery(e.target.value)}
         type="search"
         class="form-control bg-body-secondary border-0  rounded-0 rounded-start"
-        placeholder="اسم المدرب"
+        placeholder={placeholder}
         aria-label="Search"
         aria-describedby="search-addon"
       />
