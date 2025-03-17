@@ -17,8 +17,8 @@ function TrainerHome() {
           <Search placeholder={"اسم العميل"} />
           <Filter listOfFields={fields} />
           <div className="col-12">
-            <div className=" d-flex justify-content-between gap-3 bg-body-secondary rounded p-2 user-row">
-              <div className="d-flex gap-2">
+            <div className=" d-flex justify-content-between  bg-body-secondary rounded p-2 px-3 user-row">
+              <div className="d-flex gap-3">
                 <UserIcon username={"Naif"} size={20} />
                 <div className="align-content-center">
                   <h6 className="m-0 fw-bold">نايف العوام</h6>

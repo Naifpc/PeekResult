@@ -1,5 +1,5 @@
 import React from "react";
-import DoughnutChart from "../partials/DoughnutChart";
+import DoughnutChart from "./DoughnutChart";
 
 function WightChart({ userData }) {
   return (

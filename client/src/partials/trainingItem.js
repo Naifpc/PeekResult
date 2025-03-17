@@ -1,6 +1,6 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
-import HumanBody from "../partials/humanBody.js";
+import HumanBody from "./humanBody.js";
 function TriaingItem({ num }) {
   return (
     <Accordion.Item eventKey={`${num}`}>
@@ -50,15 +50,15 @@ function TriaingItem({ num }) {
                   <i class="bi bi-save2"></i>
                 </button>
               </div>
-             
             </div>
           </div>
-          
         </div>
         <div className="row border-top bg-body-secondary rounded-bottom">
-              <div className="col-12  text-center border-bottom text-secondary">شدة عالية</div>
-              <div className="col-12 text-center text-secondary">5 جلسات فعلية</div>
+          <div className="col-12  text-center border-bottom text-secondary">
+            شدة عالية
           </div>
+          <div className="col-12 text-center text-secondary">5 جلسات فعلية</div>
+        </div>
       </Accordion.Body>
     </Accordion.Item>
   );
