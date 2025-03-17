@@ -4,7 +4,6 @@ const { Users } = require("../models");
 const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 const { validateToken } = require("../middlewares/AuthMiddelware");
-const { error } = require("jquery");
 
 router.post("/register", async (req, res) => {
   // register a new user

@@ -35,6 +35,10 @@ module.exports = (sequelize, DataTypes) => {
       through: "TrainerFields",
       onDelete: "cascade",
     });
+
+    Trainer.hasMany(models.Plans, {
+      onDelete: "cascade",
+    });
   };
 
   return Trainer;
