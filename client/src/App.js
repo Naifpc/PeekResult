@@ -15,9 +15,13 @@ import TrainerHome from "./pages/trainer-home";
 import TrainersLayout from "./layouts/TrainersLayout";
 import AboutTrainee from "./pages/aboutTrainee";
 import Plans from "./pages/plans";
+import CreatePlan from "./pages/CreatePlan";
+import SecondaryLayout from "./layouts/secondaryLayout";
+import CreateDay from "./pages/createDay";
 
 function App() {
   const [userData, setUserData] = useState([]);
+  const [prev, setPrev] = useState("/");
 
   const fetchData = async () => {
     try {
@@ -107,6 +111,26 @@ function App() {
             <Route path="/trainers" element={<TrainerHome />} />
             <Route path="/aboutTrainee/:id" element={<AboutTrainee />} />
             <Route path="plans" element={<Plans />} />
+          </Route>
+
+          <Route
+            element={
+              <SecondaryLayout
+                fetchData={TrainerfetchData}
+                userData={userData}
+                logout={logout}
+                prev={prev}
+              />
+            }
+          >
+            <Route
+              path="/createPlan"
+              element={<CreatePlan setPrev={setPrev} />}
+            />
+            <Route
+              path="/createPlan"
+              element={<CreateDay setPrev={setPrev} />}
+            />
           </Route>
         </Routes>
       </>
