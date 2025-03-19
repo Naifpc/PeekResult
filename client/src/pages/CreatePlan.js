@@ -1,134 +1,184 @@
 import React from "react";
 import AnimatedPage from "../animations/AnimatedPage";
 import { isMobile, isBrowser } from "react-device-detect";
-import { Link } from "react-router-dom";
-import PlusButton from "../partials/plusButton";
+import Accordion from "react-bootstrap/Accordion";
+import { useEffect, useState } from "react";
 
 function CreatePlan({ setPrev }) {
   setPrev("/plans");
+
+  const [daysList, setDaysList] = useState([
+    { name: "اليوم الاول", exercisesList: [{ exercise: "" }] },
+    { name: "اليوم الثاني", exercisesList: [{ exercise: "" }] },
+    { name: "اليوم الثالث", exercisesList: [{ exercise: "" }] },
+    { name: "اليوم الرابع", exercisesList: [{ exercise: "" }] },
+    { name: "اليوم الخامس", exercisesList: [{ exercise: "" }] },
+    { name: "اليوم السادس", exercisesList: [{ exercise: "" }] },
+    { name: "اليوم السابع", exercisesList: [{ exercise: "" }] },
+  ]);
+
+  const [selectedDay, setSelectedDay] = useState(0);
+
+  const addExcercies = () => {
+    // Create a copy of the current daysList
+    const updatedDaysList = [...daysList];
+
+    // Update the exercisesList for the selected day
+    updatedDaysList[selectedDay].exercisesList.push({ exercise: "" });
+
+    // Update the state with the new daysList
+    setDaysList(updatedDaysList);
+  };
+
+  const nextDay = () => {
+    setSelectedDay(selectedDay + 1);
+  };
+
+  const prevDay = () => {
+    setSelectedDay(selectedDay - 1);
+  };
+
   return (
     <AnimatedPage>
       <div class="container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5  ">
         <div className="row g-4">
-          {isBrowser && (
-            <div className="col-12 mb-0">
-              <button type="button" class="btn text-primary fw-bold p-0">
-                خطة جديدة <i class="bi bi-plus-square"></i>
-              </button>
-            </div>
-          )}
+          {daysList.map((value, key) => {
+            if (selectedDay == key) {
+              return (
+                <>
+                  <div className="col-12 col-lg-9 ">
+                    <div className="d-flex justify-content-between ">
+                      {selectedDay < 6 ? (
+                        <button
+                          type="button"
+                          onClick={nextDay}
+                          className="btn pe-0"
+                        >
+                          <i class="bi bi-caret-right-fill"></i>
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="btn pe-0 border-0"
+                          disabled
+                        >
+                          <i class="bi bi-caret-right-fill"></i>
+                        </button>
+                      )}
 
-          <div className="col-12">
-            <div className=" d-flex justify-content-between   bg-body-secondary rounded p-2 px-3 user-row">
-              <div className="d-flex gap-3 align-items-center">
-                <h6 className="m-0">1</h6>
-                <div className="align-content-center">
-                  <h6 className="m-0 fw-bold">الاحد</h6>
-                  <h6 className="m-0 text-secondary fw-light"></h6>
-                </div>
-              </div>
-              <div className="d-flex gap-1 align-items-center">
-                <i class="bi bi-chevron-left fs-5"></i>
-              </div>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className=" d-flex justify-content-between   bg-body-secondary rounded p-2 px-3 user-row">
-              <div className="d-flex gap-3 align-items-center">
-                <h6 className="m-0">2</h6>
-                <div className="align-content-center">
-                  <h6 className="m-0 fw-bold">الاثنين</h6>
-                  <h6 className="m-0 text-secondary fw-light"></h6>
-                </div>
-              </div>
-              <div className="d-flex gap-1 align-items-center">
-                <i class="bi bi-chevron-left fs-5"></i>
-              </div>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className=" d-flex justify-content-between   bg-body-secondary rounded p-2 px-3 user-row">
-              <div className="d-flex gap-3 align-items-center">
-                <h6 className="m-0">3</h6>
-                <div className="align-content-center">
-                  <h6 className="m-0 fw-bold">الثلاثاء</h6>
-                  <h6 className="m-0 text-secondary fw-light"></h6>
-                </div>
-              </div>
-              <div className="d-flex gap-1 align-items-center">
-                <i class="bi bi-chevron-left fs-5"></i>
-              </div>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className=" d-flex justify-content-between   bg-body-secondary rounded p-2 px-3 user-row">
-              <div className="d-flex gap-3 align-items-center">
-                <h6 className="m-0">4</h6>
-                <div className="align-content-center">
-                  <h6 className="m-0 fw-bold">الاربعاء</h6>
-                  <h6 className="m-0 text-secondary fw-light"></h6>
-                </div>
-              </div>
-              <div className="d-flex gap-1 align-items-center">
-                <i class="bi bi-chevron-left fs-5"></i>
-              </div>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className=" d-flex justify-content-between   bg-body-secondary rounded p-2 px-3 user-row">
-              <div className="d-flex gap-3 align-items-center">
-                <h6 className="m-0">5</h6>
-                <div className="align-content-center">
-                  <h6 className="m-0 fw-bold">الخميس</h6>
-                  <h6 className="m-0 text-secondary fw-light"></h6>
-                </div>
-              </div>
-              <div className="d-flex gap-1 align-items-center">
-                <i class="bi bi-chevron-left fs-5"></i>
-              </div>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className=" d-flex justify-content-between   bg-body-secondary rounded p-2 px-3 user-row">
-              <div className="d-flex gap-3 align-items-center">
-                <h6 className="m-0">6</h6>
-                <div className="align-content-center">
-                  <h6 className="m-0 fw-bold">الجمعة</h6>
-                  <h6 className="m-0 text-secondary fw-light"></h6>
-                </div>
-              </div>
-              <div className="d-flex gap-1 align-items-center">
-                <i class="bi bi-chevron-left fs-5"></i>
-              </div>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className=" d-flex justify-content-between   bg-body-secondary rounded p-2 px-3 user-row">
-              <div className="d-flex gap-3 align-items-center">
-                <h6 className="m-0">7</h6>
-                <div className="align-content-center">
-                  <h6 className="m-0 fw-bold">السبت</h6>
-                  <h6 className="m-0 text-secondary fw-light"></h6>
-                </div>
-              </div>
-              <div className="d-flex gap-1 align-items-center">
-                <i class="bi bi-chevron-left fs-5"></i>
-              </div>
-            </div>
-          </div>
+                      <input
+                        type="text"
+                        className="form-control text-center bg-body-secondary border-0  rounded"
+                        value={value.name}
+                        disabled
+                      />
+                      {selectedDay > 0 ? (
+                        <button
+                          type="button"
+                          onClick={prevDay}
+                          className="btn ps-0"
+                        >
+                          <i class="bi bi-caret-left-fill"></i>
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="btn ps-0 border-0"
+                          disabled
+                        >
+                          <i class="bi bi-caret-left-fill"></i>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                  {isBrowser && (
+                    <div className="col-12 col-lg-3 mb-0 ">
+                      <div className="d-flex gap-2">
+                        <button
+                          type="button"
+                          className="btn btn-primary fw-bold text-white w-100"
+                        >
+                          حفظ الخطة <i class="bi bi-upload"></i>
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
-          {isMobile && (
-            <>
-              <div className="fixed-bottom container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5">
-                <button
-                  type="button"
-                  class="btn btn-primary w-100 text-white  rounded-pill"
-                >
-                  حفظ الخطة
-                </button>
-              </div>
-            </>
-          )}
+                  {value.exercisesList.map((value, key) => {
+                    return (
+                      <div className="col-12">
+                        <Accordion>
+                          <Accordion.Item eventKey={key}>
+                            <Accordion.Header>
+                              <div className="d-flex gap-3">
+                                <div>{++key}</div>
+                                <div>اسم التمرين</div>
+                              </div>
+                            </Accordion.Header>
+                            <Accordion.Body>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing
+                              elit, sed do eiusmod tempor incididunt ut labore
+                              et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut
+                              aliquip ex ea commodo consequat. Duis aute irure
+                              dolor in reprehenderit in voluptate velit esse
+                              cillum dolore eu fugiat nulla pariatur. Excepteur
+                              sint occaecat cupidatat non proident, sunt in
+                              culpa qui officia deserunt mollit anim id est
+                              laborum.
+                            </Accordion.Body>
+                          </Accordion.Item>
+                        </Accordion>
+
+                        {isBrowser && (
+                          <>
+                            {key < 7 && (
+                              <div className="col-12 mb-0 ">
+                                <button
+                                  type="button"
+                                  className="btn text-secondary fw-bold p-0"
+                                  onClick={addExcercies}
+                                >
+                                  اضافة تمرين{" "}
+                                  <i className="bi bi-plus-square"></i>
+                                </button>
+                              </div>
+                            )}
+                          </>
+                        )}
+
+                        {isMobile && (
+                          <>
+                            {key < 7 && (
+                              <div className="container d-flex fixed-bottom  py-5 p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5">
+                                <button
+                                  type="button"
+                                  className="btn d-flex rounded-circle bg-body-secondary mb-4 p-1 align-items-center justify-content-center"
+                                  style={{ width: 50, height: 50 }}
+                                  onClick={addExcercies}
+                                >
+                                  <i className="bi bi-plus fs-1 text-white"></i>
+                                </button>
+                              </div>
+                            )}
+
+                            <div className="fixed-bottom container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5">
+                              <button
+                                type="button"
+                                class="btn btn-primary w-100 text-white  rounded-pill"
+                              >
+                                حفظ الخطة <i class="bi bi-upload"></i>
+                              </button>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
+                </>
+              );
+            }
+          })}
         </div>
       </div>
     </AnimatedPage>

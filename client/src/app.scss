@@ -13,6 +13,14 @@ $accordion-button-active-bg:   rgba(102, 102, 102, 0);
 $accordion-button-focus-border-color:     rgba(102, 102, 102, 0); // Deprecated in v5.3.3
 $accordion-button-focus-box-shadow:       rgba(102, 102, 102, 0);
 
+$accordion-bg:                           var(--bs-secondary-bg);
+$accordion-border-color:                  transparent;
+
+
+
+
+
+
 
 $btn-close-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='currentColor'><path d='M6 1L12 8L6 15L4.5 13.5L9 8L4.5 2.5L6 1Z'/></svg>");
 
