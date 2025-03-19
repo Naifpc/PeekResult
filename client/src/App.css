@@ -260,3 +260,6 @@
   transition: all 400ms ease-in-out;
 }
 
+.main-body{
+  height: 90vh ;
+}

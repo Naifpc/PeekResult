@@ -106,50 +106,55 @@ function CreatePlan({ setPrev }) {
 
                   {value.exercisesList.map((value, key) => {
                     return (
-                      <div className="col-12">
-                        <Accordion>
-                          <Accordion.Item eventKey={key}>
-                            <Accordion.Header>
-                              <div className="d-flex gap-3">
-                                <div>{++key}</div>
-                                <div>اسم التمرين</div>
-                              </div>
-                            </Accordion.Header>
-                            <Accordion.Body>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit, sed do eiusmod tempor incididunt ut labore
-                              et dolore magna aliqua. Ut enim ad minim veniam,
-                              quis nostrud exercitation ullamco laboris nisi ut
-                              aliquip ex ea commodo consequat. Duis aute irure
-                              dolor in reprehenderit in voluptate velit esse
-                              cillum dolore eu fugiat nulla pariatur. Excepteur
-                              sint occaecat cupidatat non proident, sunt in
-                              culpa qui officia deserunt mollit anim id est
-                              laborum.
-                            </Accordion.Body>
-                          </Accordion.Item>
-                        </Accordion>
+                      <>
+                        <div className="col-12">
+                          <Accordion>
+                            <Accordion.Item eventKey={key}>
+                              <Accordion.Header>
+                                <div className="d-flex gap-3">
+                                  <div>{key + 1}</div>
+                                  <div></div>
+                                  <div>اسم التمرين</div>
+                                </div>
+                              </Accordion.Header>
+                              <Accordion.Body>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut
+                                enim ad minim veniam, quis nostrud exercitation
+                                ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in
+                                reprehenderit in voluptate velit esse cillum
+                                dolore eu fugiat nulla pariatur. Excepteur sint
+                                occaecat cupidatat non proident, sunt in culpa
+                                qui officia deserunt mollit anim id est laborum.
+                              </Accordion.Body>
+                            </Accordion.Item>
+                          </Accordion>
+                        </div>
 
                         {isBrowser && (
                           <>
-                            {key < 7 && (
-                              <div className="col-12 mb-0 ">
-                                <button
-                                  type="button"
-                                  className="btn text-secondary fw-bold p-0"
-                                  onClick={addExcercies}
-                                >
-                                  اضافة تمرين{" "}
-                                  <i className="bi bi-plus-square"></i>
-                                </button>
-                              </div>
-                            )}
+                            {key + 1 ===
+                              daysList[selectedDay].exercisesList.length &&
+                              daysList[selectedDay].exercisesList.length <
+                                7 && (
+                                <div className="col-12 mb-0 ">
+                                  <button
+                                    type="button"
+                                    className="btn text-secondary fw-bold p-0"
+                                    onClick={addExcercies}
+                                  >
+                                    اضافة تمرين{" "}
+                                    <i className="bi bi-plus-square"></i>
+                                  </button>
+                                </div>
+                              )}
                           </>
                         )}
-
                         {isMobile && (
                           <>
-                            {key < 7 && (
+                            {daysList[selectedDay].exercisesList.length < 7 && (
                               <div className="container d-flex fixed-bottom  py-5 p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5">
                                 <button
                                   type="button"
@@ -172,7 +177,7 @@ function CreatePlan({ setPrev }) {
                             </div>
                           </>
                         )}
-                      </div>
+                      </>
                     );
                   })}
                 </>
