@@ -85,7 +85,7 @@ function BrowserNavbar({ logout, fetchData, userData, links }) {
             class="collapse navbar-collapse justify-content-center"
             id="navbarCenteredExample"
           >
-            <ul class="navbar-nav mb-2 mb-lg-0">
+            <ul class="navbar-nav gap-4 mb-2 mb-lg-0">
               {links.map((item, index) => (
                 <li key={index} class="nav-item" data-bs-dismiss="collapse">
                   <NavLink

@@ -9,9 +9,9 @@ function MobileBotNavbar({ links }) {
   const unactive =
     "nav-link text-center d-flex flex-column align-items-center p-0 ";
   return (
-    <nav class="navbar py-0 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 fixed-bottom bg-body   ">
-      <div class="container-fluid p-0">
-        <ul class="navbar-nav d-flex flex-row justify-content-evenly p-0 w-100">
+    <nav class="navbar py-0  fixed-bottom bg-body   ">
+      <div class="container-fluid py-0">
+        <ul class="navbar-nav d-flex flex-row justify-content-between px-3 px-sm-3 px-md-3 px-lg-4 px-xl-5 w-100">
           {links.map((item, index) => (
             <li key={index} class="nav-item">
               <NavLink
@@ -19,7 +19,7 @@ function MobileBotNavbar({ links }) {
                 to={item.link}
               >
                 <i className={`fs-3 ${item.icon}`}></i>
-                <h6 class="p-0 fw-light">{item.name}</h6>
+                <p class="fs-7">{item.name}</p>
               </NavLink>
             </li>
           ))}

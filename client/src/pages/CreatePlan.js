@@ -3,6 +3,9 @@ import AnimatedPage from "../animations/AnimatedPage";
 import { isMobile, isBrowser } from "react-device-detect";
 import Accordion from "react-bootstrap/Accordion";
 import { useEffect, useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import AnimatedAccordion from "../animations/AnimatedAccordion";
+import * as Yup from "yup";
 
 function CreatePlan({ setPrev }) {
   setPrev("/plans");
@@ -91,6 +94,7 @@ function CreatePlan({ setPrev }) {
                       )}
                     </div>
                   </div>
+
                   {isBrowser && (
                     <div className="col-12 col-lg-3 mb-0 ">
                       <div className="d-flex gap-2">
@@ -108,29 +112,114 @@ function CreatePlan({ setPrev }) {
                     return (
                       <>
                         <div className="col-12">
-                          <Accordion>
-                            <Accordion.Item eventKey={key}>
-                              <Accordion.Header>
-                                <div className="d-flex gap-3">
-                                  <div>{key + 1}</div>
-                                  <div></div>
-                                  <div>اسم التمرين</div>
-                                </div>
-                              </Accordion.Header>
-                              <Accordion.Body>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint
-                                occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.
-                              </Accordion.Body>
-                            </Accordion.Item>
-                          </Accordion>
+                          <AnimatedAccordion>
+                            <Formik>
+                              <Form>
+                                <Accordion>
+                                  <Accordion.Item eventKey={key}>
+                                    <Accordion.Header>
+                                      <div className="d-flex gap-3">
+                                        <div>{key + 1}</div>
+                                        <div></div>
+
+                                        <Field
+                                          type="text"
+                                          className="form-control border-0 text-secondary bg-transparent p-0 m-0"
+                                          id="floatingEmail"
+                                          name="email"
+                                          placeholder="اسم التمرين"
+                                        />
+                                      </div>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                      <div className="row g-2">
+                                        <div className="col-12 d-flex justify-content-between">
+                                          <div className="d-flex  gap-2 py-1   ">
+                                            <button className="btn btn-outline-secondary rounded-pill">
+                                              راحة{" "}
+                                              <i class="bi bi-battery-charging"></i>
+                                            </button>
+                                            <button className="btn btn-outline-secondary rounded-pill">
+                                              كارديو <i class="bi bi-fire"></i>
+                                            </button>
+                                          </div>
+                                          <div>
+                                            <button className="btn  w-100 h-100 text-white rounded-pill fw-bold">
+                                              <i class="bi bi-trash3 fs-5 text-danger"></i>
+                                            </button>
+                                          </div>
+                                        </div>
+
+                                        <div className="col-4 text-center">
+                                          <label className="fw-bold">
+                                            جلسات
+                                          </label>
+                                          <Field
+                                            type="number"
+                                            className="form-control bg-transparent border-0 text-center text-secondary "
+                                            id="floatingEmail"
+                                            name="email"
+                                            placeholder="0"
+                                          />
+                                        </div>
+                                        <div className="col-4 text-center">
+                                          <label className="fw-bold">
+                                            عدات
+                                          </label>
+                                          <Field
+                                            type="number"
+                                            className="form-control bg-transparent border-0 text-center text-secondary "
+                                            id="floatingEmail"
+                                            name="email"
+                                            placeholder="0"
+                                          />
+                                        </div>
+                                        <div className="col-4 text-center">
+                                          <label className="fw-bold">
+                                            الوزن
+                                          </label>
+                                          <Field
+                                            type="number"
+                                            className="form-control bg-transparent border-0 text-center text-secondary "
+                                            id="floatingEmail"
+                                            name="email"
+                                            placeholder="0"
+                                          />
+                                        </div>
+                                        <hr />
+
+                                        <div className="form-floating col-12">
+                                          <Field
+                                            type="select"
+                                            className="form-control bg-transparent"
+                                            id="floatingEmail"
+                                            name="email"
+                                            placeholder="اسم التمرين"
+                                          />
+                                          <label htmlFor="floatingEmail">
+                                            العضلة المستهدفة
+                                          </label>
+                                        </div>
+                                        <div className="form-floating col-12">
+                                          <Field
+                                            type="text"
+                                            className="form-control bg-transparent"
+                                            id="floatingEmail"
+                                            name="email"
+                                            placeholder="اسم التمرين"
+                                          />
+                                          <label htmlFor="floatingEmail">
+                                            رابط الفيديو{" "}
+                                            <i class="bi bi-link-45deg"></i>
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </Accordion.Body>
+                                  </Accordion.Item>
+                                </Accordion>
+                              </Form>
+                            </Formik>
+                          </AnimatedAccordion>
                         </div>
 
                         {isBrowser && (
