@@ -18,10 +18,13 @@ import Plans from "./pages/plans";
 import CreatePlan from "./pages/CreatePlan";
 import SecondaryLayout from "./layouts/secondaryLayout";
 import CreateDay from "./pages/createDay";
+import Alerts from "./partials/alerts";
 
 function App() {
   const [userData, setUserData] = useState([]);
   const [prev, setPrev] = useState("/");
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showAlert, setAlertShow] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -71,6 +74,14 @@ function App() {
   return (
     <Router>
       <>
+        <Alerts
+          variant={"danger"}
+          key={"danger"}
+          showAlert={alertMessage}
+          onClose={() => setAlertMessage(false)}
+          icon={<i class="bi bi-exclamation-triangle-fill"></i>}
+          msg={alertMessage}
+        />
         <Routes>
           <Route
             element={
@@ -125,11 +136,13 @@ function App() {
           >
             <Route
               path="/createPlan"
-              element={<CreatePlan setPrev={setPrev} />}
-            />
-            <Route
-              path="/createPlan"
-              element={<CreateDay setPrev={setPrev} />}
+              element={
+                <CreatePlan
+                  setPrev={setPrev}
+                  setAlertShow={setAlertShow}
+                  setAlertMessage={setAlertMessage}
+                />
+              }
             />
           </Route>
         </Routes>

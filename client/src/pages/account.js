@@ -72,7 +72,7 @@ function Account({ fetchData, userData, logout }) {
               <div className="col-12 d-flex justify-content-center align-items-center ">
                 <UserIcon username={userData.username} size={100} />
               </div>
-              <div className="col-12 align-items-center mb-4">
+              <div className="col-12 align-items-center">
                 <h3 className="text-center mb-1">{userData.username}</h3>
                 <h6 className="text-center fw-light text-secondary">
                   {userData.email}

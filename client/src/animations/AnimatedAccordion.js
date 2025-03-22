@@ -6,10 +6,11 @@ const animations = {
   exit: { opacity: 0, y: -100 },
 };
 
-const AnimatedAccordion = ({ children, showAlert }) => {
+const AnimatedAccordion = ({ children, key }) => {
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       <motion.div
+        key={key}
         variants={animations}
         initial="initial"
         animate="animate"
