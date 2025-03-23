@@ -10,6 +10,7 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import * as Yup from "yup";
 import Card from "react-bootstrap/Card";
 import { useContext } from "react";
+import SavePlan from "../partials/savePlan";
 
 ////////////////////////////////////Button////////////////////////////////////////////////////
 const up = "bi bi-chevron-up";
@@ -36,7 +37,7 @@ function ContextAwareToggle({ eventKey, callback }) {
 ////////////////////////////////////////////////////////////////////////////////////////////
 function CreatePlan({ setPrev, setAlertShow, setAlertMessage }) {
   setPrev("/plans");
-
+  const [modalShow, setModalShow] = useState(false);
   const [daysList, setDaysList] = useState([
     {
       name: "اليوم الاول",
@@ -256,6 +257,7 @@ function CreatePlan({ setPrev, setAlertShow, setAlertMessage }) {
                         <button
                           type="button"
                           className="btn btn-primary fw-bold text-white w-100"
+                          onClick={() => setModalShow(true)}
                         >
                           حفظ الخطة <i className="bi bi-upload"></i>
                         </button>
@@ -544,6 +546,7 @@ function CreatePlan({ setPrev, setAlertShow, setAlertMessage }) {
               <div className="fixed-bottom container p-3 p-sm-3 p-md-3 p-lg-4 p-xl-5">
                 <button
                   type="button"
+                  onClick={() => setModalShow(true)}
                   className="btn btn-primary w-100 text-white  rounded-pill"
                 >
                   حفظ الخطة <i className="bi bi-upload"></i>
@@ -553,6 +556,11 @@ function CreatePlan({ setPrev, setAlertShow, setAlertMessage }) {
           )}
         </div>
       </div>
+      <SavePlan
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        daysList={daysList}
+      />
     </AnimatedPage>
   );
 }
