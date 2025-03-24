@@ -89,7 +89,11 @@ function Plans() {
           })}
         </div>
 
-        {isMobile && <PlusButton />}
+        {isMobile && (
+          <Link to="/createPlan">
+            <PlusButton />
+          </Link>
+        )}
       </div>
     </AnimatedPage>
   );

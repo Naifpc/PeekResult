@@ -14,8 +14,12 @@ function DefaultLayout({ fetchData, userData, logout }) {
   const links = [
     { link: "/trainers", name: "العملاء", icon: "bi bi-people" },
     { link: "/messages", name: "الرسائل", icon: "bi bi-chat" },
-    { link: "/plans", name: "الخطط", icon: "bi bi-file-text" },
-    { link: "/offers", name: "الحساب", icon: "bi bi-person" },
+    { link: "/trainers/plans", name: "الخطط", icon: "bi bi-file-text" },
+    {
+      link: `/trainers/aboutTrainer/${userData.id}`,
+      name: "الحساب",
+      icon: "bi bi-person",
+    },
   ];
   const [modalShow, setModalShow] = useState(true);
 

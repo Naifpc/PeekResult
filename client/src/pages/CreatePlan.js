@@ -36,7 +36,7 @@ function ContextAwareToggle({ eventKey, callback }) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 function CreatePlan({ setPrev, setAlertShow, setAlertMessage }) {
-  setPrev("/plans");
+  setPrev("/trainers/plans");
   const [modalShow, setModalShow] = useState(false);
   const [daysList, setDaysList] = useState([
     {

@@ -118,8 +118,12 @@
 }
 
 
-.sub-card:hover{
-  background-color: var(--bs-secondary-bg);
+.glow-primary{
+  border: 2px solid var(--bs-primary); /* Optional, to define the edge */
+  box-shadow: 0 0 10px 2px var(--bs-primary); /* Creates the glow effect */
+  
+
+
 }
 
 .accordion-button::after {

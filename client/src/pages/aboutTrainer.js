@@ -95,106 +95,127 @@ function AboutTrainer() {
               </div>
             </div>
           </div>
-          <div className="container">
-            <div className="row">
-              <div className="col-12 col-md-4">
-                <div class="card peek-sub   text-center mb-4 border-primary sub-card">
-                  <div class="card-header rounded-0  border-primary bg-primary">
-                    <h4 class="my-0 font-weight-normal">باقة الPeek</h4>
-                  </div>
-                  <div class="card-body sub-card-body">
-                    <h1 class="card-title pricing-card-title">
-                      300sr <small class="text-muted">/ شهر</small>
-                    </h1>
-                    <div className="container px-5">
-                      <select
-                        className="form-select form-select-lg"
-                        name=""
-                        id=""
-                      >
-                        <option value="">12 شهر</option>
-                      </select>
-                    </div>
-                    <div className="container d-flex justify-content-center">
-                      <ul class="list text-end mt-3 mb-4">
-                        <li>جدول تغذية</li>
-                        <li>جدول تدريب</li>
-                        <li>تواصل مع المدرب</li>
-                      </ul>
-                    </div>
-                    <button
-                      type="button"
-                      class="btn btn-lg btn-block btn-primary"
-                    >
-                      اشترك
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="col-12 col-md-4">
-                <div class="card text-center mb-4  sub-card">
-                  <div class="card-header ">
-                    <h4 class="my-0 font-weight-normal">باقة التدريب</h4>
-                  </div>
-                  <div class="card-body sub-card-body">
-                    <h1 class="card-title pricing-card-title">
-                      150sr <small class="text-muted">/ شهر</small>
-                    </h1>
-                    <div className="container px-5">
-                      <select
-                        className="form-select form-select-lg"
-                        name=""
-                        id=""
-                      >
-                        <option value="">12 شهر</option>
-                      </select>
-                    </div>
-                    <div className="container d-flex justify-content-center">
-                      <ul class="list text-end mt-3 mb-4">
-                        <li>جدول تدريب</li>
-                        <li>تواصل مع المدرب</li>
-                      </ul>
-                    </div>
-                    <button
-                      type="button"
-                      class="btn btn-lg btn-block  btn-outline-primary"
-                    >
-                      اشترك
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="col-12  col-md-4">
-                <div class="card  text-center mb-4 sub-card">
-                  <div class="card-header">
-                    <h4 class="my-0 font-weight-normal"> باقة الدايت</h4>
-                  </div>
-                  <div class="card-body sub-card-body">
-                    <h1 class="card-title pricing-card-title">
-                      60sr <small class="text-muted">/ شهر</small>
-                    </h1>
-                    <div className="container px-5">
-                      <select
-                        className="form-select form-select-lg"
-                        name=""
-                        id=""
-                      >
-                        <option value="">12 شهر</option>
-                      </select>
-                    </div>
-                    <div className="container d-flex justify-content-center">
-                      <ul class="list text-end mt-3 mb-4">
-                        <li>جدول تغذية</li>
-                        <li>تواصل مع المدرب</li>
-                      </ul>
-                    </div>
 
-                    <button
-                      type="button"
-                      class="btn btn-lg btn-block btn-outline-primary"
-                    >
-                      اشترك
-                    </button>
+          <div className="container">
+            <h4 className="mb-4">الباقات</h4>
+            <div className="row d-flex align-items-center">
+              <div className="col-12 col-md-4 p-0">
+                <div class="card  border-0 rounded-0 bg-body-secondary">
+                  <div class="card-body p-4">
+                    <div className="row g-4">
+                      <div className="col-12">
+                        <h4 class="my-0 fw-bold">باقة التدريب</h4>
+                      </div>
+                      <div className="col-12">
+                        {" "}
+                        <div className="d-flex  align-items-center">
+                          <h2 class="card-title m-0 ">100</h2>
+                          <img
+                            src={`${process.env.PUBLIC_URL}/Saudi_Riyal_Symbol-2.svg`}
+                            alt="SAR"
+                            width="20"
+                          />
+                          <h6 class="text-secondary m-0">/ شهر</h6>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <button
+                          type="button"
+                          class="btn  btn-primary text-white "
+                        >
+                          اشترك
+                        </button>
+                      </div>
+                      <div className="col-12">
+                        {" "}
+                        <p>جدول تدريب</p>
+                      </div>
+                      <div className="col-12">
+                        <p>تواصل مع المدرب</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-md-4 p-0">
+                <div class="card  border-0 rounded-0 bg-body-tertiary glow-primary z-1">
+                  <div class="card-body p-4">
+                    <div className="row g-4">
+                      <div className="col-12">
+                        <h4 class="my-0 fw-bold">باقة PEEK</h4>
+                      </div>
+                      <div className="col-12">
+                        {" "}
+                        <div className="d-flex  align-items-center">
+                          <h2 class="card-title pricing-card-title m-0 ">
+                            150
+                          </h2>
+                          <img
+                            src={`${process.env.PUBLIC_URL}/Saudi_Riyal_Symbol-2.svg`}
+                            alt="SAR"
+                            width="20"
+                          />
+                          <h6 class="text-secondary m-0">/ شهر</h6>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <button
+                          type="button"
+                          class="btn  btn-primary text-white "
+                        >
+                          اشترك
+                        </button>
+                      </div>
+                      <div className="col-12">
+                        {" "}
+                        <p>جدول تدريب</p>
+                      </div>
+                      <div className="col-12">
+                        {" "}
+                        <p>جدول تغذية</p>
+                      </div>
+                      <div className="col-12">
+                        <p>تواصل مع المدرب</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-12 col-md-4 p-0">
+                <div class="card  border-0 rounded-0 bg-body-secondary">
+                  <div class="card-body p-4">
+                    <div className="row g-4">
+                      <div className="col-12">
+                        <h4 class="my-0 fw-bold">باقة التدريب</h4>
+                      </div>
+                      <div className="col-12">
+                        {" "}
+                        <div className="d-flex  align-items-center">
+                          <h2 class="card-title pricing-card-title m-0">50</h2>
+                          <img
+                            src={`${process.env.PUBLIC_URL}/Saudi_Riyal_Symbol-2.svg`}
+                            alt="SAR"
+                            width="20"
+                          />
+                          <h6 class="text-secondary m-0">/ شهر</h6>
+                        </div>
+                      </div>
+                      <div className="col-12">
+                        <button
+                          type="button"
+                          class="btn  btn-primary text-white "
+                        >
+                          اشترك
+                        </button>
+                      </div>
+                      <div className="col-12">
+                        {" "}
+                        <p>جدول تغذية</p>
+                      </div>
+                      <div className="col-12">
+                        <p>تواصل مع المدرب</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

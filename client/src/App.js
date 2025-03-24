@@ -110,6 +110,7 @@ function App() {
           </Route>
 
           <Route
+            path="/trainers"
             element={
               <TrainersLayout
                 fetchData={TrainerfetchData}
@@ -119,8 +120,11 @@ function App() {
             }
           >
             <Route path="/trainers" element={<TrainerHome />} />
-            <Route path="/aboutTrainee/:id" element={<AboutTrainee />} />
-            <Route path="plans" element={<Plans />} />
+            <Route
+              path="/trainers/aboutTrainer/:id"
+              element={<AboutTrainer />}
+            />
+            <Route path="/trainers/plans" element={<Plans />} />
           </Route>
 
           <Route

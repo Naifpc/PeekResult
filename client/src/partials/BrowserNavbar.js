@@ -95,6 +95,7 @@ function BrowserNavbar({ logout, fetchData, userData, links }) {
                         : "nav-link align-items-center"
                     }
                     to={item.link}
+                    end
                   >
                     <div className="d-flex align-items-center gap-1 ">
                       <i className={item.icon}></i>
