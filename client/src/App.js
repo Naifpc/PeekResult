@@ -17,7 +17,6 @@ import AboutTrainee from "./pages/aboutTrainee";
 import Plans from "./pages/plans";
 import CreatePlan from "./pages/CreatePlan";
 import SecondaryLayout from "./layouts/secondaryLayout";
-import CreateDay from "./pages/createDay";
 import Alerts from "./partials/alerts";
 
 function App() {

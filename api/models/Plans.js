@@ -8,13 +8,16 @@ module.exports = (sequelize, DataTypes) => {
 
   Plans.associate = (models) => {
     Plans.hasMany(models.Days, {
-      onDelete: "cascade",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
 
     Plans.belongsTo(models.Trainer, {
       foreignKey: {
         allowNull: false,
       },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
   };
 

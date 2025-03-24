@@ -10,10 +10,13 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: {
         allowNull: false,
       },
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
 
     Days.hasMany(models.Exercises, {
-      onDelete: "cascade",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
   };
 
