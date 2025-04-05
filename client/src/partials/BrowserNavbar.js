@@ -1,118 +1,95 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { Dropdown } from "react-bootstrap";
 import Login from "./login";
-import { TopNavBtn, TopNavDrop } from "./topNavBtn";
+import AccountModal from "./accountModal";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import UserIcon from "./userIcon";
 
-function BrowserNavbar({ logout, fetchData, userData, links }) {
+function BrowserNavbar({ fetchData, userData, links, setUserData }) {
   const [modalShow, setModalShow] = useState(false);
+  const [showAccountModal, setAccountModal] = useState(false);
+
+  const logout = () => {
+    sessionStorage.removeItem("accessToken");
+    setAccountModal(false);
+    setUserData(false);
+  };
 
   return (
     <>
-      <div class="sticky-top bg-body  container-fluid   ">
-        <div className="container d-flex justify-content-between py-2 px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5 ">
-          {!userData ? (
-            <TopNavBtn
-              onClick={() => setModalShow(true)}
-              mainTxt={"دخول / تسجيل"}
-              subTxt={"يا هلا"}
-            />
-          ) : (
-            <div className="d-flex gap-3 align-items-center">
-              <i class="bi bi-chat fs-4"></i>
-              <hr className="border h-50"></hr>
-              <Dropdown>
-                <Dropdown.Toggle
-                  variant=""
-                  id="dropdown-basic"
-                  className="p-0 d-flex align-items-center top-navbar rounded-pill"
-                >
-                  <TopNavBtn
-                    mainTxt={"الحساب"}
-                    subTxt={`يا هلا ${userData.username}!`}
-                  />
-                </Dropdown.Toggle>
+      <div className="sticky-top bg-body bg-opacity-75">
+        <div className="container d-flex justify-content-between align-items-center  px-2 px-sm-2 px-md-3 px-lg-4 px-xl-5">
+          {/* User  & Chat Icon */}
+          <div className="d-flex align-items-center  justify-content-end">
+            {!userData ? (
+              <>
+                <button className="btn" onClick={() => setModalShow(true)}>
+                  <i class="bi bi-person-circle fs-3"></i>
+                </button>
+                {/* Login Modal */}
+                <Login
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                  fetchData={fetchData}
+                />
+              </>
+            ) : (
+              <div className="d-flex align-items-center  justify-content-end">
+                <button className="btn" onClick={() => setAccountModal(true)}>
+                  <UserIcon username={userData.username} size={10} />
+                </button>
+                {/* account Modal */}
+                <AccountModal
+                  show={showAccountModal}
+                  onHide={() => setAccountModal(false)}
+                  fetchData={fetchData}
+                  logout={logout}
+                  userData={userData}
+                />
+              </div>
+            )}
+          </div>
 
-                <Dropdown.Menu className="text-end">
-                  <Dropdown.Item onClick={logout}>
-                    <i class="bi bi-person-gear ms-1"></i>
-                    اعدادات الحساب
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={logout}>
-                    <i class="bi bi-person-vcard ms-1"></i>
-                    اشتراكي
-                  </Dropdown.Item>
-
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-
-                  <Dropdown.Item onClick={logout} className="text-danger">
-                    <i class="bi bi-box-arrow-right ms-1 "></i>
-                    تسجيل الخروج
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-          )}
-
-          <NavLink class="" to="/">
+          {/* logo */}
+          <NavLink to="/" className="navbar-brand   text-center">
             <img
               src={`${process.env.PUBLIC_URL}/PR-Logo-Light.svg`}
               alt="PEEK RESULT"
-              width="110"
+              width="120"
             />
           </NavLink>
         </div>
-      </div>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-body-secondary  py-0">
-        <div class="container-fluid">
-          <button
-            data-mdb-collapse-init
-            class="navbar-toggler"
-            type="button"
-            data-mdb-target="#navbarCenteredExample"
-            aria-controls="navbarCenteredExample"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
-
-          <div
-            class="collapse navbar-collapse justify-content-center"
-            id="navbarCenteredExample"
-          >
-            <ul class="navbar-nav gap-4 mb-2 mb-lg-0">
-              {links.map((item, index) => (
-                <li key={index} class="nav-item" data-bs-dismiss="collapse">
+        <Navbar expand="lg" className=" p-0 ">
+          <Container>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="d-flex justify-content-center gap-4 w-100">
+                {links.map((item, index) => (
                   <NavLink
+                    key={index}
+                    to={item.link}
                     className={({ isActive }) =>
                       isActive
-                        ? "nav-link align-items-center border-bottom border-primary border-2"
+                        ? "nav-link align-items-center border-bottom border-primary border-2 text-primary"
                         : "nav-link align-items-center"
                     }
-                    to={item.link}
                     end
                   >
-                    <div className="d-flex align-items-center gap-1 ">
+                    <div className="d-flex align-items-center gap-1">
                       <i className={item.icon}></i>
                       {item.name}
                     </div>
                   </NavLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <Login
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        fetchData={fetchData}
-      />
+                ))}
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+      </div>
     </>
   );
 }

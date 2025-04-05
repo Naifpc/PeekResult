@@ -8,12 +8,11 @@ import AccountData from "./pages/accountData";
 import MySubscription from "./pages/mySubscription";
 import AboutTrainer from "./pages/aboutTrainer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import DefaultLayout from "./layouts/defaultLayout";
 import TrainerHome from "./pages/trainer-home";
 import TrainersLayout from "./layouts/TrainersLayout";
-import AboutTrainee from "./pages/aboutTrainee";
 import Plans from "./pages/plans";
 import CreatePlan from "./pages/CreatePlan";
 import SecondaryLayout from "./layouts/secondaryLayout";
@@ -24,6 +23,7 @@ function App() {
   const [prev, setPrev] = useState("/");
   const [alertMessage, setAlertMessage] = useState("");
   const [showAlert, setAlertShow] = useState(false);
+  const accessToken = sessionStorage.getItem("accessToken");
 
   const fetchData = async () => {
     try {
@@ -45,6 +45,10 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const TrainerfetchData = async () => {
     try {
       const response = await axios.get(
@@ -65,11 +69,6 @@ function App() {
     }
   };
 
-  const logout = () => {
-    sessionStorage.removeItem("accessToken");
-    setUserData(false);
-  };
-
   return (
     <Router>
       <>
@@ -87,19 +86,13 @@ function App() {
               <DefaultLayout
                 fetchData={fetchData}
                 userData={userData}
-                logout={logout}
+                setUserData={setUserData}
               />
             }
           >
             <Route
               path="/Account"
-              element={
-                <Account
-                  fetchData={fetchData}
-                  userData={userData}
-                  logout={logout}
-                />
-              }
+              element={<Account fetchData={fetchData} userData={userData} />}
             />
             <Route path="/:id?" element={<Home />} />
             <Route path="/Schedules" element={<Schedules />} />
@@ -115,7 +108,6 @@ function App() {
               <TrainersLayout
                 fetchData={TrainerfetchData}
                 userData={userData}
-                logout={logout}
               />
             }
           >
@@ -132,7 +124,6 @@ function App() {
               <SecondaryLayout
                 fetchData={TrainerfetchData}
                 userData={userData}
-                logout={logout}
                 prev={prev}
               />
             }

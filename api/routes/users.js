@@ -1,30 +1,39 @@
 const express = require("express");
 const router = express.Router();
-const { Users } = require("../models");
+const { Users, Trainee, Trainer } = require("../models");
 const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 const { validateToken } = require("../middlewares/AuthMiddelware");
 
+//////////////////////////////////////////////////////////////////////////////////////
+// Register a new user
+//////////////////////////////////////////////////////////////////////////////////////
 router.post("/register", async (req, res) => {
-  // register a new user
   try {
-    const { username, email, password } = req.body;
-    bcrypt.hash(password, 10).then((hash) => {
-      Users.create({
-        username: username,
-        email: email,
-        password: hash,
-      });
-      res.json("SUCCESS");
+    const { username, email, password, role } = req.body;
+
+    const hash = await bcrypt.hash(password, 10);
+    const user = await Users.create({
+      username: username,
+      email: email,
+      password: hash,
+      role: role,
     });
+    const accessToken = sign(
+      { username: user.username, id: user.id, role: user.role },
+      "pLFriwTWOsakqMX"
+    );
+    res.json(accessToken);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to create Trainee" });
+    res.status(500).json({ error: "Failed to create user" });
   }
 });
 
+//////////////////////////////////////////////////////////////////////////////////////
+// Login a user
+//////////////////////////////////////////////////////////////////////////////////////
 router.post("/login", async (req, res) => {
-  // login a  user
   try {
     const { email, password } = req.body;
     const user = await Users.findOne({ where: { email: email } });
@@ -36,7 +45,7 @@ router.post("/login", async (req, res) => {
         return res.json({ error: "Wrong email and password compnation" });
       } else {
         const accessToken = sign(
-          { username: user.username, id: user.id },
+          { username: user.username, id: user.id, role: user.role },
           "pLFriwTWOsakqMX"
         );
         return res.json(accessToken);
@@ -44,27 +53,19 @@ router.post("/login", async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to create Trainee" });
+    res.status(500).json({ error: "Failed to create user" });
   }
 });
 
+//////////////////////////////////////////////////////////////////////////////////////
+// get user data
+//////////////////////////////////////////////////////////////////////////////////////
 router.get("/userData", validateToken, async (req, res) => {
   // get current user data
   try {
     const tokenId = req.user.id;
     const userData = await Users.findOne({
-      attributes: [
-        "id",
-        "username",
-        "email",
-        "weight",
-        "height",
-        "birthDate",
-        "waistLength",
-        "neckLength",
-        "fatWeight",
-        "muscleWeight",
-      ],
+      attributes: ["id", "username", "email"],
       where: { id: tokenId },
     });
     if (!userData) {
@@ -74,7 +75,7 @@ router.get("/userData", validateToken, async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to get Trainee" });
+    res.status(500).json({ error: "Failed to get user" });
   }
 });
 

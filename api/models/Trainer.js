@@ -1,18 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   const Trainer = sequelize.define("Trainer", {
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     experience: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -33,11 +20,18 @@ module.exports = (sequelize, DataTypes) => {
   Trainer.associate = (models) => {
     Trainer.belongsToMany(models.Fields, {
       through: "TrainerFields",
-      onDelete: "cascade",
+      onDelete: "CASCADE",
+    });
+
+    Trainer.belongsTo(models.Users, {
+      foreignKey: {
+        allowNull: false,
+      },
     });
 
     Trainer.hasMany(models.Plans, {
-      onDelete: "cascade",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     });
   };
 

@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import Login from "./login";
+import AccountModal from "./accountModal";
+import UserIcon from "./userIcon";
 
 function MobileBotNavbar({ links }) {
   const active =
@@ -29,27 +31,45 @@ function MobileBotNavbar({ links }) {
   );
 }
 
-function MobiletopNavbar({ userData, fetchData }) {
+function MobiletopNavbar({ userData, fetchData, setUserData }) {
+  const [showAccountModal, setAccountModal] = useState(false);
+
+  const logout = () => {
+    sessionStorage.removeItem("accessToken");
+    setAccountModal(false);
+    setUserData(false);
+  };
   const [modalShow, setModalShow] = useState(false);
   return (
     <>
       <div class=" bg-body  ">
         <nav class="container d-flex justify-content-between navbar navbar-expand-lg px-3 px-sm-3 px-md-3 px-lg-4 px-xl-5">
-          {!userData && (
-            <button
-              type="button"
-              onClick={() => setModalShow(true)}
-              className="nav-link d-flex gap-2 align-items-center  "
-            >
-              <i class="bi bi-person-circle fs-5"></i>
-              <p className="fs-6 m-0">دخول / تسجيل</p>
-            </button>
-          )}
-
-          {userData && (
-            <div>
-              <i class="bi bi-chat fs-4"></i>
-            </div>
+          {!userData ? (
+            <>
+              <button className="btn p-0" onClick={() => setModalShow(true)}>
+                <i class="bi bi-person-circle fs-3"></i>
+              </button>
+              {/* Login Modal */}
+              <Login
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                fetchData={fetchData}
+              />
+            </>
+          ) : (
+            <>
+              <button className="btn p-0" onClick={() => setAccountModal(true)}>
+                <UserIcon username={userData.username} size={10} />
+              </button>
+              {/* account Modal */}
+              <AccountModal
+                show={showAccountModal}
+                onHide={() => setAccountModal(false)}
+                fetchData={fetchData}
+                logout={logout}
+                userData={userData}
+              />
+            </>
           )}
 
           <NavLink class="" to="/">
@@ -59,13 +79,9 @@ function MobiletopNavbar({ userData, fetchData }) {
               width="90"
             />
           </NavLink>
+          <i class="bi bi-three-dots-vertical fs-2"></i>
         </nav>
       </div>
-      <Login
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        fetchData={fetchData}
-      />
     </>
   );
 }

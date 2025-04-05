@@ -3,24 +3,29 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Alerts from "./alerts";
 import Modal from "react-bootstrap/Modal";
-import Register from "./register";
 import { isMobile } from "react-device-detect";
 
 function Login(props) {
-  const [modalShow, setModalShow] = useState(false);
   let navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
+    username: Yup.string().required().min(4).max(25),
+    role: Yup.string().required().oneOf(["trainee", "trainer"]),
+    email: Yup.string().required().email(),
+    password: Yup.string().required().min(8).max(24),
+  });
+
+  const validationSchemaLogin = Yup.object().shape({
     email: Yup.string().required().email(),
     password: Yup.string().required().min(8).max(24),
   });
 
   const [alertMessage, setAlertMessage] = useState(false);
 
-  const onSubmit = (data) => {
+  const onSubmitLogin = (data) => {
     axios
       .post("http://localhost:9000/authenticate/login", data)
       .then((response) => {
@@ -28,23 +33,25 @@ function Login(props) {
           setAlertMessage(true);
         } else {
           sessionStorage.setItem("accessToken", response.data);
+          if (sessionStorage.role === "trainer") {
+            navigate("/trainers");
+          }
           props.onHide();
           props.fetchData();
         }
       });
   };
 
-  const trainerSubmit = (data) => {
+  const onSubmitRegister = (data) => {
     axios
-      .post("http://localhost:9000/trainers/login", data)
+      .post("http://localhost:9000/authenticate/register", data)
       .then((response) => {
-        console.log(response.data);
         if (response.data.error) {
           setAlertMessage(true);
         } else {
           sessionStorage.setItem("accessToken", response.data);
           props.onHide();
-          navigate("/trainers");
+          props.fetchData();
         }
       });
   };
@@ -77,7 +84,7 @@ function Login(props) {
                 aria-controls="trainee-login"
                 aria-selected="true"
               >
-                متدرب
+                تسجيل دخول
               </button>
             </li>
             <li class="nav-item" role="presentation">
@@ -90,7 +97,7 @@ function Login(props) {
                 aria-controls="trainer-login"
                 aria-selected="false"
               >
-                مدرب
+                تسجيل حساب
               </button>
             </li>
           </ul>
@@ -134,9 +141,9 @@ function Login(props) {
                 msg={`كلمة السر او الايميل خاطئ`}
               />
               <Formik
-                initialValues={{ username: "", email: "", password: "" }}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
+                initialValues={{ email: "", password: "" }}
+                validationSchema={validationSchemaLogin}
+                onSubmit={onSubmitLogin}
               >
                 <Form>
                   <div className="row g-3">
@@ -174,7 +181,7 @@ function Login(props) {
 
                     <div className="col-12 d-flex justify-content-center">
                       <button
-                        className="btn w-75 btn-primary mx-auto"
+                        className="btn w-75 btn-primary mx-auto text-white rounded-pill"
                         type="submit"
                       >
                         <div>تسجيل دخول</div>
@@ -191,17 +198,52 @@ function Login(props) {
               aria-labelledby="trainer-login"
             >
               <Formik
-                initialValues={{ email: "", password: "" }}
+                initialValues={{
+                  email: "",
+                  password: "",
+                  role: "",
+                  username: "",
+                }}
                 validationSchema={validationSchema}
-                onSubmit={trainerSubmit}
+                onSubmit={onSubmitRegister}
               >
                 <Form>
                   <div className="row g-3">
-                    <div className="form-floating mb-3 col-12">
+                    <div className="col-12 form-floating">
+                      <Field
+                        as="select"
+                        className="form-select   bg-body-secondary"
+                        name="role"
+                      >
+                        <option value="">نوع الحساب</option>
+                        <option value="trainer">مدرب </option>
+                        <option value="trainee">متدرب </option>
+                      </Field>
+
+                      <ErrorMessage
+                        name="role"
+                        component="span"
+                        className="text-danger"
+                      />
+                    </div>
+                    <div className="form-floating  col-12">
+                      <Field
+                        type="text"
+                        className="form-control bg-transparent"
+                        name="username"
+                        placeholder="الاسم"
+                      />
+                      <label htmlFor="floatingEmail">الاسم</label>
+                      <ErrorMessage
+                        name="username"
+                        component="span"
+                        className="text-danger"
+                      />
+                    </div>
+                    <div className="form-floating  col-12">
                       <Field
                         type="email"
                         className="form-control bg-transparent"
-                        id="floatingEmail"
                         name="email"
                         placeholder="الايميل"
                       />
@@ -213,7 +255,7 @@ function Login(props) {
                       />
                     </div>
 
-                    <div className="form-floating mb-3 col-12">
+                    <div className="form-floating col-12">
                       <Field
                         type="password"
                         className="form-control bg-transparent"
@@ -231,10 +273,10 @@ function Login(props) {
 
                     <div className="col-12 d-flex justify-content-center">
                       <button
-                        className="btn w-75 btn-primary mx-auto"
+                        className="btn w-75 btn-primary mx-auto text-white rounded-pill"
                         type="submit"
                       >
-                        <div>تسجيل دخول</div>
+                        <div>تسجيل جديد</div>
                       </button>
                     </div>
                   </div>
@@ -243,22 +285,7 @@ function Login(props) {
             </div>
           </div>
         </Modal.Body>
-        <Modal.Footer>
-          <p className="fs-6 w-100 text-center">
-            ليس لديك حساب؟
-            <button
-              type="button"
-              className="btn btn-link link-offset-2  link-offset-3-hover
-                                link-underline link-underline-opacity-0 
-                                link-underline-opacity-75-hover pt-0"
-              onClick={() => setModalShow(true)}
-            >
-              تسجيل حساب
-            </button>
-          </p>
-        </Modal.Footer>
       </Modal>
-      <Register show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 }

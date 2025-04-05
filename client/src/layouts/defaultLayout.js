@@ -5,7 +5,7 @@ import Footer from "../partials/footer";
 import { BrowserView, MobileView } from "react-device-detect";
 import { MobileBotNavbar, MobiletopNavbar } from "../partials/MobileNavbar";
 
-function DefaultLayout({ fetchData, userData, logout }) {
+function DefaultLayout({ fetchData, userData, setUserData }) {
   useEffect(() => {
     fetchData();
   }, []);
@@ -22,7 +22,7 @@ function DefaultLayout({ fetchData, userData, logout }) {
         <BrowserNavbar
           fetchData={fetchData}
           userData={userData}
-          logout={logout}
+          setUserData={setUserData}
           links={links}
         />
         <Outlet />
@@ -30,7 +30,11 @@ function DefaultLayout({ fetchData, userData, logout }) {
       </BrowserView>
 
       <MobileView>
-        <MobiletopNavbar fetchData={fetchData} userData={userData} />
+        <MobiletopNavbar
+          fetchData={fetchData}
+          userData={userData}
+          setUserData={setUserData}
+        />
         <Outlet />
         <MobileBotNavbar links={links} />
       </MobileView>

@@ -70,7 +70,7 @@ function Account({ fetchData, userData, logout }) {
               <h4 className="">البيانات</h4>
 
               <div className="col-12 d-flex justify-content-center align-items-center ">
-                <UserIcon username={userData.username} size={100} />
+                <UserIcon username={userData.username} size={80} />
               </div>
               <div className="col-12 align-items-center">
                 <h3 className="text-center mb-1">{userData.username}</h3>
@@ -357,45 +357,6 @@ function Account({ fetchData, userData, logout }) {
                 </div>
               </div>
             </div>
-
-            {isMobile && (
-              <div className="row">
-                <h4 className="my-4">الحساب</h4>
-                <div class="list-group p-1 rounded ">
-                  <button
-                    type="button "
-                    class="list-group-item  d-flex justify-content-between list-group-item-action border-0 border-bottom  bg-body-secondary p-4 "
-                    aria-current="true"
-                  >
-                    <div>
-                      <i class="bi bi-person ms-1"></i>
-                      اعدادات الحساب
-                    </div>
-                    <i class="bi bi-arrow-left"></i>
-                  </button>
-                  <button
-                    type="button"
-                    class="list-group-item d-flex justify-content-between list-group-item-action  border-0  bg-body-secondary p-4"
-                  >
-                    <div>
-                      <i class="bi bi-person-vcard ms-1"></i>
-                      اشتراكي
-                    </div>
-                    <i class="bi bi-arrow-left"></i>
-                  </button>
-                </div>
-
-                <div className="mt-4 p-1">
-                  <button
-                    className="btn bg-body-secondary text-danger rounded  w-100 p-3"
-                    onClick={logout}
-                  >
-                    <i class="bi bi-box-arrow-right "></i> تسجل خروج
-                  </button>
-                </div>
-                <div className="my-5"></div>
-              </div>
-            )}
           </div>
         </>
       ) : (
