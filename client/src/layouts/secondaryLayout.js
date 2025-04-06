@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import BrowserNavbar from "../partials/BrowserNavbar";
 import Footer from "../partials/footer";
 import { BrowserView, MobileView } from "react-device-detect";
-import { MobileBotNavbar, MobiletopNavbar } from "../partials/MobileNavbar";
 import SecondaryNav from "../partials/SecondaryNav";
 
-function SecondaryLayout({ fetchData, userData, logout, prev }) {
+function SecondaryLayout({ fetchData, userData, logout, prev, title }) {
   useEffect(() => {
     fetchData();
   }, []);
@@ -31,7 +30,7 @@ function SecondaryLayout({ fetchData, userData, logout, prev }) {
       </BrowserView>
 
       <MobileView>
-        <SecondaryNav prev={prev} />
+        <SecondaryNav prev={prev} title={title} />
         <Outlet />
       </MobileView>
     </>

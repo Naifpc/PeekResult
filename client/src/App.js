@@ -17,6 +17,7 @@ import Plans from "./pages/plans";
 import CreatePlan from "./pages/CreatePlan";
 import SecondaryLayout from "./layouts/secondaryLayout";
 import Alerts from "./partials/alerts";
+import Register from "./pages/register";
 
 function App() {
   const [userData, setUserData] = useState([]);
@@ -24,6 +25,7 @@ function App() {
   const [alertMessage, setAlertMessage] = useState("");
   const [showAlert, setAlertShow] = useState(false);
   const accessToken = sessionStorage.getItem("accessToken");
+  const [secondaryTitle, setSecondaryTitle] = useState("");
 
   const fetchData = async () => {
     try {
@@ -125,6 +127,7 @@ function App() {
                 fetchData={TrainerfetchData}
                 userData={userData}
                 prev={prev}
+                title={secondaryTitle}
               />
             }
           >
@@ -135,6 +138,19 @@ function App() {
                   setPrev={setPrev}
                   setAlertShow={setAlertShow}
                   setAlertMessage={setAlertMessage}
+                  setSecondaryTitle={setSecondaryTitle}
+                />
+              }
+            />
+
+            <Route
+              path="/register"
+              element={
+                <Register
+                  setPrev={setPrev}
+                  setAlertShow={setAlertShow}
+                  setAlertMessage={setAlertMessage}
+                  setSecondaryTitle={setSecondaryTitle}
                 />
               }
             />
